@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import Layout from "@/layouts/main.astro";
+import type { Anime } from "@/lib/schemas/anime";
+import AnimeCard from "../../components/anime-card.astro";
+
+const url = new URL(Astro.request.url);
+const anime = url.searchParams.get("anime");
+const api_url = new URL(import.meta.env.ANIME_API + "/anime");
+api_url.searchParams.set("q", anime ?? "");
+const { data } = (await (await fetch(api_url)).json()) as {
+  data: Anime[];
+};
+---
+<Layout title={anime ?? ""}>
+  {
+    data.map((anime) => (
+          <AnimeCard anime={anime} />
+    ))
+  }
+</Layout>

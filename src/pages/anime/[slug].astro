@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/main.astro";
+import animeSchema from "@/lib/schemas/anime";
+
+const id = Astro.params.slug;
+if (!id) {
+  Astro.redirect("/");
+}
+
+async function getAnime(id: string) {
+  const res = await (
+    await fetch(`${import.meta.env.ANIME_API}/anime/${id}/full`)
+  ).json();
+  return animeSchema.safeParse(res.data);
+}
+
+const result = await getAnime(id);
+if (!result.success) {
+  Astro.redirect("/");
+}
+---
+
+<Layout title={result.data.title}>
+  <div class="w-full m-6">
+    <h1 class="font-bold text-zinc-300 text-3xl">{result.data.title}</h1>
+    <div>
+      <h3 class="font-bold text-zinc-300 text-lg">Streaming platforms</h3>
+      <ul>
+        {
+          result.data.streaming.map((platform) => (
+            <li>
+              <a target="_blank" href={platform.url}>
+                {platform.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-zinc-300 text-lg">Openings</h3>
+      <ul>
+        {
+          result.data.theme.openings.map((opening) => {
+            const url = new URL("https://www.youtube.com/results");
+            url.searchParams.set(
+              "search_query",
+              opening.split?.(":")[1]?.split("(eps")[0] || ""
+            );
+            return (
+              <li>
+                <a target="_blank" href={url.href}>
+                  {opening}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</Layout>
