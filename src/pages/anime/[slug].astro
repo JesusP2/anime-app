@@ -4,19 +4,17 @@ import animeSchema from "@/lib/schemas/anime";
 
 const id = Astro.params.slug;
 if (!id) {
-  Astro.redirect("/");
+  return Astro.redirect("/")
 }
-
 async function getAnime(id: string) {
   const res = await (
-    await fetch(`${import.meta.env.ANIME_API}/anime/${id}/full`)
+      await fetch(`${import.meta.env.ANIME_API}/anime/${id}/full`)
   ).json();
   return animeSchema.safeParse(res.data);
 }
-
 const result = await getAnime(id);
 if (!result.success) {
-  Astro.redirect("/");
+  return Astro.redirect("/");
 }
 ---
 

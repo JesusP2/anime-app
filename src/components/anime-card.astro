@@ -1,12 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import type { Anime } from "@/lib/schemas/anime";
-export interface Props {
+interface Props {
   anime: Anime;
 }
 
 const { anime } = Astro.props;
-export interface Props extends Anime {}
 ---
 <a
     href={`/anime/${anime.mal_id}`}
@@ -18,11 +17,10 @@ export interface Props extends Anime {}
       height={100}
       alt="yo"
       format="jpeg"
-      fit="cover"
       class="rounded-xl"
   />
   <div class="text-left">
-    <h1 class="text-2xl text-white">{anime.title}</h1>
+    <h1 class="text-xl text-white">{anime.title}</h1>
     <div>
       <div>score: {anime.score || "N/A"}</div>
       <div>type: {anime.type}</div>
