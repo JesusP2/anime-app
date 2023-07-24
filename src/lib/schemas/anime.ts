@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { paginationSchema } from "./pagination";
 
 const schema = z.object({
   mal_id: z.number(),
@@ -30,65 +31,65 @@ const schema = z.object({
     })
   ),
   title: z.string(),
-  title_english: z.string(),
+  title_english: z.string().nullish(),
   title_japanese: z.string(),
   title_synonyms: z.array(z.string()),
   type: z.string(),
   source: z.string(),
-  episodes: z.number(),
+  episodes: z.number().nullish(),
   status: z.string(),
   airing: z.boolean(),
   aired: z.object({
-    from: z.string(),
-    to: z.string(),
+    from: z.string().nullish(),
+    to: z.string().nullish(),
     prop: z.object({
       from: z.object({
-        day: z.number(),
-        month: z.number(),
-        year: z.number(),
-      }),
+        day: z.number().nullish(),
+        month: z.number().nullish(),
+        year: z.number().nullish(),
+      }).nullish(),
       to: z.object({
-        day: z.number(),
-        month: z.number(),
-        year: z.number(),
-      }),
+        day: z.number().nullish(),
+        month: z.number().nullish(),
+        year: z.number().nullish(),
+      }).nullish(),
       string: z.string().optional(),
     }),
-  }),
+  }).nullish(),
   duration: z.string(),
-  rating: z.string(),
-  score: z.number(),
-  scored_by: z.number(),
-  rank: z.number(),
-  popularity: z.number(),
-  members: z.number(),
-  favorites: z.number(),
-  synopsis: z.string(),
-  background: z.string(),
-  season: z.string(),
-  year: z.number(),
+  rating: z.string().nullish(),
+  score: z.number().nullish(),
+  scored_by: z.number().nullish(),
+  rank: z.number().nullish(),
+  popularity: z.number().nullish(),
+  members: z.number().nullish(),
+  favorites: z.number().nullish(),
+  synopsis: z.string().nullish(),
+  background: z.string().nullish(),
+  season: z.string().nullish(),
+  year: z.number().nullish(),
   broadcast: z.object({
-    day: z.string(),
-    time: z.string(),
-    timezone: z.string(),
-    string: z.string(),
-  }),
+    day: z.string().nullish(),
+    time: z.string().nullish(),
+    timezone: z.string().nullish(),
+    string: z.string().nullish(),
+  }).nullish(),
   producers: z.array(
     z.object({
-      mal_id: z.number(),
+      mal_id: z.number().nullish(),
       type: z.string(),
       name: z.string(),
       url: z.string(),
     })
-  ),
+  ).nullish(),
   licensors: z.array(
     z.object({
-      mal_id: z.number(),
+      mal_id: z.number().nullish(),
       type: z.string(),
       name: z.string(),
       url: z.string(),
     })
-  ),
+  ).nullish(),
   studios: z.array(
     z.object({
       mal_id: z.number(),
@@ -96,7 +97,7 @@ const schema = z.object({
       name: z.string(),
       url: z.string(),
     })
-  ),
+  ).nullish(),
   genres: z.array(
     z.object({
       mal_id: z.number(),
@@ -132,9 +133,13 @@ const schema = z.object({
   theme: z.object({
     openings: z.array(z.string()),
     endings: z.array(z.string()),
-  }),
-  streaming: z.array(z.object({ name: z.string(), url: z.string() })),
+  }).nullish(),
+  streaming: z.array(z.object({ name: z.string(), url: z.string() })).nullish(),
 });
 
+export const animeSchema = z.object({
+  data: z.array(schema),
+  pagination: paginationSchema,
+})
+
 export type Anime = z.infer<typeof schema>;
-export default schema;

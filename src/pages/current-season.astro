@@ -1,6 +1,16 @@
 ---
 import Layout from "@/layouts/main.astro";
+import AnimeCard from "@/components/anime-card.astro";
+import animeSchema from '@/lib/schemas/anime'
+import { z } from "zod";
+const api_url = new URL(import.meta.env.ANIME_API + "/seasons/now");
+const result = z.array(animeSchema).safeParse((await (await fetch(api_url)).json()).data)
+if (!result.success) {
+  return Astro.redirect('/404')
+}
 ---
 <Layout title="Current season">
-  Current season
+  <div class="grid auto-fill-grid">
+    {result.data.map((anime) => <AnimeCard anime={anime} />)}
+  </div>
 </Layout>
