@@ -1,16 +1,29 @@
 ---
 import Layout from "@/layouts/main.astro";
 import AnimeCard from "@/components/anime-card.astro";
-import animeSchema from '@/lib/schemas/anime'
-import { z } from "zod";
+import { animeSchema } from "@/lib/schemas/anime";
+import Pagination from "@/components/pagination.astro";
+
+const url = new URL(Astro.request.url);
+const _page = url.searchParams.get("page") || "1";
+const page = isNaN(parseInt(_page || "")) ? 1 : parseInt(_page);
+
 const api_url = new URL(import.meta.env.ANIME_API + "/seasons/now");
-const result = z.array(animeSchema).safeParse((await (await fetch(api_url)).json()).data)
+api_url.searchParams.set("page", page.toString() ?? "1");
+const result = animeSchema.safeParse(await (await fetch(api_url)).json());
 if (!result.success) {
-  return Astro.redirect('/404')
+  return Astro.redirect("/404");
 }
 ---
 <Layout title="Current season">
   <div class="grid auto-fill-grid">
-    {result.data.map((anime) => <AnimeCard anime={anime} />)}
+    {result.data.data.map((anime) => <AnimeCard anime={anime} />)}
+  </div>
+  <div class="text-black flex justify-center mt-10">
+    <Pagination
+      value={page}
+      count={result.data.pagination.last_visible_page}
+      url={url}
+    />
   </div>
 </Layout>

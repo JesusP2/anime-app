@@ -3,7 +3,6 @@ import Layout from "@/layouts/main.astro";
 import AnimeCard from "@/components/anime-card.astro";
 import Pagination from "@/components/pagination.astro";
 import { animeSchema } from "@/lib/schemas/anime";
-import type { z } from "zod";
 
 const url = new URL(Astro.request.url);
 const search = url.searchParams.get("search");
@@ -20,7 +19,7 @@ if (!result.success) {
   return Astro.redirect("/404");
 }
 
-let data: z.infer<(typeof animeSchema.shape)["data"]> = result.data.data;
+let data = result.data.data;
 if (searchType) {
   data = result.data.data.filter((anime) => anime.type === searchType);
 }
