@@ -49,9 +49,8 @@ const { anime } = Astro.props;
         }
       </p>
     </div>
-    <h3 class="font-inter text-lg mt-3 mb-5">{anime.title}</h3>
-    <p class="text-clip mb-3">{anime.synopsis}</p>
-
+    <h3 title={anime.title} class="font-inter text-lg mt-3 mb-5 truncate">{anime.title}</h3>
+    <p class="text-clip mb-3 h-[100px]">{anime.synopsis}</p>
     <button
       class="text-blue-500 font-medium flex gap-x-1 items-center text-sm hover:bg-neutral-50 hover:text-blue-600 px-3 py-2 rounded-md relative right-3"
     >
