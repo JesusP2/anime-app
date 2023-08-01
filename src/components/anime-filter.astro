@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon";
+interface Props {
+  url: URL;
+}
+
+const { url } = Astro.props;
+---
+
+<form method="GET" action={url.toString()} class="text-black">
+  <input name="search" hidden value={url.searchParams.get("search")} />
+  <input name="page" hidden value={url.searchParams.get("page")} />
+  <div class="flex items-center gap-x-4">
+    <div class="relative w-min">
+      <Icon
+        pack="ic"
+        name="baseline-keyboard-arrow-up"
+        class="w-4 h-4 absolute right-4 top-[6px] text-neutral-500 pointer-events-none"
+      />
+      <Icon
+        pack="ic"
+        name="baseline-keyboard-arrow-down"
+        class="w-4 h-4 absolute right-4 top-[13px] text-neutral-500 pointer-events-none"
+      />
+      <select
+        name="type"
+        class="text-neutral-800 pl-4 pr-20 py-1 bg-inherit border-[1px] rounded-md remove-icon border-neutral-300 cursor-pointer hover:border-neutral-400"
+      >
+        <option value="movie">Movie</option>
+        <option value="tv">TV</option>
+        <option value="ova">OVA</option>
+        <option value="special">Special</option>
+        <option value="ona">Ona</option>
+        <option value="music">Music</option>
+      </select>
+    </div>
+    <button
+      class="py-[7px] px-4 bg-neutral-900 text-white font-medium rounded-md text-sm hover:bg-neutral-800"
+      type="submit">Filter</button
+    >
+  </div>
+  <style>
+    .remove-icon {
+      -moz-appearance: none; /* Firefox */
+      -webkit-appearance: none; /* Safari and Chrome */
+      appearance: none;
+    }
+  </style>
+</form>
