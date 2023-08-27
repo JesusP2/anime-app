@@ -1,4 +1,4 @@
-import { auth } from "../lib/db/lucia";
+import { auth } from "@/lib/db/lucia";
 
 import type { APIRoute } from "astro";
 

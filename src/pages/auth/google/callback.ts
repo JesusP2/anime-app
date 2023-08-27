@@ -2,6 +2,10 @@ import type { APIRoute } from "astro";
 import { auth, googleAuth } from "@/lib/db/lucia";
 import { parseCookie } from "lucia/utils";
 import { OAuthRequestError } from "@lucia-auth/oauth";
+import { db } from "@/lib/db/pool";
+import { user as userSchema } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
+import type { User } from "lucia";
 
 export const get: APIRoute = async (context) => {
   const cookies = parseCookie(context.request.headers.get("Cookie") ?? "");
@@ -17,25 +21,59 @@ export const get: APIRoute = async (context) => {
   try {
     const { existingUser, googleUser, createUser } =
       await googleAuth.validateCallback(code);
-    const getUser = async () => {
-      if (existingUser) return existingUser;
-      const user = await createUser({
+    if (!googleUser.email) {
+      return new Response(
+        JSON.stringify({ message: "Invalid email coming from google oauth" }),
+        {
+          status: 400,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+    const users = await db
+      .select()
+      .from(userSchema)
+      .where(eq(userSchema.email, googleUser.email))
+      .execute();
+    let user: { id: string };
+    if (existingUser) {
+      user = existingUser;
+    } else if (users.length && users[0]) {
+      user = users[0];
+      await auth.createKey({
+        userId: users[0]?.id!,
+        providerId: "google",
+        providerUserId: googleUser.sub,
+        password: null,
+      });
+    } else {
+      user = await createUser({
         attributes: {
-          username: googleUser.given_name + " " + googleUser.family_name,
+          email: googleUser.email,
+          username: googleUser.name,
+          avatar_image: googleUser.picture,
         },
       });
-      return user;
-    };
-    const user = await getUser();
+    }
+    console.log("user", user)
+    console.log("googleUser:", googleUser)
+    console.log("existingUser:", existingUser)
     const session = await auth.createSession({
-      userId: user.userId,
+      userId: user.id,
       attributes: {},
     });
     context.locals.auth.setSession(session);
-    return context.redirect("/", 302);
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: "/",
+      },
+    });
   } catch (err) {
+    console.error(err);
     if (err instanceof OAuthRequestError) {
-      // invalid code
       return new Response(null, {
         status: 400,
       });

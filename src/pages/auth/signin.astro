@@ -10,7 +10,6 @@ let emailInput = "";
 
 try {
   if (Astro.request.method === "POST") {
-    console.log("signin post");
     const formData = await Astro.request.formData();
     const emailResult = z.string().email().safeParse(formData.get("email"));
     if (!emailResult.success) {
@@ -44,7 +43,8 @@ try {
     (e.message === "AUTH_INVALID_KEY_ID" ||
       e.message === "AUTH_INVALID_PASSWORD")
   ) {
-    errorMessage = "Incorrect username or password";
+    // TODO: OR ACCOUNT DOES NOT EXIST@!!!
+    errorMessage = "Incorrect email or password";
     Astro.response.status = 400;
   } else {
     errorMessage = "An unknown error occurred";
@@ -61,15 +61,15 @@ if (session) return Astro.redirect("/", 302); // redirect to profile page
     <h3>Acme Industries</h3>
     <h4>Sign in for!!!</h4>
     <div class="flex justify-center gap-x-2 border-b border-gray-100 pb-5 my-8">
-      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      <a href="/auth/twitch/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
         <img src="/public/github.svg" />
-      </button>
-      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      </a>
+      <a href="/auth/github/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
         <img src="/public/github.svg" />
-      </button>
-      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      </a>
+      <a href="/auth/google/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
         <img src="/public/google.svg" />
-      </button>
+      </a>
     </div>
     <form method="POST">
       <AuthInput

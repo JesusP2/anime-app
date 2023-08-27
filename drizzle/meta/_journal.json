@@ -15,6 +15,20 @@
       "when": 1691906055938,
       "tag": "0001_chunky_frightful_four",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693103381122,
+      "tag": "0002_boring_karnak",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693118312049,
+      "tag": "0003_purple_major_mapleleaf",
+      "breakpoints": true
     }
   ]
 }
