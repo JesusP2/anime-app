@@ -7,7 +7,6 @@ import solidJs from "@astrojs/solid-js";
 export default defineConfig({
   output: "server",
   experimental: {
-    viewTransitions: true,
     assets: true
   },
   integrations: [tailwind(), solidJs()]
