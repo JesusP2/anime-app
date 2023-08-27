@@ -1,14 +1,23 @@
-import { pgTable, bigint, varchar } from "drizzle-orm/pg-core";
+import { pgTable, bigint, varchar, uniqueIndex } from "drizzle-orm/pg-core";
 
-export const user = pgTable("auth_user", {
-  id: varchar("id", {
-    length: 15, // change this when using custom user ids
-  }).primaryKey(),
-  username: varchar("username", {
-    length: 30,
-  }),
-  // other user attributes
-});
+export const user = pgTable(
+  "auth_user",
+  {
+    id: varchar("id", {
+      length: 15, // change this when using custom user ids
+    }).primaryKey(),
+    email: varchar("email", {
+      length: 255,
+    }),
+    username: varchar("username", {
+      length: 30,
+    }),
+    avatar_image: varchar("image", { length: 191 }),
+  },
+  (user) => ({
+    emailIndex: uniqueIndex("users__email__idx").on(user.email),
+  })
+);
 
 export const session = pgTable("user_session", {
   id: varchar("id", {

@@ -9,6 +9,9 @@ interface ImportMeta {
     readonly PROD: boolean;
     readonly DEV: boolean;
     readonly SSR: boolean;
+    readonly GOOGLE_CLIENT_ID: string;
+    readonly GOOGLE_CLIENT_SECRET: string;
+    readonly GOOGLE_REDIRECT_URI: string;
   };
 }
 
@@ -21,6 +24,9 @@ interface ImportMetaEnv {
     readonly PROD: boolean;
     readonly DEV: boolean;
     readonly SSR: boolean;
+    readonly GOOGLE_CLIENT_ID: string;
+    readonly GOOGLE_CLIENT_SECRET: string;
+    readonly GOOGLE_REDIRECT_URI: string;
   };
 }
 declare namespace Lucia {

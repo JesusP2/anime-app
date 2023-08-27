@@ -1,0 +1,60 @@
+---
+type HTMLInputTypeAttribute =
+  | "button"
+  | "checkbox"
+  | "color"
+  | "date"
+  | "datetime-local"
+  | "email"
+  | "file"
+  | "hidden"
+  | "image"
+  | "month"
+  | "number"
+  | "password"
+  | "radio"
+  | "range"
+  | "reset"
+  | "search"
+  | "submit"
+  | "tel"
+  | "text"
+  | "time"
+  | "url"
+  | "week";
+interface Props {
+  label: string;
+  id: string;
+  placeholder: string;
+  name: string;
+  type?: HTMLInputTypeAttribute;
+  required?: boolean;
+  minlength?: string;
+  value?: string;
+}
+const { id, label, placeholder, name, type, required, minlength, value } = Astro.props;
+---
+
+<div class="flex flex-col-reverse my-4">
+  <input
+    value={value}
+    min="10"
+    minlength={minlength}
+    id={id}
+    placeholder={placeholder}
+    name={name}
+    type={type}
+    required={required}
+    class="h-[43px] max-w-[384px] w-full border-[1px] border-neutral-300 hover:border-neutral-700 focus:border-neutral-700 rounded-[5px] outline-none text-sm px-[15px] py-[10px]"
+  />
+  <label for={id} class="text-sm mb-2 text-neutral-600 input-label">{label}</label>
+</div>
+
+<style>
+  input:not(:focus):not(:placeholder-shown):invalid {
+    border-color: red;
+  }
+  input:not(:focus):not(:placeholder-shown):invalid ~ .input-label {
+    color: red;
+  }
+</style>
