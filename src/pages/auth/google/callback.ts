@@ -57,9 +57,6 @@ export const get: APIRoute = async (context) => {
         },
       });
     }
-    console.log("user", user)
-    console.log("googleUser:", googleUser)
-    console.log("existingUser:", existingUser)
     const session = await auth.createSession({
       userId: user.id,
       attributes: {},
