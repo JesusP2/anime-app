@@ -1,5 +1,6 @@
 ---
-import { auth } from "../lib/db/lucia";
+import AuthLayout from "@/layouts/auth.astro";
+import { auth } from "@/lib/db/lucia";
 
 let usernameInput = "";
 let errorMessage = "";
@@ -25,7 +26,7 @@ if (Astro.request.method === "POST") {
     try {
       const user = await auth.createUser({
         key: {
-          providerId: "username", // auth method
+          providerId: "email", // auth method
           providerUserId: username.toLowerCase(), // unique id when using "username" auth method
           password, // hashed by Lucia
         },
@@ -66,7 +67,8 @@ try {
   console.error("gota catch em all", err);
 }
 ---
-
+<AuthLayout title="Sign up">
+</AuthLayout>
 <html lang="en">
   <head>
     <meta charset="utf-8" />

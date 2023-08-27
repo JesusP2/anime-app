@@ -12,6 +12,7 @@ const api_url = new URL(import.meta.env.ANIME_API + "/seasons/now");
 api_url.searchParams.set("page", page.toString() ?? "1");
 const result = animeSchema.safeParse(await (await fetch(api_url)).json());
 if (!result.success) {
+  console.error(result.error)
   return Astro.redirect("/404");
 }
 ---

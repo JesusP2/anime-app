@@ -1,0 +1,110 @@
+---
+import AuthLayout from "@/layouts/auth.astro";
+import AuthButton from "@/components/auth-button.astro";
+import AuthInput from "@/components/auth-input.astro";
+import { auth } from "@/lib/db/lucia";
+import { LuciaError } from "lucia";
+import { z } from "zod";
+let errorMessage: string | null = null;
+let emailInput = "";
+
+try {
+  if (Astro.request.method === "POST") {
+    console.log("signin post");
+    const formData = await Astro.request.formData();
+    const emailResult = z.string().email().safeParse(formData.get("email"));
+    if (!emailResult.success) {
+      errorMessage = emailResult.error.message;
+    }
+    const passwordResult = z
+      .string()
+      .min(8, "Password must be minumim 8 characters long")
+      .safeParse(formData.get("password"));
+    if (!passwordResult.success && errorMessage) {
+      errorMessage = "Invalid email and password";
+    } else if (emailResult.success && passwordResult.success) {
+      // find user by key
+      // and validate password
+      const key = await auth.useKey(
+        "email",
+        emailResult.data.toLowerCase(),
+        passwordResult.data
+      );
+      const session = await auth.createSession({
+        userId: key.userId,
+        attributes: {},
+      });
+      Astro.locals.auth.setSession(session); // set session cookie
+      return Astro.redirect("/", 302); // redirect to profile page
+    }
+  }
+} catch (e) {
+  if (
+    e instanceof LuciaError &&
+    (e.message === "AUTH_INVALID_KEY_ID" ||
+      e.message === "AUTH_INVALID_PASSWORD")
+  ) {
+    errorMessage = "Incorrect username or password";
+    Astro.response.status = 400;
+  } else {
+    errorMessage = "An unknown error occurred";
+    Astro.response.status = 500;
+  }
+}
+
+const session = await Astro.locals.auth.validate();
+if (session) return Astro.redirect("/", 302); // redirect to profile page
+---
+
+<AuthLayout title="Sign in">
+  <div class="max-w-[448px] w-full mx-auto rounded-md px-8 py-14 shadow-2xl">
+    <h3>Acme Industries</h3>
+    <h4>Sign in for!!!</h4>
+    <div class="flex justify-center gap-x-2 border-b border-gray-100 pb-5 my-8">
+      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+        <img src="/public/github.svg" />
+      </button>
+      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+        <img src="/public/github.svg" />
+      </button>
+      <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+        <img src="/public/google.svg" />
+      </button>
+    </div>
+    <form method="POST">
+      <AuthInput
+        required
+        placeholder="Your email address"
+        label="Email Address"
+        id="email"
+        name="email"
+        type="email"
+        value={emailInput}
+      />
+      <AuthInput
+        required
+        minlength="10"
+        placeholder="Your password"
+        label="Password"
+        id="password"
+        name="password"
+        type="password"
+      />
+      <!--NOTE: we could also add a toaster/alert ?-->
+      <div class="text-red-500 text-sm my-2">{errorMessage}</div>
+      <AuthButton>Sign in</AuthButton>
+      <div class="flex flex-col items-center gap-y-3 mt-4 text-[13px]">
+        <a
+          href="/auth/restore-password"
+          class="text-neutral-700 underline hover:text-neutral-900"
+          >Forgot your password?</a
+        >
+        <a
+          href="/auth/signup"
+          class="text-neutral-700 underline hover:text-neutral-900"
+          >Dont have an account? Sign up</a
+        >
+      </div>
+    </form>
+  </div>
+</AuthLayout>

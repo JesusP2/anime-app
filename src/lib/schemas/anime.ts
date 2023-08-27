@@ -32,7 +32,7 @@ const schema = z.object({
   ),
   title: z.string(),
   title_english: z.string().nullish(),
-  title_japanese: z.string(),
+  title_japanese: z.string().nullish(),
   title_synonyms: z.array(z.string()),
   type: z.string(),
   source: z.string(),
