@@ -32,7 +32,9 @@ interface ImportMetaEnv {
 declare namespace Lucia {
   type Auth = import("./lib/db/lucia").Auth;
   type DatabaseUserAttributes = {
-    username: string;
+    username?: string;
+    avatar_image?: string;
+    email?: string;
   };
   type DatabaseSessionAttributes = {};
 }

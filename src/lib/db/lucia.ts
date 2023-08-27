@@ -14,9 +14,7 @@ export const auth = lucia({
   middleware: astro(),
 
   getUserAttributes: (data) => {
-    return {
-      username: data.username,
-    };
+    return data
   },
 });
 
@@ -24,6 +22,7 @@ export const googleAuth = google(auth, {
   clientId: import.meta.env.GOOGLE_CLIENT_ID,
   clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
   redirectUri: import.meta.env.GOOGLE_REDIRECT_URI,
+  scope: ['email', 'openid']
 });
 
 export type Auth = typeof auth;

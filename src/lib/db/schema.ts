@@ -8,11 +8,11 @@ export const user = pgTable(
     }).primaryKey(),
     email: varchar("email", {
       length: 255,
-    }),
+    }).unique(),
     username: varchar("username", {
       length: 30,
     }),
-    avatar_image: varchar("image", { length: 191 }),
+    avatar_image: varchar("avatar_image", { length: 191 }),
   },
   (user) => ({
     emailIndex: uniqueIndex("users__email__idx").on(user.email),
