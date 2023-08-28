@@ -44,7 +44,7 @@ try {
       e.message === "AUTH_INVALID_PASSWORD")
   ) {
     // TODO: OR ACCOUNT DOES NOT EXIST@!!!
-    errorMessage = "Incorrect email or password";
+    errorMessage = "Invalid credentials, please verify your account exists";
     Astro.response.status = 400;
   } else {
     errorMessage = "An unknown error occurred";
@@ -65,19 +65,19 @@ if (session) return Astro.redirect("/", 302); // redirect to profile page
         href="/auth/twitch/signin"
         class="px-[51px] py-2.5 rounded-sm bg-gray-50"
       >
-        <img src="/public/github.svg" />
+        <img src="/github.svg" />
       </a>
       <a
         href="/auth/github/signin"
         class="px-[51px] py-2.5 rounded-sm bg-gray-50"
       >
-        <img src="/public/github.svg" />
+        <img src="/github.svg" />
       </a>
       <a
         href="/auth/google/signin"
         class="px-[51px] py-2.5 rounded-sm bg-gray-50"
       >
-        <img src="/public/google.svg" />
+        <img src="/google.svg" />
       </a>
     </div>
     <form method="POST">

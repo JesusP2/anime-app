@@ -5,7 +5,6 @@ import { OAuthRequestError } from "@lucia-auth/oauth";
 import { db } from "@/lib/db/pool";
 import { user as userSchema } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
-import type { User } from "lucia";
 
 export const get: APIRoute = async (context) => {
   const cookies = parseCookie(context.request.headers.get("Cookie") ?? "");
@@ -32,12 +31,15 @@ export const get: APIRoute = async (context) => {
         }
       );
     }
+    // existingUser is using the sub property to check if there is already a user created
+    // with this google account, but we want to check if there a already a user created
+    // with that email.
     const users = await db
       .select()
       .from(userSchema)
       .where(eq(userSchema.email, googleUser.email))
       .execute();
-    let user: { id: string };
+    let user: { id: string, username?: string | null; };
     if (existingUser) {
       user = existingUser;
     } else if (users.length && users[0]) {
@@ -52,7 +54,6 @@ export const get: APIRoute = async (context) => {
       user = await createUser({
         attributes: {
           email: googleUser.email,
-          username: googleUser.name,
           avatar_image: googleUser.picture,
         },
       });
@@ -65,16 +66,16 @@ export const get: APIRoute = async (context) => {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: "/",
+        Location: user?.username ? "/" : "/create-profile",
       },
     });
   } catch (err) {
-    console.error(err);
     if (err instanceof OAuthRequestError) {
       return new Response(null, {
         status: 400,
       });
     }
+    console.error(err);
     return new Response(null, {
       status: 500,
     });
