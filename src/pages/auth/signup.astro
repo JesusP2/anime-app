@@ -5,13 +5,15 @@ import AuthInput from "@/components/auth-input.astro";
 import { auth } from "@/lib/db/lucia";
 import { z } from "zod";
 
-let usernameInput = "";
 let emailInput = "";
 let errorMessage = "";
 
 // check for form submissions
+console.log('HITTT')
 if (Astro.request.method === "POST") {
+  console.log('yo post')
   const formData = await Astro.request.formData();
+  console.log(formData)
   const emailResult = z.string().email().safeParse(formData.get("email"));
   if (!emailResult.success) {
     errorMessage = emailResult.error.message;
@@ -20,7 +22,8 @@ if (Astro.request.method === "POST") {
     .string()
     .min(8, "Password must be minumim 8 characters long")
     .safeParse(formData.get("password"));
-  // basic check
+  console.log("emailResult", emailResult)
+  console.log("emailResult", passwordResult)
   if (!passwordResult.success && errorMessage) {
     errorMessage = "Invalid email and password";
   } else if (emailResult.success && passwordResult.success) {
@@ -43,6 +46,7 @@ if (Astro.request.method === "POST") {
       Astro.locals.auth.setSession(session);
       return Astro.redirect("/", 302);
     } catch (e) {
+      console.error(e)
       // ERROR: FIX ME DADDY
       const PLEASE_CHECK_DATABASE_LIBRARY_ERROR_CLASS = true;
       if (PLEASE_CHECK_DATABASE_LIBRARY_ERROR_CLASS) {
@@ -74,13 +78,13 @@ if (session) {
     <h4>Sign in for!!!</h4>
     <div class="flex justify-center gap-x-2 border-b border-gray-100 pb-5 my-8">
       <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
-        <img src="/public/github.svg" />
+        <img src="/github.svg" />
       </button>
       <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
-        <img src="/public/github.svg" />
+        <img src="/github.svg" />
       </button>
       <button class="px-[51px] py-2.5 rounded-sm bg-gray-50">
-        <img src="/public/google.svg" />
+        <img src="/google.svg" />
       </button>
     </div>
     <form method="POST">
