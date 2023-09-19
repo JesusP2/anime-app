@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { paginationSchema } from "./pagination";
 
-const schema = z.object({
+export const schema = z.object({
   mal_id: z.number(),
   url: z.string(),
   images: z.object({

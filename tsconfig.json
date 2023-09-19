@@ -8,9 +8,6 @@
         "src/*"
       ]
     },
-    "types": [
-      "vite/client"
-    ],
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
   }

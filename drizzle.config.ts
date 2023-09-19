@@ -1,5 +1,3 @@
-import type { Config } from "drizzle-kit";
-
 export default {
   schema: "./src/lib/db/schema.ts",
   driver: "pg",
@@ -7,4 +5,4 @@ export default {
     connectionString: process.env.DATABASE_URL!,
   },
   out: "./drizzle",
-} satisfies Config;
+};
