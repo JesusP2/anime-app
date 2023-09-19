@@ -12,7 +12,10 @@
     "db:push": "env-cmd drizzle-kit push:pg"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^7.0.0",
+    "@astrojs/deno": "^5.0.0",
     "@astrojs/image": "^0.16.1",
+    "@astrojs/node": "^6.0.0",
     "@astrojs/solid-js": "^2.2.0",
     "@astrojs/tailwind": "^4.0.0",
     "@fontsource-variable/inter": "^5.0.5",

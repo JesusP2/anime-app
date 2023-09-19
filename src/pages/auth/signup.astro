@@ -9,11 +9,8 @@ let emailInput = "";
 let errorMessage = "";
 
 // check for form submissions
-console.log('HITTT')
 if (Astro.request.method === "POST") {
-  console.log('yo post')
   const formData = await Astro.request.formData();
-  console.log(formData)
   const emailResult = z.string().email().safeParse(formData.get("email"));
   if (!emailResult.success) {
     errorMessage = emailResult.error.message;
@@ -22,8 +19,6 @@ if (Astro.request.method === "POST") {
     .string()
     .min(8, "Password must be minumim 8 characters long")
     .safeParse(formData.get("password"));
-  console.log("emailResult", emailResult)
-  console.log("emailResult", passwordResult)
   if (!passwordResult.success && errorMessage) {
     errorMessage = "Invalid email and password";
   } else if (emailResult.success && passwordResult.success) {
