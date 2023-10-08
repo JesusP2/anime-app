@@ -18,7 +18,7 @@ export function AvatarDropdown(props: {
   // TODO: this looks like shit
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger class="ml-4 rounded-full flex gap-x-4 items-center">
+      <DropdownMenuTrigger class="ml-4 flex gap-x-4 items-center">
         <img src={props.src} class="rounded-full" width="40" alt={props.alt} />
         <div>{props.name}</div>
       </DropdownMenuTrigger>

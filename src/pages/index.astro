@@ -1,14 +1,5 @@
 ---
 import Layout from '../layouts/main.astro'
-const session = await Astro.locals.auth.validate()
-if (!session) {
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: '/auth/signin'
-    }
-  })
-}
 ---
 <Layout title="Hello everyone">
 hello world
