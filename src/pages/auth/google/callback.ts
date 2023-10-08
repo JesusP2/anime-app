@@ -32,7 +32,7 @@ export const get: APIRoute = async (context) => {
       );
     }
     // existingUser is using the sub property to check if there is already a user created
-    // with this google account, but we want to check if there a already a user created
+    // with this google account, but we want to check if there's already a user created
     // with that email.
     const users = await db
       .select()
@@ -44,6 +44,7 @@ export const get: APIRoute = async (context) => {
       user = existingUser;
     } else if (users.length && users[0]) {
       user = users[0];
+      // NOTE: If someone already used this email to register with email+password then you'll share this account this is bad but I couldn't care less
       await auth.createKey({
         userId: users[0]?.id!,
         providerId: "google",
