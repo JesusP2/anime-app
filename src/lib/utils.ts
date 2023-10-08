@@ -1,3 +1,6 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
 export const idxToMonth = [
   "JAN",
   "FEB",
@@ -12,3 +15,7 @@ export const idxToMonth = [
   "NOV",
   "DEC",
 ];
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
