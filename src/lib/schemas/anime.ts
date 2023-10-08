@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { paginationSchema } from "./pagination";
+import { z } from 'zod';
+import { paginationSchema } from './pagination';
 
 export const schema = z.object({
   mal_id: z.number(),
@@ -28,7 +28,7 @@ export const schema = z.object({
     z.object({
       type: z.string(),
       title: z.string(),
-    })
+    }),
   ),
   title: z.string(),
   title_english: z.string().nullish(),
@@ -39,23 +39,29 @@ export const schema = z.object({
   episodes: z.number().nullish(),
   status: z.string(),
   airing: z.boolean(),
-  aired: z.object({
-    from: z.string().nullish(),
-    to: z.string().nullish(),
-    prop: z.object({
-      from: z.object({
-        day: z.number().nullish(),
-        month: z.number().nullish(),
-        year: z.number().nullish(),
-      }).nullish(),
-      to: z.object({
-        day: z.number().nullish(),
-        month: z.number().nullish(),
-        year: z.number().nullish(),
-      }).nullish(),
-      string: z.string().optional(),
-    }),
-  }).nullish(),
+  aired: z
+    .object({
+      from: z.string().nullish(),
+      to: z.string().nullish(),
+      prop: z.object({
+        from: z
+          .object({
+            day: z.number().nullish(),
+            month: z.number().nullish(),
+            year: z.number().nullish(),
+          })
+          .nullish(),
+        to: z
+          .object({
+            day: z.number().nullish(),
+            month: z.number().nullish(),
+            year: z.number().nullish(),
+          })
+          .nullish(),
+        string: z.string().optional(),
+      }),
+    })
+    .nullish(),
   duration: z.string(),
   rating: z.string().nullish(),
   score: z.number().nullish(),
@@ -68,43 +74,51 @@ export const schema = z.object({
   background: z.string().nullish(),
   season: z.string().nullish(),
   year: z.number().nullish(),
-  broadcast: z.object({
-    day: z.string().nullish(),
-    time: z.string().nullish(),
-    timezone: z.string().nullish(),
-    string: z.string().nullish(),
-  }).nullish(),
-  producers: z.array(
-    z.object({
-      mal_id: z.number().nullish(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
+  broadcast: z
+    .object({
+      day: z.string().nullish(),
+      time: z.string().nullish(),
+      timezone: z.string().nullish(),
+      string: z.string().nullish(),
     })
-  ).nullish(),
-  licensors: z.array(
-    z.object({
-      mal_id: z.number().nullish(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    })
-  ).nullish(),
-  studios: z.array(
-    z.object({
-      mal_id: z.number(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    })
-  ).nullish(),
+    .nullish(),
+  producers: z
+    .array(
+      z.object({
+        mal_id: z.number().nullish(),
+        type: z.string(),
+        name: z.string(),
+        url: z.string(),
+      }),
+    )
+    .nullish(),
+  licensors: z
+    .array(
+      z.object({
+        mal_id: z.number().nullish(),
+        type: z.string(),
+        name: z.string(),
+        url: z.string(),
+      }),
+    )
+    .nullish(),
+  studios: z
+    .array(
+      z.object({
+        mal_id: z.number(),
+        type: z.string(),
+        name: z.string(),
+        url: z.string(),
+      }),
+    )
+    .nullish(),
   genres: z.array(
     z.object({
       mal_id: z.number(),
       type: z.string(),
       name: z.string(),
       url: z.string(),
-    })
+    }),
   ),
   explicit_genres: z.array(
     z.object({
@@ -112,7 +126,7 @@ export const schema = z.object({
       type: z.string(),
       name: z.string(),
       url: z.string(),
-    })
+    }),
   ),
   themes: z.array(
     z.object({
@@ -120,7 +134,7 @@ export const schema = z.object({
       type: z.string(),
       name: z.string(),
       url: z.string(),
-    })
+    }),
   ),
   demographics: z.array(
     z.object({
@@ -128,18 +142,20 @@ export const schema = z.object({
       type: z.string(),
       name: z.string(),
       url: z.string(),
-    })
+    }),
   ),
-  theme: z.object({
-    openings: z.array(z.string()),
-    endings: z.array(z.string()),
-  }).nullish(),
+  theme: z
+    .object({
+      openings: z.array(z.string()),
+      endings: z.array(z.string()),
+    })
+    .nullish(),
   streaming: z.array(z.object({ name: z.string(), url: z.string() })).nullish(),
 });
 
 export const animeSchema = z.object({
   data: z.array(schema),
   pagination: paginationSchema,
-})
+});
 
 export type Anime = z.infer<typeof schema>;

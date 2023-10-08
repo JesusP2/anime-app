@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const paginationSchema = z.object({
   last_visible_page: z.number(),
@@ -8,5 +8,5 @@ export const paginationSchema = z.object({
     count: z.number(),
     total: z.number(),
     per_page: z.number(),
-  })
-})
+  }),
+});

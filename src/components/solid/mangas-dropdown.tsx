@@ -1,5 +1,5 @@
-import { clsx } from "clsx";
-import { createSignal } from "solid-js";
+import { clsx } from 'clsx';
+import { createSignal } from 'solid-js';
 
 export function Accordion() {
   const [isActive, setActive] = createSignal();
@@ -8,7 +8,7 @@ export function Accordion() {
       <button
         onClick={() => setActive(!isActive())}
         class={clsx(
-          "mt-2 flex gap-x-4 ml-7 hover:text-white p-2 text-neutral-300 items-center justify-between w-64"
+          'mt-2 flex gap-x-4 ml-7 hover:text-white p-2 text-neutral-300 items-center justify-between w-64',
         )}
       >
         Mangas
@@ -16,8 +16,8 @@ export function Accordion() {
       </button>
       <ul
         class={clsx(
-          isActive() ? "h-48" : "h-0",
-          "overflow-hidden duration-300"
+          isActive() ? 'h-48' : 'h-0',
+          'overflow-hidden duration-300',
         )}
       >
         <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">

@@ -1,36 +1,36 @@
 ---
-import AuthLayout from "@/layouts/auth.astro";
-import AuthInput from "@/components/auth-input.astro";
-import AuthButton from "@/components/auth-button.astro";
-import { Icon } from "astro-icon";
-import { z } from "zod";
-import { db } from "@/lib/db/pool";
-import { user } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
-let errorMessage = "";
+import AuthLayout from '@/layouts/auth.astro';
+import AuthInput from '@/components/auth-input.astro';
+import AuthButton from '@/components/auth-button.astro';
+import { Icon } from 'astro-icon';
+import { z } from 'zod';
+import { db } from '@/lib/db/pool';
+import { user } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
+let errorMessage = '';
 
 const session = await Astro.locals.auth.validate();
 if (!session) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/auth/signin",
+      Location: '/auth/signin',
     },
   });
 } else if (session.user.username) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/",
+      Location: '/',
     },
   });
 }
-if (Astro.request.method === "POST") {
+if (Astro.request.method === 'POST') {
   const formData = await Astro.request.formData();
   const usernameResult = z
     .string()
-    .min(3, "Username must be 3 length minimum")
-    .safeParse(formData.get("username"));
+    .min(3, 'Username must be 3 length minimum')
+    .safeParse(formData.get('username'));
   if (!usernameResult.success) {
     errorMessage = usernameResult.error.message;
   } else {
@@ -42,12 +42,12 @@ if (Astro.request.method === "POST") {
       return new Response(null, {
         status: 302,
         headers: {
-          Location: "/",
+          Location: '/',
         },
       });
     } catch (err) {
       console.error(err);
-      errorMessage = "User already created";
+      errorMessage = 'User already created';
     }
   }
 }

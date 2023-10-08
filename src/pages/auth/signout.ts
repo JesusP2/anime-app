@@ -1,11 +1,11 @@
-import { auth } from "@/lib/db/lucia";
+import { auth } from '@/lib/db/lucia';
 
-import type { APIRoute } from "astro";
+import type { APIRoute } from 'astro';
 
 export const get: APIRoute = async (context) => {
   const session = await context.locals.auth.validate();
   if (!session) {
-    return new Response("Unauthorized", {
+    return new Response('Unauthorized', {
       status: 401,
     });
   }
@@ -16,7 +16,7 @@ export const get: APIRoute = async (context) => {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/auth/signin",
+      Location: '/auth/signin',
     },
   });
 };

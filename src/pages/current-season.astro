@@ -1,21 +1,22 @@
 ---
-import Layout from "@/layouts/main.astro";
-import AnimeCard from "@/components/anime-card.astro";
-import { animeSchema } from "@/lib/schemas/anime";
-import Pagination from "@/components/pagination.astro";
+import Layout from '@/layouts/main.astro';
+import AnimeCard from '@/components/anime-card.astro';
+import { animeSchema } from '@/lib/schemas/anime';
+import Pagination from '@/components/pagination.astro';
 
 const url = new URL(Astro.request.url);
-const _page = url.searchParams.get("page") || "1";
-const page = isNaN(parseInt(_page || "")) ? 1 : parseInt(_page);
+const _page = url.searchParams.get('page') || '1';
+const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
 
-const api_url = new URL(import.meta.env.ANIME_API + "/seasons/now");
-api_url.searchParams.set("page", page.toString() ?? "1");
+const api_url = new URL(import.meta.env.ANIME_API + '/seasons/now');
+api_url.searchParams.set('page', page.toString() ?? '1');
 const result = animeSchema.safeParse(await (await fetch(api_url)).json());
 if (!result.success) {
-  console.error(result.error)
-  return Astro.redirect("/404");
+  console.error(result.error);
+  return Astro.redirect('/404');
 }
 ---
+
 <Layout title="Current season">
   <div class="grid auto-fill-grid">
     {result.data.data.map((anime) => <AnimeCard anime={anime} />)}

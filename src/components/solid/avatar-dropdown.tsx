@@ -1,14 +1,14 @@
-import { As } from "@kobalte/core";
+import { As } from '@kobalte/core';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { CgProfile } from "solid-icons/cg";
-import { FiSettings } from "solid-icons/fi";
-import { IoLogOutOutline } from "solid-icons/io";
+} from './ui/dropdown-menu';
+import { CgProfile } from 'solid-icons/cg';
+import { FiSettings } from 'solid-icons/fi';
+import { IoLogOutOutline } from 'solid-icons/io';
 
 export function AvatarDropdown(props: {
   src: string;
@@ -26,7 +26,7 @@ export function AvatarDropdown(props: {
         <DropdownMenuItem
           class="flex gap-x-2"
           asChild
-          onSelect={() => window.location.replace("/profile")}
+          onSelect={() => window.location.replace('/profile')}
         >
           <As component="a" href="/profile">
             <CgProfile size={17} />
@@ -36,7 +36,7 @@ export function AvatarDropdown(props: {
         <DropdownMenuItem
           class="flex gap-x-2"
           asChild
-          onSelect={() => window.location.replace("/settings")}
+          onSelect={() => window.location.replace('/settings')}
         >
           <As component="a" href="/settings">
             <FiSettings size={17} />
@@ -47,7 +47,7 @@ export function AvatarDropdown(props: {
         <DropdownMenuItem
           class="flex gap-x-2"
           asChild
-          onSelect={() => window.location.replace("/auth/signout")}
+          onSelect={() => window.location.replace('/auth/signout')}
         >
           <As component="a" href="/auth/signout">
             <IoLogOutOutline size={17} />

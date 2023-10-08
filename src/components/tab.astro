@@ -1,10 +1,17 @@
 ---
-import { clsx } from "clsx";
+import { clsx } from 'clsx';
 export interface Props {
   href: string;
 }
 const { href } = Astro.props;
 ---
-<a class={clsx("mt-2 flex gap-x-4 ml-7 hover:text-white p-2", Astro.url.pathname === href ? "text-white" : "text-neutral-300")} href={href}>
-<slot />
+
+<a
+  class={clsx(
+    'mt-2 flex gap-x-4 ml-7 hover:text-white p-2',
+    Astro.url.pathname === href ? 'text-white' : 'text-neutral-300',
+  )}
+  href={href}
+>
+  <slot />
 </a>
