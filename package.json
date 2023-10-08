@@ -8,6 +8,7 @@
     "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "format": "prettier --write src/**/*.{astro,ts,tsx}",
     "db:generate": "drizzle-kit generate:pg",
     "db:push": "env-cmd drizzle-kit push:pg"
   },
@@ -33,6 +34,8 @@
     "lucia": "^2.7.1",
     "pg": "^8.11.3",
     "postgres": "^3.3.5",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
     "solid-icons": "^1.0.12",
     "solid-js": "^1.7.12",
     "tailwind-merge": "^1.14.0",

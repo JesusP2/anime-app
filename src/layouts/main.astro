@@ -1,20 +1,20 @@
 ---
-import "@fontsource-variable/inter";
-import { Icon } from "astro-icon";
-import Search from "../components/search.astro";
-import Tab from "@/components/tab.astro";
-import { Accordion } from '@/components/solid/mangas-dropdown'
-import { AvatarDropdown } from '@/components/solid/avatar-dropdown'
-import SearchBar from '@/components/search-bar.astro'
+import '@fontsource-variable/inter';
+import { Icon } from 'astro-icon';
+import Search from '../components/search.astro';
+import Tab from '@/components/tab.astro';
+import { Accordion } from '@/components/solid/mangas-dropdown';
+import { AvatarDropdown } from '@/components/solid/avatar-dropdown';
+import SearchBar from '@/components/search-bar.astro';
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-const session = await Astro.locals.auth.validate()
+const session = await Astro.locals.auth.validate();
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,13 +35,13 @@ const session = await Astro.locals.auth.validate()
             <li>
               <Tab href="/">
                 <Icon pack="ph" name="house-light" class="w-6" />
-                Home
+                 Home
               </Tab>
             </li>
             <li>
               <Tab href="/current-season">
                 <Icon pack="ph" name="calendar-blank" class="w-6" />
-                Current season
+                 Current season
               </Tab>
             </li>
             <li>
@@ -57,22 +57,30 @@ const session = await Astro.locals.auth.validate()
                     d="M1 3h16v2H1Zm0 6h6v2H1Zm0 6h8v2H1Zm8-4.24h3.85L14.5 7l1.65 3.76H20l-3 3.17l.9 4.05l-3.4-2.14L11.1 18l.9-4.05Z"
                   ></path>
                 </svg>
-                Watchlist
+                 Watchlist
               </Tab>
               <Accordion client:load />
             </li>
           </ul>
         </div>
-        {session ? 
-                <div class="mb-4">
-                  <AvatarDropdown
-                    name={session?.user?.username || ''}
-                    src={session?.user.avatar_image!}
-                    alt="banana"
-                    client:load
-                  />
-                </div>
-                : <a href="/auth/signin" class="mb-4 ml-4 text-center text-neutral-200 hover:text-white py-2 rounded-md w-20 font-inter border-neutral-400 border">Sign in</a>
+        {
+          session ? (
+            <div class="mb-4">
+              <AvatarDropdown
+                name={session?.user?.username || ''}
+                src={session?.user.avatar_image!}
+                alt="banana"
+                client:load
+              />
+            </div>
+          ) : (
+            <a
+              href="/auth/signin"
+              class="mb-4 ml-4 text-center text-neutral-200 hover:text-white py-2 rounded-md w-20 font-inter border-neutral-400 border"
+            >
+              Sign in
+            </a>
+          )
         }
       </div>
       <div
@@ -100,94 +108,94 @@ const session = await Astro.locals.auth.validate()
         :root {
           --background: 0 0% 100%;
           --foreground: 240 10% 3.9%;
-      
+
           --muted: 240 4.8% 95.9%;
           --muted-foreground: 240 3.8% 46.1%;
-      
+
           --popover: 0 0% 100%;
           --popover-foreground: 240 10% 3.9%;
-      
+
           --border: 240 5.9% 90%;
           --input: 240 5.9% 90%;
-      
+
           --card: 0 0% 100%;
           --card-foreground: 240 10% 3.9%;
-      
+
           --primary: 240 5.9% 10%;
           --primary-foreground: 0 0% 98%;
-      
+
           --secondary: 240 4.8% 95.9%;
           --secondary-foreground: 240 5.9% 10%;
-      
+
           --accent: 240 4.8% 95.9%;
           --accent-foreground: 240 5.9% 10%;
-      
+
           --destructive: 0 84.2% 60.2%;
           --destructive-foreground: 0 0% 98%;
-      
+
           --info: 204 94% 94%;
           --info-foreground: 199 89% 48%;
-      
+
           --success: 149 80% 90%;
           --success-foreground: 160 84% 39%;
-      
+
           --warning: 48 96% 89%;
           --warning-foreground: 25 95% 53%;
-      
+
           --error: 0 93% 94%;
           --error-foreground: 0 84% 60%;
-      
+
           --ring: 240 5.9% 10%;
-      
+
           --radius: 0.5rem;
         }
-      
-        [data-kb-theme="dark"] {
+
+        [data-kb-theme='dark'] {
           --background: 240 10% 3.9%;
           --foreground: 0 0% 98%;
-      
+
           --muted: 240 3.7% 15.9%;
           --muted-foreground: 240 5% 64.9%;
-      
+
           --accent: 240 3.7% 15.9%;
           --accent-foreground: 0 0% 98%;
-      
+
           --popover: 240 10% 3.9%;
           --popover-foreground: 0 0% 98%;
-      
+
           --border: 240 3.7% 15.9%;
           --input: 240 3.7% 15.9%;
-      
+
           --card: 240 10% 3.9%;
           --card-foreground: 0 0% 98%;
-      
+
           --primary: 0 0% 98%;
           --primary-foreground: 240 5.9% 10%;
-      
+
           --secondary: 240 3.7% 15.9%;
           --secondary-foreground: 0 0% 98%;
-      
+
           --destructive: 0 62.8% 30.6%;
           --destructive-foreground: 0 0% 98%;
-      
+
           --info: 204 94% 94%;
           --info-foreground: 199 89% 48%;
-      
+
           --success: 149 80% 90%;
           --success-foreground: 160 84% 39%;
-      
+
           --warning: 48 96% 89%;
           --warning-foreground: 25 95% 53%;
-      
+
           --error: 0 93% 94%;
           --error-foreground: 0 84% 60%;
-      
+
           --ring: 240 4.9% 83.9%;
-      
+
           --radius: 0.5rem;
         }
       }
-      
+
       @layer base {
         * {
           @apply border-border;
@@ -195,8 +203,8 @@ const session = await Astro.locals.auth.validate()
         body {
           @apply bg-background text-foreground;
           font-feature-settings:
-            "rlig" 1,
-            "calt" 1;
+            'rlig' 1,
+            'calt' 1;
         }
       }
     </style>

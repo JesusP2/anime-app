@@ -1,8 +1,8 @@
 ---
-import { Image } from "astro:assets";
-import type { Anime } from "@/lib/schemas/anime";
-import Icon from "astro-icon";
-import { idxToMonth } from "@/lib/utils";
+import { Image } from 'astro:assets';
+import type { Anime } from '@/lib/schemas/anime';
+import Icon from 'astro-icon';
+import { idxToMonth } from '@/lib/utils';
 interface Props {
   anime: Anime;
 }
@@ -31,15 +31,15 @@ const { anime } = Astro.props;
             {anime.aired.prop.from.day}, {anime.aired.prop.from.year}
           </>
         ) : (
-          "N/A"
+          'N/A'
         )
       }
       <p>
         &nbsp;
         <span class="font-bold">|</span>
-        &nbsp;
+         &nbsp;
         {
-          anime.type === "TV" ? (
+          anime.type === 'TV' ? (
             anime.episodes ? (
               <div>
                 <span class="font-semibold">Episodes:</span> {anime.episodes}

@@ -1,29 +1,29 @@
 ---
-import Layout from "@/layouts/main.astro";
-import AnimeCard from "@/components/anime-card.astro";
-import Pagination from "@/components/pagination.astro";
-import AnimeFilter from "@/components/anime-filter.astro";
-import { animeSchema } from "@/lib/schemas/anime";
+import Layout from '@/layouts/main.astro';
+import AnimeCard from '@/components/anime-card.astro';
+import Pagination from '@/components/pagination.astro';
+import AnimeFilter from '@/components/anime-filter.astro';
+import { animeSchema } from '@/lib/schemas/anime';
 
 // TODO: Even tho it's "search-all" it only fetches animes for now
 const url = new URL(Astro.request.url);
-const search = url.searchParams.get("search");
-const searchType = url.searchParams.get("type");
-const _page = url.searchParams.get("page") || "1";
-const page = isNaN(parseInt(_page || "")) ? 1 : parseInt(_page);
-const api_url = new URL(import.meta.env.ANIME_API + "/anime");
-api_url.searchParams.set("q", search ?? "");
-api_url.searchParams.set("page", page.toString() ?? "1");
-searchType && api_url.searchParams.set("type", searchType);
+const search = url.searchParams.get('search');
+const searchType = url.searchParams.get('type');
+const _page = url.searchParams.get('page') || '1';
+const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
+const api_url = new URL(import.meta.env.ANIME_API + '/anime');
+api_url.searchParams.set('q', search ?? '');
+api_url.searchParams.set('page', page.toString() ?? '1');
+searchType && api_url.searchParams.set('type', searchType);
 const result = animeSchema.safeParse(await (await fetch(api_url)).json());
 if (!result.success) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404');
 }
 
 let data = result.data.data;
 ---
 
-<Layout title={search ?? ""}>
+<Layout title={search ?? ''}>
   <div>
     <p class="text-black text-lg mt-4 ml-10">Search results for "{search}"</p>
   </div>

@@ -1,20 +1,20 @@
 ---
-import Layout from "@/layouts/main.astro";
-import {  schema } from "@/lib/schemas/anime";
+import Layout from '@/layouts/main.astro';
+import { schema } from '@/lib/schemas/anime';
 
 const id = Astro.params.slug;
 if (!id) {
-  return Astro.redirect("/")
+  return Astro.redirect('/');
 }
 async function getAnime(id: string) {
   const res = await (
-      await fetch(`${import.meta.env.ANIME_API}/anime/${id}/full`)
+    await fetch(`${import.meta.env.ANIME_API}/anime/${id}/full`)
   ).json();
   return schema.safeParse(res.data);
 }
 const result = await getAnime(id);
 if (!result.success) {
-  return Astro.redirect("/");
+  return Astro.redirect('/');
 }
 ---
 
@@ -40,10 +40,10 @@ if (!result.success) {
       <ul>
         {
           result.data.theme?.openings.map((opening) => {
-            const url = new URL("https://www.youtube.com/results");
+            const url = new URL('https://www.youtube.com/results');
             url.searchParams.set(
-              "search_query",
-              opening.split?.(":")[1]?.split("(eps")[0] || ""
+              'search_query',
+              opening.split?.(':')[1]?.split('(eps')[0] || '',
             );
             return (
               <li>

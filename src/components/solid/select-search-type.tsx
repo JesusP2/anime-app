@@ -1,19 +1,19 @@
-import { createSignal } from "solid-js";
+import { createSignal } from 'solid-js';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import clsx from "clsx";
+} from './ui/select';
+import clsx from 'clsx';
 
 export function SelectSearchType(props: {
   options: string[];
   name: string;
   standalone?: boolean;
 }) {
-  const [value, setValue] = createSignal("all");
+  const [value, setValue] = createSignal('all');
   return (
     <Select
       name={props.name}
@@ -27,8 +27,8 @@ export function SelectSearchType(props: {
     >
       <SelectTrigger
         class={clsx(
-          "w-32 rounded-l-md flex-none text-gray-500 h-10",
-          props.standalone ? "" : "rounded-r-none"
+          'w-32 rounded-l-md flex-none text-gray-500 h-10',
+          props.standalone ? '' : 'rounded-r-none',
         )}
       >
         <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>

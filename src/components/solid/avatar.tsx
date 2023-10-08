@@ -3,13 +3,11 @@
 export function idk() {
   // const [isOpen, setOpen] = createSignal(false)
   return (
-  <div class="flex">
-      <div>
-        Lotus
-      </div>
+    <div class="flex">
+      <div>Lotus</div>
       <span>
         <img />
       </span>
-  </div>
-  )
+    </div>
+  );
 }

@@ -1,17 +1,17 @@
-import type { APIRoute } from "astro";
-import { auth, googleAuth } from "@/lib/db/lucia";
-import { parseCookie } from "lucia/utils";
-import { OAuthRequestError } from "@lucia-auth/oauth";
-import { db } from "@/lib/db/pool";
-import { user as userSchema } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import type { APIRoute } from 'astro';
+import { auth, googleAuth } from '@/lib/db/lucia';
+import { parseCookie } from 'lucia/utils';
+import { OAuthRequestError } from '@lucia-auth/oauth';
+import { db } from '@/lib/db/pool';
+import { user as userSchema } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
 
 export const get: APIRoute = async (context) => {
-  const cookies = parseCookie(context.request.headers.get("Cookie") ?? "");
+  const cookies = parseCookie(context.request.headers.get('Cookie') ?? '');
   const storedState = cookies.google_oauth_state;
   const url = new URL(context.request.url);
-  const state = url.searchParams.get("state");
-  const code = url.searchParams.get("code");
+  const state = url.searchParams.get('state');
+  const code = url.searchParams.get('code');
   if (!storedState || !state || storedState !== state || !code) {
     return new Response(null, {
       status: 400,
@@ -22,13 +22,13 @@ export const get: APIRoute = async (context) => {
       await googleAuth.validateCallback(code);
     if (!googleUser.email) {
       return new Response(
-        JSON.stringify({ message: "Invalid email coming from google oauth" }),
+        JSON.stringify({ message: 'Invalid email coming from google oauth' }),
         {
           status: 400,
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
-        }
+        },
       );
     }
     // existingUser is using the sub property to check if there is already a user created
@@ -39,7 +39,7 @@ export const get: APIRoute = async (context) => {
       .from(userSchema)
       .where(eq(userSchema.email, googleUser.email))
       .execute();
-    let user: { id: string, username?: string | null; };
+    let user: { id: string; username?: string | null };
     if (existingUser) {
       user = existingUser;
     } else if (users.length && users[0]) {
@@ -47,7 +47,7 @@ export const get: APIRoute = async (context) => {
       // NOTE: If someone already used this email to register with email+password then you'll share this account this is bad but I couldn't care less
       await auth.createKey({
         userId: users[0]?.id!,
-        providerId: "google",
+        providerId: 'google',
         providerUserId: googleUser.sub,
         password: null,
       });
@@ -67,7 +67,7 @@ export const get: APIRoute = async (context) => {
     return new Response(null, {
       status: 302,
       headers: {
-        Location: user?.username ? "/" : "/create-profile",
+        Location: user?.username ? '/' : '/create-profile',
       },
     });
   } catch (err) {

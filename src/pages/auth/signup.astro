@@ -1,32 +1,32 @@
 ---
-import AuthLayout from "@/layouts/auth.astro";
-import AuthButton from "@/components/auth-button.astro";
-import AuthInput from "@/components/auth-input.astro";
-import { auth } from "@/lib/db/lucia";
-import { z } from "zod";
+import AuthLayout from '@/layouts/auth.astro';
+import AuthButton from '@/components/auth-button.astro';
+import AuthInput from '@/components/auth-input.astro';
+import { auth } from '@/lib/db/lucia';
+import { z } from 'zod';
 
-let emailInput = "";
-let errorMessage = "";
+let emailInput = '';
+let errorMessage = '';
 
 // check for form submissions
-if (Astro.request.method === "POST") {
+if (Astro.request.method === 'POST') {
   const formData = await Astro.request.formData();
-  const emailResult = z.string().email().safeParse(formData.get("email"));
+  const emailResult = z.string().email().safeParse(formData.get('email'));
   if (!emailResult.success) {
     errorMessage = emailResult.error.message;
   }
   const passwordResult = z
     .string()
-    .min(8, "Password must be minumim 8 characters long")
-    .safeParse(formData.get("password"));
+    .min(8, 'Password must be minumim 8 characters long')
+    .safeParse(formData.get('password'));
   if (!passwordResult.success && errorMessage) {
-    errorMessage = "Invalid email and password";
+    errorMessage = 'Invalid email and password';
   } else if (emailResult.success && passwordResult.success) {
     emailInput = emailResult.data;
     try {
       const user = await auth.createUser({
         key: {
-          providerId: "email", // auth method
+          providerId: 'email', // auth method
           providerUserId: emailResult.data.toLowerCase(), // unique id when using "username" auth method
           password: passwordResult.data, // hashed by Lucia
         },
@@ -39,16 +39,16 @@ if (Astro.request.method === "POST") {
         attributes: {},
       });
       Astro.locals.auth.setSession(session);
-      return Astro.redirect("/", 302);
+      return Astro.redirect('/', 302);
     } catch (e) {
       // ERROR: FIX ME DADDY
       const PLEASE_CHECK_DATABASE_LIBRARY_ERROR_CLASS = true;
       if (PLEASE_CHECK_DATABASE_LIBRARY_ERROR_CLASS) {
-        errorMessage = "Email already taken";
+        errorMessage = 'Email already taken';
         Astro.response.status = 400;
       } else {
         console.error(e);
-        errorMessage = "An unknown error occurred";
+        errorMessage = 'An unknown error occurred';
         Astro.response.status = 500;
       }
     }
@@ -60,24 +60,35 @@ if (session) {
   return new Response(null, {
     status: 302,
     headers: {
-      Location: "/",
+      Location: '/',
     },
   });
 }
 ---
 
 <AuthLayout title="Sign up">
-  <div class="max-w-[448px] w-full mx-auto rounded-[0.2rem] px-8 py-14 shadow-2xl bg-white">
+  <div
+    class="max-w-[448px] w-full mx-auto rounded-[0.2rem] px-8 py-14 shadow-2xl bg-white"
+  >
     <h3>Acme Industries</h3>
     <h4>Sign in for!!!</h4>
     <div class="flex justify-center gap-x-2 border-b border-gray-100 pb-5 my-8">
-      <a href="/auth/twitch/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      <a
+        href="/auth/twitch/signin"
+        class="px-[51px] py-2.5 rounded-sm bg-gray-50"
+      >
         <img src="/github.svg" />
       </a>
-      <a href="/auth/github/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      <a
+        href="/auth/github/signin"
+        class="px-[51px] py-2.5 rounded-sm bg-gray-50"
+      >
         <img src="/github.svg" />
       </a>
-      <a href="/auth/google/signin" class="px-[51px] py-2.5 rounded-sm bg-gray-50">
+      <a
+        href="/auth/google/signin"
+        class="px-[51px] py-2.5 rounded-sm bg-gray-50"
+      >
         <img src="/google.svg" />
       </a>
     </div>
