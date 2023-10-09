@@ -1,21 +1,11 @@
 import { z } from 'zod';
 import { paginationSchema } from './pagination';
+import { apiItemSchema, imagesSchema } from './generic';
 
-export const schema = z.object({
+const schema = z.object({
   mal_id: z.number(),
   url: z.string(),
-  images: z.object({
-    jpg: z.object({
-      image_url: z.string(),
-      small_image_url: z.string(),
-      large_image_url: z.string(),
-    }),
-    webp: z.object({
-      image_url: z.string(),
-      small_image_url: z.string(),
-      large_image_url: z.string(),
-    }),
-  }),
+  images: imagesSchema,
   trailer: z
     .object({
       youtube_id: z.string().nullish(),
@@ -30,10 +20,6 @@ export const schema = z.object({
       title: z.string(),
     }),
   ),
-  title: z.string(),
-  title_english: z.string().nullish(),
-  title_japanese: z.string().nullish(),
-  title_synonyms: z.array(z.string()),
   type: z.string(),
   source: z.string(),
   episodes: z.number().nullish(),
@@ -83,67 +69,18 @@ export const schema = z.object({
     })
     .nullish(),
   producers: z
-    .array(
-      z.object({
-        mal_id: z.number().nullish(),
-        type: z.string(),
-        name: z.string(),
-        url: z.string(),
-      }),
-    )
+    .array(apiItemSchema)
     .nullish(),
   licensors: z
-    .array(
-      z.object({
-        mal_id: z.number().nullish(),
-        type: z.string(),
-        name: z.string(),
-        url: z.string(),
-      }),
-    )
+    .array(apiItemSchema)
     .nullish(),
   studios: z
-    .array(
-      z.object({
-        mal_id: z.number(),
-        type: z.string(),
-        name: z.string(),
-        url: z.string(),
-      }),
-    )
+    .array(apiItemSchema)
     .nullish(),
-  genres: z.array(
-    z.object({
-      mal_id: z.number(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    }),
-  ),
-  explicit_genres: z.array(
-    z.object({
-      mal_id: z.number(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    }),
-  ),
-  themes: z.array(
-    z.object({
-      mal_id: z.number(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    }),
-  ),
-  demographics: z.array(
-    z.object({
-      mal_id: z.number(),
-      type: z.string(),
-      name: z.string(),
-      url: z.string(),
-    }),
-  ),
+  genres: z.array(apiItemSchema),
+  explicit_genres: z.array(apiItemSchema),
+  themes: z.array(apiItemSchema),
+  demographics: z.array(apiItemSchema),
   theme: z
     .object({
       openings: z.array(z.string()),
