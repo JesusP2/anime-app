@@ -2,10 +2,9 @@
 import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
 import Pagination from '@/components/pagination.astro';
-import AnimeFilter from '@/components/anime-filter.astro';
-import { animeSchema, type Anime } from '@/lib/schemas/anime';
-import { mangaSchema, type Manga } from '@/lib/schemas/manga';
-import { characterSchema, type Character } from '@/lib/schemas/character';
+import { type Anime } from '@/lib/schemas/anime';
+import { type Manga } from '@/lib/schemas/manga';
+import { type Character } from '@/lib/schemas/character';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
 import { z } from 'zod';
 import { paginationSchema } from '@/lib/schemas/pagination';
@@ -29,6 +28,7 @@ let data: {
 };
 const url = new URL(Astro.request.url);
 const animeApiUrl = createAnimeApiUrl(url);
+console.log(animeApiUrl.toString())
 
 const res = await fetch(animeApiUrl);
 if (!res.ok) {

@@ -53,8 +53,8 @@ const { anime } = Astro.props;
         }
       </p>
     </div>
-    <h3 title={anime.title} class="font-inter text-lg mt-3 mb-5 truncate">
-      {anime.title}
+    <h3 title={anime.titles[0]?.title || ''} class="font-inter text-lg mt-3 mb-5 truncate">
+      {anime.titles[0]?.title || ''}
     </h3>
     <p class="text-clip mb-3 h-[100px]">{anime.synopsis}</p>
     <button
@@ -62,7 +62,6 @@ const { anime } = Astro.props;
     >
       Read more
       <Icon pack="ri" name="arrow-right-line" class="w-4 relative top-[1px]" />
-      <button> </button>
     </button>
   </div>
 </div>

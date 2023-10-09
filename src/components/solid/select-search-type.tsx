@@ -9,11 +9,11 @@ import {
 import clsx from 'clsx';
 
 export function SelectSearchType(props: {
+  defaultValue?: string;
   options: string[];
   name: string;
-  standalone?: boolean;
 }) {
-  const [value, setValue] = createSignal('all');
+  const [value, setValue] = createSignal(props.defaultValue || 'all');
   return (
     <Select
       name={props.name}
@@ -27,13 +27,12 @@ export function SelectSearchType(props: {
     >
       <SelectTrigger
         class={clsx(
-          'w-32 rounded-l-md flex-none text-gray-500 h-10',
-          props.standalone ? '' : 'rounded-r-none',
+          'w-32 rounded-l-md flex-none text-gray-500 h-10'
         )}
       >
         <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
       </SelectTrigger>
-      <SelectContent class="w-40 h-[9.5rem] py-2 bg-white" />
+      <SelectContent class={clsx("w-40 h-[9.5rem] bg-white")} />
     </Select>
   );
 }

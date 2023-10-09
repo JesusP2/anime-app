@@ -38,7 +38,7 @@ const SelectContent: Component<SelectPrimitive.SelectContentProps> = (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
         class={cn(
-          'bg-popover text-popover-foreground animate-in fade-in-80 relative z-50 min-w-[8rem] overflow-hidden rounded-md border shadow-md',
+          'bg-popover text-popover-foreground animate-in fade-in-80 relative z-50 min-w-[8rem]  rounded-md border shadow-md overflow-auto',
           props.class,
         )}
         {...rest}
