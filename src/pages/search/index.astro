@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
+import MangaCard from '@/components/manga-card.astro';
+import CharacterCard from '@/components/character-card.astro';
 import Pagination from '@/components/pagination.astro';
 import { type Anime } from '@/lib/schemas/anime';
 import { type Manga } from '@/lib/schemas/manga';
@@ -28,7 +30,6 @@ let data: {
 };
 const url = new URL(Astro.request.url);
 const animeApiUrl = createAnimeApiUrl(url);
-console.log(animeApiUrl.toString())
 
 const res = await fetch(animeApiUrl);
 if (!res.ok) {
@@ -36,19 +37,6 @@ if (!res.ok) {
 } else {
   data = await res.json();
 }
-
-// const search = url.searchParams.get('search');
-// const searchType = url.searchParams.get('type');
-// const _page = url.searchParams.get('page') || '1';
-// const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
-// const api_url = new URL(import.meta.env.ANIME_API + '/anime');
-// api_url.searchParams.set('q', search ?? '');
-// api_url.searchParams.set('page', page.toString() ?? '1');
-// searchType && api_url.searchParams.set('type', searchType);
-// const result = animeSchema.safeParse(await (await fetch(api_url)).json());
-// if (!result.success) {
-//   return Astro.redirect('/404');
-// }
 ---
 
 <Layout title={url.searchParams.get('q') ?? ''}>
@@ -64,9 +52,13 @@ if (!res.ok) {
       )
     }
     {
-      data.data.map((anime) => {
-        if ('episodes' in anime) {
-          return <AnimeCard anime={anime} />;
+      data.data.map((item) => {
+        if ('episodes' in item) {
+          return <AnimeCard anime={item as Anime} />;
+        } else if ('volumes' in item) {
+          return <MangaCard manga={item as Manga} />
+        } else {
+          return <CharacterCard character={item as Character} />
         }
       })
     }
