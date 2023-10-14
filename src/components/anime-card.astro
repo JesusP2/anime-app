@@ -22,38 +22,49 @@ const { anime } = Astro.props;
       alt="Shoes"
     />
   </div>
-  <div class="px-6 pt-4 pb-8 text-black">
-    <div class="flex text-gray-500 text-sm font-semibold">
+  <div class="flex gap-x-2 mx-6 mt-4 mb-3">
+    <div
+      class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]"
+    >
       {
-        anime.aired?.prop?.from?.month ? (
+        anime.aired?.prop?.from?.month &&
+        idxToMonth[anime.aired?.prop?.from?.month - 1] ? (
           <>
-            {idxToMonth.at(anime.aired.prop.from.month - 1)}
-            {anime.aired.prop.from.day}, {anime.aired.prop.from.year}
+            {idxToMonth[anime.aired.prop.from.month - 1]!.at(0) +
+              idxToMonth[anime.aired.prop.from.month - 1]!.toLowerCase().slice(
+                1,
+              )}
+            &nbsp;
+            {anime.aired.prop.from.day},&nbsp;{anime.aired.prop.from.year}
           </>
         ) : (
           'N/A'
         )
       }
-      <p>
-        &nbsp;
-        <span class="font-bold">|</span>
-         &nbsp;
-        {
-          anime.type === 'TV' ? (
-            anime.episodes ? (
-              <div>
-                <span class="font-semibold">Episodes:</span> {anime.episodes}
-              </div>
-            ) : (
-              <div>Airing</div>
-            )
-          ) : (
-            anime.type
-          )
-        }
-      </p>
     </div>
-    <h3 title={anime.titles[0]?.title || ''} class="font-inter text-lg mt-3 mb-5 truncate">
+    <div
+      class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]"
+    >
+      {
+        anime.type === 'TV' ? (
+          anime.episodes ? (
+            <div>
+              <span class="font-semibold">Episodes:&nbsp;</span> {anime.episodes}
+            </div>
+          ) : (
+            <div>Airing</div>
+          )
+        ) : (
+          anime.type
+        )
+      }
+    </div>
+  </div>
+  <div class="px-6 pb-8 text-black">
+    <h3
+      title={anime.titles[0]?.title || ''}
+      class="font-inter text-lg mt-3 mb-5 truncate"
+    >
       {anime.titles[0]?.title || ''}
     </h3>
     <p class="text-clip mb-3 h-[100px]">{anime.synopsis}</p>

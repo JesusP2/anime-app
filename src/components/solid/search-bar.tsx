@@ -13,14 +13,14 @@ import clsx from 'clsx';
 export function SearchBar() {
   const [searchType, setSearchType] = createSignal('anime');
   return (
-    <form action="/search" method="get">
+    <form action="/search" method="get" class="pl-10">
       <div class="flex relative">
         <Select
           name="searchType"
           value={searchType()}
           onChange={setSearchType}
           placeholder="anime"
-          options={['anime', 'manga', 'character']}
+          options={['anime', 'manga', 'characters']}
           itemComponent={(props) => (
             <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
           )}
@@ -33,8 +33,9 @@ export function SearchBar() {
           >
             <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
           </SelectTrigger>
-          <SelectContent class={clsx("w-40 bg-white h-[7.5rem]")} />
+          <SelectContent class={clsx("w-40 bg-white h-[6.6rem]")} />
         </Select>
+        <input hidden name="searchType" value={searchType()} />
         <input
           name="q"
           class="flex border border-input bg-transparent px-3 py-2 file:border-0 file:bg-transparent file:text-sm placeholder:text-[14px] file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-gray-500 w-full min-w-[100px] max-w-[288px] h-10 text-[14px] border-l-0 text-gray-500"

@@ -3,7 +3,7 @@ export function createAnimeApiUrl(_url: URL) {
   const searchType = _url.searchParams.get('searchType')
   const jikanUrl = new URL(import.meta.env.ANIME_API + '/' + searchType)
   queryParams.forEach(([key, value]) => {
-    if (key === 'searchType') return;
+    if (key === 'searchType' || value === 'all') return;
     jikanUrl.searchParams.set(key, value)
   })
   return jikanUrl;
