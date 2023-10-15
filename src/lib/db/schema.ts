@@ -1,4 +1,11 @@
-import { pgTable, bigint, varchar, uniqueIndex } from 'drizzle-orm/pg-core';
+import {
+  pgTable,
+  bigint,
+  varchar,
+  uniqueIndex,
+  pgEnum,
+  integer,
+} from 'drizzle-orm/pg-core';
 
 export const user = pgTable(
   'auth_user',
@@ -49,4 +56,18 @@ export const key = pgTable('user_key', {
   hashedPassword: varchar('hashed_password', {
     length: 255,
   }),
+});
+
+export const watchlist = pgTable('', {
+  id: varchar('id', {
+    length: 255,
+  }).primaryKey(),
+  userId: varchar('user_id', {
+    length: 15,
+  }),
+  type: pgEnum('type', ['manga', 'manhwa', 'anime', 'light-novel'])('type'),
+  status: pgEnum('item_status', ['not-started', 'started', 'finished'])(
+    'status',
+  ),
+  malId: integer('mal_id'),
 });
