@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
-import { createSignal } from 'solid-js';
+import { createSignal, type JSX } from 'solid-js';
 
-export function Accordion() {
+export function Dropdown(props: { list: { href: string; label: JSX.Element }[]; title: string; }) {
   const [isActive, setActive] = createSignal();
   return (
     <div>
@@ -11,7 +11,7 @@ export function Accordion() {
           'mt-2 flex gap-x-4 ml-7 hover:text-white p-2 text-neutral-300 items-center justify-between w-64',
         )}
       >
-        Mangas
+        {props.title}
         <DownArrow class="mr-2 hover:text-white" />
       </button>
       <ul
@@ -20,15 +20,11 @@ export function Accordion() {
           'overflow-hidden duration-300',
         )}
       >
-        <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">
-          <a href="/mangas/not-started">Not started</a>
-        </li>
-        <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">
-          <a href="/mangas/started">Started</a>
-        </li>
-        <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">
-          <a href="/mangas/finished">Finished</a>
-        </li>
+        {props.list.map((item) => (
+          <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">
+            <a class="w-full" href={item.href}>{item.label}</a>
+          </li>
+        ))}
       </ul>
     </div>
   );

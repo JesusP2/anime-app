@@ -1,5 +1,10 @@
 ---
 import Layout from '@/layouts/main.astro';
+const session = await Astro.locals.auth.validate();
+if (session) {
+
+}
 ---
 
-<Layout title="My watchlist">Watch list</Layout>
+<Layout title="My watchlist">
+</Layout>

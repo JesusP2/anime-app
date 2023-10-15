@@ -3,7 +3,7 @@ import '@fontsource-variable/inter';
 import { Icon } from 'astro-icon';
 import Search from '../components/search.astro';
 import Tab from '@/components/tab.astro';
-import { Accordion } from '@/components/solid/mangas-dropdown';
+import { Dropdown } from '@/components/solid/mangas-dropdown';
 import { AvatarDropdown } from '@/components/solid/avatar-dropdown';
 import { SearchBar } from '@/components/solid/search-bar';
 export interface Props {
@@ -59,7 +59,33 @@ const session = await Astro.locals.auth.validate();
                 </svg>
                  Watchlist
               </Tab>
-              <Accordion client:load />
+              <Dropdown
+                title="Animes"
+                list={[
+                  { href: '/animes/not-started', label: 'Not started' },
+                  { href: '/animes/started', label: 'Started' },
+                  { href: '/animes/finished', label: 'Finished' },
+                ]}
+                client:load
+              />
+              <Dropdown
+                title="Mangas"
+                list={[
+                  { href: '/mangas/not-started', label: 'Not started' },
+                  { href: '/mangas/started', label: 'Started' },
+                  { href: '/mangas/finished', label: 'Finished' },
+                ]}
+                client:load
+              />
+              <Dropdown
+                title="Light Novels"
+                list={[
+                  { href: '/light-novels/not-started', label: 'Not started' },
+                  { href: '/light-novels/started', label: 'Started' },
+                  { href: '/light-novels/finished', label: 'Finished' },
+                ]}
+                client:load
+              />
             </li>
           </ul>
         </div>
