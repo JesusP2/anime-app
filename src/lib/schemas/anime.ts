@@ -8,11 +8,11 @@ const schema = z.object({
   images: imagesSchema,
   trailer: z
     .object({
-      youtube_id: z.string().nullish(),
-      url: z.string().nullish(),
-      embed_url: z.string().nullish(),
+      youtube_id: z.string().nullable(),
+      url: z.string().nullable(),
+      embed_url: z.string().nullable(),
     })
-    .nullish(),
+    .nullable(),
   approved: z.boolean(),
   titles: z.array(
     z.object({
@@ -20,74 +20,59 @@ const schema = z.object({
       title: z.string(),
     }),
   ),
-  type: z.string(),
-  source: z.string(),
-  episodes: z.number().nullish(),
-  status: z.string(),
+  type: z.enum(['TV', 'OVA', 'Movie', 'Special', 'ONA', 'Music']).nullable(),
+  source: z.string().nullable(),
+  episodes: z.number().nullable(),
+  status: z.string().nullable(),
   airing: z.boolean(),
-  aired: z
-    .object({
-      from: z.string().nullish(),
-      to: z.string().nullish(),
-      prop: z.object({
-        from: z
-          .object({
-            day: z.number().nullish(),
-            month: z.number().nullish(),
-            year: z.number().nullish(),
-          })
-          .nullish(),
-        to: z
-          .object({
-            day: z.number().nullish(),
-            month: z.number().nullish(),
-            year: z.number().nullish(),
-          })
-          .nullish(),
-        string: z.string().optional(),
+  aired: z.object({
+    from: z.string().nullable(),
+    to: z.string().nullable(),
+    prop: z.object({
+      from: z.object({
+        day: z.number().nullable(),
+        month: z.number().nullable(),
+        year: z.number().nullable(),
       }),
-    })
-    .nullish(),
-  duration: z.string(),
-  rating: z.string().nullish(),
-  score: z.number().nullish(),
-  scored_by: z.number().nullish(),
-  rank: z.number().nullish(),
-  popularity: z.number().nullish(),
-  members: z.number().nullish(),
-  favorites: z.number().nullish(),
-  synopsis: z.string().nullish(),
-  background: z.string().nullish(),
-  season: z.string().nullish(),
-  year: z.number().nullish(),
+      to: z.object({
+        day: z.number().nullable(),
+        month: z.number().nullable(),
+        year: z.number().nullable(),
+      }),
+      string: z.string().nullable(),
+    }),
+  }),
+  duration: z.string().nullable(),
+  rating: z.string().nullable(),
+  score: z.number().nullable(),
+  scored_by: z.number().nullable(),
+  rank: z.number().nullable(),
+  popularity: z.number().nullable(),
+  members: z.number().nullable(),
+  favorites: z.number().nullable(),
+  synopsis: z.string().nullable(),
+  background: z.string().nullable(),
+  season: z.string().nullable(),
+  year: z.number().nullable(),
   broadcast: z
     .object({
-      day: z.string().nullish(),
-      time: z.string().nullish(),
-      timezone: z.string().nullish(),
-      string: z.string().nullish(),
+      day: z.string().nullable(),
+      time: z.string().nullable(),
+      timezone: z.string().nullable(),
+      string: z.string().nullable(),
     })
-    .nullish(),
-  producers: z
-    .array(apiItemSchema)
-    .nullish(),
-  licensors: z
-    .array(apiItemSchema)
-    .nullish(),
-  studios: z
-    .array(apiItemSchema)
-    .nullish(),
+    .nullable(),
+  producers: z.array(apiItemSchema),
+  licensors: z.array(apiItemSchema),
+  studios: z.array(apiItemSchema),
   genres: z.array(apiItemSchema),
   explicit_genres: z.array(apiItemSchema),
   themes: z.array(apiItemSchema),
   demographics: z.array(apiItemSchema),
-  theme: z
-    .object({
-      openings: z.array(z.string()),
-      endings: z.array(z.string()),
-    })
-    .nullish(),
-  streaming: z.array(z.object({ name: z.string(), url: z.string() })).nullish(),
+  theme: z.object({
+    openings: z.array(z.string()),
+    endings: z.array(z.string()),
+  }),
 });
 
 export const animeSchema = z.object({
