@@ -10,7 +10,8 @@
     "astro": "astro",
     "format": "prettier --write src/**/*.{astro,ts,tsx}",
     "db:generate": "drizzle-kit generate:pg",
-    "db:push": "env-cmd drizzle-kit push:pg"
+    "db:push": "env-cmd drizzle-kit push:pg",
+    "db:studio": "env-cmd drizzle-kit studio"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^7.5.1",
@@ -25,7 +26,7 @@
     "@lucia-auth/adapter-postgresql": "^2.0.1",
     "@lucia-auth/oauth": "^2.2.0",
     "@types/pg": "^8.10.3",
-    "astro": "^3.2.3",
+    "astro": "^4.1.1",
     "astro-icon": "^0.8.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
