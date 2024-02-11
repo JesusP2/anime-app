@@ -5,11 +5,11 @@ import {
   varchar,
   uniqueIndex,
   integer,
-  text,
   timestamp,
+  pgEnum,
 } from 'drizzle-orm/pg-core';
-export * from './anime'
-export * from './manga'
+export * from './anime';
+export * from './manga';
 
 export const user = pgTable(
   'auth_user',
@@ -22,6 +22,9 @@ export const user = pgTable(
     }).unique(),
     username: varchar('username', {
       length: 30,
+    }),
+    role: varchar('role', {
+      length: 255,
     }),
     avatar_image: varchar('avatar_image', { length: 191 }),
   },
@@ -62,57 +65,40 @@ export const key = pgTable('user_key', {
   }),
 });
 
-// NOTE: userId + mal_id index for followed items.
-export const animeFollowed = pgTable('anime_followed', {
+export const trackedEntity = pgTable('tracked_entity', {
   id: varchar('id', {
     length: 255,
-  }).primaryKey().default(sql`gen_random_uuid()`),
+  })
+    .primaryKey()
+    .default(sql`gen_random_uuid()`),
   userId: varchar('user_id', {
     length: 15,
   }).notNull(),
+  entityType: pgEnum('varchar', [
+    'ANIME',
+    'LIGHT-NOVEL',
+    'MANGA',
+  ])('entity_type').notNull(),
   status: varchar('status', {
     length: 255,
   }).notNull(),
   malId: integer('mal_id').notNull(),
-  followedAt: timestamp('followed_at').notNull(),
-  startedAt: timestamp('started_at'),
-  finishedAt: timestamp('finished_at'),
   createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 });
 
-export const mangaFollowed = pgTable('mangas_followed', {
+export const entityActionsTracker = pgTable('entity_actions_tracker', {
   id: varchar('id', {
     length: 255,
-  }).primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar('user_id', {
-    length: 15,
-  }).notNull(),
-  status: varchar('status', {
+  })
+    .primaryKey()
+    .default(sql`gen_random_uuid()`),
+  trackedEntityId: varchar('tracked_entity_id', {
     length: 255,
   }),
-  malId: integer('mal_id').notNull(),
-  followedAt: timestamp('followed_at').notNull(),
-  startedAt: timestamp('started_at'),
-  finishedAt: timestamp('finished_at'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('created_at').defaultNow(),
-});
-
-export const lightNovelFollowed = pgTable('light_novel_followed', {
-  id: varchar('id', {
-    length: 255,
-  }).primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar('user_id', {
-    length: 15,
-  }).notNull(),
-  status: varchar('status', {
+  operation: varchar('operation', {
     length: 255,
   }).notNull(),
-  malId: integer('mal_id').notNull(),
-  followedAt: timestamp('followed_at').notNull(),
-  startedAt: timestamp('started_at'),
-  finishedAt: timestamp('finished_at'),
   createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 });

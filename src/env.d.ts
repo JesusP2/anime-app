@@ -34,6 +34,7 @@ declare namespace Lucia {
   type DatabaseUserAttributes = {
     username?: string;
     avatar_image?: string;
+    role?: string;
     email?: string;
   };
   type DatabaseSessionAttributes = {};

@@ -7,6 +7,7 @@ import {
   text,
   boolean,
   json,
+  numeric,
 } from 'drizzle-orm/pg-core';
 
 export const anime = pgTable('anime', {
@@ -29,7 +30,7 @@ export const anime = pgTable('anime', {
   aired: json('aired').notNull(),
   duration: varchar('duration', { length: 255 }),
   rating: varchar('rating', { length: 255 }),
-  score: integer('score'),
+  score: numeric('score'),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),
@@ -50,5 +51,5 @@ export const anime = pgTable('anime', {
   openings: json('openings'),
   endings: json('endings'),
   createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 });

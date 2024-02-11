@@ -55,6 +55,7 @@ export const get: APIRoute = async (context) => {
       user = await createUser({
         attributes: {
           email: googleUser.email,
+          role: 'USER',
           avatar_image: googleUser.picture,
         },
       });

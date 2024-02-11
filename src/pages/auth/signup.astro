@@ -32,6 +32,7 @@ if (Astro.request.method === 'POST') {
         },
         attributes: {
           email: emailResult.data,
+          role: 'USER'
         },
       });
       const session = await auth.createSession({
