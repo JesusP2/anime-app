@@ -9,14 +9,14 @@ export const apiItemSchema = z.object({
 
 export const imagesSchema = z.object({
   jpg: z.object({
-    image_url: z.string().nullable(),
-    small_image_url: z.string().nullable(),
-    large_image_url: z.string().nullable(),
+    image_url: z.string().nullish(),
+    small_image_url: z.string().nullish(),
+    large_image_url: z.string().nullish(),
   }),
   webp: z.object({
-    image_url: z.string().nullable(),
-    small_image_url: z.string().nullable(),
-    large_image_url: z.string().nullable(),
+    image_url: z.string().nullish(),
+    small_image_url: z.string().nullish(),
+    large_image_url: z.string().nullish(),
   }),
 })
 

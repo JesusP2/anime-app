@@ -3,7 +3,7 @@ import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
 import Pagination from '@/components/pagination.astro';
 import AnimeFilter from '@/components/anime-filter.astro';
-import { animeSchema, type Anime } from '@/lib/schemas/anime';
+import { animePageSchema, type Anime } from '@/lib/schemas/anime';
 import { mangaSchema, type Manga } from '@/lib/schemas/manga';
 import { characterSchema, type Character } from '@/lib/schemas/character';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
@@ -45,7 +45,7 @@ if (!res.ok) {
 // api_url.searchParams.set('q', search ?? '');
 // api_url.searchParams.set('page', page.toString() ?? '1');
 // searchType && api_url.searchParams.set('type', searchType);
-// const result = animeSchema.safeParse(await (await fetch(api_url)).json());
+// const result = animePageSchema.safeParse(await (await fetch(api_url)).json());
 // if (!result.success) {
 //   return Astro.redirect('/404');
 // }

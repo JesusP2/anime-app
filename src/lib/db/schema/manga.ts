@@ -7,6 +7,7 @@ import {
   text,
   boolean,
   json,
+  numeric,
 } from 'drizzle-orm/pg-core';
 
 export const manga = pgTable('manga', {
@@ -25,8 +26,8 @@ export const manga = pgTable('manga', {
   chapters: integer('chapters'),
   volumes: integer('volumes'),
   status: varchar('status', { length: 255 }),
-  score: integer('score'),
-  scored_by: integer('scors_by'),
+  score: numeric('score'),
+  scored_by: integer('scored_by'),
   members: integer('members'),
   favorites: integer('rank'),
   synopsis: text('synopsis'),
@@ -38,5 +39,5 @@ export const manga = pgTable('manga', {
   themes: json('themes').notNull(),
   demographics: json('demographics').notNull(),
   createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 });

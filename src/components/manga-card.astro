@@ -13,13 +13,17 @@ const { manga } = Astro.props;
   class="group w-72 mx-auto overflow-hidden rounded-md duration-300 shadow-lg hover:shadow-2xl my-4"
 >
   <div class="h-40 overflow-hidden">
-    <Image
-      class="duration-200 group-hover:scale-110 object-cover"
-      src={manga.images.jpg.large_image_url}
-      width={290}
-      height={50}
-      alt="Shoes"
-    />
+    {
+      manga.images.jpg.large_image_url ? (
+        <Image
+          class="duration-200 group-hover:scale-110 object-cover"
+          src={manga.images.jpg.large_image_url}
+          width={290}
+          height={50}
+          alt="Shoes"
+        />
+      ) : null
+    }
   </div>
   <div class="flex gap-x-2 mx-6 mt-4 mb-3">
     <div
@@ -41,11 +45,27 @@ const { manga } = Astro.props;
       {manga.titles[0]?.title || ''}
     </h3>
     <p class="text-clip mb-3 h-[100px]">{manga.synopsis}</p>
-    <button
-      class="text-blue-500 font-medium flex gap-x-1 items-center text-sm hover:bg-neutral-50 hover:text-blue-600 px-3 py-2 rounded-md relative right-3"
-    >
-      Read more
-      <Icon pack="ri" name="arrow-right-line" class="w-4 relative top-[1px]" />
-    </button>
+    <div class="flex items-center justify-between">
+      <button
+        class="text-blue-500 font-medium flex gap-x-1 items-center text-sm hover:bg-neutral-50 hover:text-blue-600 px-3 py-2 rounded-md relative right-3"
+      >
+        Read more
+        <Icon
+          pack="ri"
+          name="arrow-right-line"
+          class="w-4 relative top-[1px]"
+        />
+      </button>
+      <button
+        ><Icon
+          pack="ic"
+          name="baseline-star-outline"
+          class="h-5 mr-2 text-neutral-700"
+        /></button
+      >
+    </div>
   </div>
 </div>
+<script>
+  
+</script>
