@@ -3,11 +3,14 @@ import { Image } from 'astro:assets';
 import type { Anime } from '@/lib/schemas/anime';
 import Icon from 'astro-icon';
 import { idxToMonth } from '@/lib/utils';
+import { EntityClassificationDropdown } from './solid/card-dropdown';
 interface Props {
   anime: Anime;
+  userId: string;
+  userType: 'signed-in' | 'guest';
 }
 
-const { anime } = Astro.props;
+const { anime, userId, userType } = Astro.props;
 ---
 
 <div
@@ -80,6 +83,15 @@ const { anime } = Astro.props;
           class="w-4 relative top-[1px]"
         />
       </button>
+      <EntityClassificationDropdown
+        client:load
+        data={{
+          entity: 'ANIME',
+          malId: anime.mal_id,
+          userId,
+          userType
+        }}
+      />
       <button
         ><Icon
           pack="mdi"

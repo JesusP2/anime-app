@@ -1,0 +1,34 @@
+---
+import AnimeCard from '@/components/anime-card.astro';
+import Layout from '@/layouts/main.astro';
+const session = await Astro.locals.auth.validate();
+const userId = session?.user?.id || Astro.cookies.get('guest_id')?.value!;
+let userType: 'signed-in' | 'guest' = 'signed-in';
+if (!session?.user?.id) {
+  userType = 'guest';
+}
+const url = new URL('http://localhost:3000/api/anime');
+// const searchParams = new URLSearchParams();
+url.searchParams.set('userType', userType);
+url.searchParams.set('userId', userId);
+url.searchParams.set('entityStatus', 'WATCHING');
+url.searchParams.set('entityType', 'ANIME');
+
+const animesReq = await fetch(url, {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+  },
+});
+const animes = await animesReq.json();
+---
+
+<Layout title="Animes watching">
+  <div class="grid auto-fill-grid">
+    {
+      animes.map(({ anime }: any) => (
+        <AnimeCard anime={anime} userId={userId} userType={userType} />
+      ))
+    }
+  </div>
+</Layout>

@@ -37,6 +37,12 @@ if (!res.ok) {
 } else {
   data = await res.json();
 }
+const session = await Astro.locals.auth.validate();
+const userId = session?.user?.id || Astro.cookies.get('guest_id')?.value!;
+let userType: 'signed-in' | 'guest' = 'signed-in';
+if (!session?.user?.id) {
+  userType = 'guest';
+}
 ---
 
 <Layout title={url.searchParams.get('q') ?? ''}>
@@ -54,11 +60,17 @@ if (!res.ok) {
     {
       data.data.map((item) => {
         if ('episodes' in item) {
-          return <AnimeCard anime={item as Anime} />;
+          return (
+            <AnimeCard
+              anime={item as Anime}
+              userId={userId}
+              userType={userType}
+            />
+          );
         } else if ('volumes' in item) {
-          return <MangaCard manga={item as Manga} />
+          return <MangaCard manga={item as Manga} />;
         } else {
-          return <CharacterCard character={item as Character} />
+          return <CharacterCard character={item as Character} />;
         }
       })
     }

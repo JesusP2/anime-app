@@ -16,7 +16,7 @@ export async function fetchEntityByMalId<Entity extends 'ANIME' | 'MANGA'>(
   entity: Entity,
   id: number,
 ): Promise<ErrorResponse | SuccessResponse<Entity>> {
-  const url = `${ANIME_API}${entity}/${id}`;
+  const url = `${ANIME_API}/${entity.toLowerCase()}/${id}`;
   const response = await fetch(url);
   if (!response.ok) {
     return { success: false, error: new HttpError(500, 'Failed to fetch data') };

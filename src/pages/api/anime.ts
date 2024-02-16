@@ -12,23 +12,16 @@ import { animeSchema } from '@/lib/schemas/anime';
 import { randomUUID } from 'crypto';
 import { entityStatus, json } from '@/lib/utils';
 import { fetchEntityByMalId } from '@/lib/jikan';
-import { getUserEntities } from '@/lib/queries';
+import { getUserEntities } from '@/lib/db/queries';
 import { parseCookie } from 'lucia/utils';
 import type { mangaSchema } from '@/lib/schemas/manga';
-
-const postSchema = z.object({
-  entityStatus: z.enum(entityStatus),
-  entity: z.enum(['ANIME', 'MANGA']),
-  userType: z.enum(['signed-in', 'guest']),
-  malId: z.coerce.number(),
-  userId: z.string(),
-});
+import { postSchema } from '@/lib/schemas/generic';
 
 /**
  * @description
  * Starts/update tracking of an entity(Anime/Manga so far) for a user
  */
-export const post: APIRoute = async (context) => {
+export const POST: APIRoute = async (context) => {
   const payload = postSchema.safeParse(await context.request.json());
   if (!payload.success) {
     return json({ message: 'Invalid data' }, { status: 400 });
@@ -36,21 +29,30 @@ export const post: APIRoute = async (context) => {
 
   const session = await context.locals.auth.validate();
   const cookie = parseCookie(context.request.headers.get('Cookie') ?? '');
-
-  let userId: string;
-  if (payload.data.userType === 'guest' && cookie.guest_id) {
-    userId = cookie.guest_id;
-  } else if (
-    payload.data.userType === 'signed-in' &&
+  if (
     session?.userId !== payload.data.userId &&
+    cookie.guest_id !== payload.data.userId &&
     session?.user.role !== 'ADMINISTRATOR'
   ) {
     return json({ message: 'Unauthorized' }, { status: 401 });
-  } else if (payload.data.userType === 'signed-in' && session) {
-    userId = session.userId;
-  } else {
-    return json({ message: 'Unauthorized' }, { status: 401 });
   }
+  const userId = payload.data.userId;
+
+  // console.log(session?.userId, cookie.guest_id, payload.data.userId, session?.user.role)
+  // let userId: string;
+  // if (payload.data.userType === 'guest' && cookie.guest_id) {
+  //   userId = cookie.guest_id;
+  // } else if (
+  //   session?.userId !== payload.data.userId &&
+  //   cookie.guest_id !== payload.data.userId &&
+  //   session?.user.role !== 'ADMINISTRATOR'
+  // ) {
+  //   return json({ message: 'Unauthorized' }, { status: 401 });
+  // } else if (payload.data.userType === 'signed-in' && session) {
+  //   userId = session.userId;
+  // } else {
+  //   return json({ message: 'Unauthorized' }, { status: 401 });
+  // }
 
   let isEntityStoredInDb: boolean;
   if (payload.data.entity === 'ANIME') {
@@ -118,7 +120,9 @@ export const post: APIRoute = async (context) => {
     }
 
     if (!isEntityStoredInDb) {
-      await tx.insert(payload.data.entity === 'ANIME' ? anime : manga).values(entityFetched as any);
+      await tx
+        .insert(payload.data.entity === 'ANIME' ? anime : manga)
+        .values(entityFetched as any);
     }
 
     await tx.insert(entityActionsTracker).values({
@@ -149,27 +153,9 @@ export const GET: APIRoute = async (context) => {
     return json({ message: 'Invalid data' }, { status: 400 });
   }
 
-  const session = await context.locals.auth.validate();
-  const cookie = parseCookie(context.request.headers.get('Cookie') ?? '');
-
-  let userId: string;
-  if (payload.data.userType === 'guest' && cookie.guest_id) {
-    userId = cookie.guest_id;
-  } else if (
-    payload.data.userType === 'signed-in' &&
-    session?.userId !== payload.data.userId &&
-    session?.user.role !== 'ADMINISTRATOR'
-  ) {
-    return json({ message: 'Unauthorized' }, { status: 401 });
-  } else if (payload.data.userType === 'signed-in' && session) {
-    userId = session.userId;
-  } else {
-    return json({ message: 'Unauthorized' }, { status: 401 });
-  }
-
   return json(
     await getUserEntities(
-      userId,
+      payload.data.userId,
       payload.data.entityType,
       payload.data.entityStatus,
     ),

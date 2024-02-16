@@ -39,7 +39,7 @@ export const session = pgTable('user_session', {
     length: 128,
   }).primaryKey(),
   userId: varchar('user_id', {
-    length: 15,
+    length: 64,
   })
     .notNull()
     .references(() => user.id),
@@ -56,7 +56,7 @@ export const key = pgTable('user_key', {
     length: 255,
   }).primaryKey(),
   userId: varchar('user_id', {
-    length: 15,
+    length: 64,
   })
     .notNull()
     .references(() => user.id),
@@ -72,7 +72,7 @@ export const trackedEntity = pgTable('tracked_entity', {
     .primaryKey()
     .default(sql`gen_random_uuid()`),
   userId: varchar('user_id', {
-    length: 15,
+    length: 64,
   }).notNull(),
   userType: pgEnum('varchar', [
     'signed-in',
