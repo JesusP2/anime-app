@@ -69,30 +69,33 @@ if (!session && !Astro.cookies.has('guest_id')) {
               <Dropdown
                 title="Animes"
                 list={[
-                  { href: '/animes/not-started', label: 'Not started' },
-                  { href: '/animes/started', label: 'Started' },
-                  { href: '/animes/finished', label: 'Finished' },
+                  { href: '/animes/completed', label: 'Completed' },
+                  { href: '/animes/currently-watching', label: 'Watching' },
+                  { href: '/animes/planning-to-watch', label: 'Planning to watch' },
                   { href: '/animes/dropped', label: 'Dropped' },
+                  { href: '/animes/on-hold', label: 'Paused' },
                 ]}
                 client:load
               />
               <Dropdown
                 title="Mangas"
                 list={[
-                  { href: '/mangas/not-started', label: 'Not started' },
-                  { href: '/mangas/started', label: 'Started' },
-                  { href: '/mangas/finished', label: 'Finished' },
+                  { href: '/mangas/completed', label: 'Completed' },
+                  { href: '/mangas/currently-watching', label: 'Watching' },
+                  { href: '/mangas/planning-to-watch', label: 'Planning to watch' },
                   { href: '/mangas/dropped', label: 'Dropped' },
+                  { href: '/mangas/on-hold', label: 'Paused' },
                 ]}
                 client:load
               />
               <Dropdown
                 title="Light Novels"
                 list={[
-                  { href: '/light-novels/not-started', label: 'Not started' },
-                  { href: '/light-novels/started', label: 'Started' },
-                  { href: '/light-novels/finished', label: 'Finished' },
+                  { href: '/light-novels/completed', label: 'Completed' },
+                  { href: '/light-novels/currently-watching', label: 'Watching' },
+                  { href: '/light-novels/planning-to-watch', label: 'Planning to watch' },
                   { href: '/light-novels/dropped', label: 'Dropped' },
+                  { href: '/light-novels/on-hold', label: 'Paused' },
                 ]}
                 client:load
               />

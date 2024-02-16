@@ -3,7 +3,6 @@ import { db } from '../pool';
 import type { entityStatus } from '../../utils';
 import { anime, manga, trackedEntity, entityActionsTracker } from '../schema';
 import { randomUUID } from 'crypto';
-import type { Anime } from '@/lib/schemas/anime';
 
 export async function getUserEntities(
   userId: string,

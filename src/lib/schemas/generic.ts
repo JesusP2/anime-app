@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { entityStatus } from '../utils';
 
 export const apiItemSchema = z.object({
   mal_id: z.number(),
@@ -20,3 +21,10 @@ export const imagesSchema = z.object({
   }),
 })
 
+export const postSchema = z.object({
+  entityStatus: z.enum(entityStatus),
+  entity: z.enum(['ANIME', 'MANGA']),
+  userType: z.enum(['signed-in', 'guest']),
+  malId: z.coerce.number(),
+  userId: z.string(),
+});
