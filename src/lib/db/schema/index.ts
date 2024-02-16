@@ -74,12 +74,16 @@ export const trackedEntity = pgTable('tracked_entity', {
   userId: varchar('user_id', {
     length: 15,
   }).notNull(),
+  userType: pgEnum('varchar', [
+    'signed-in',
+    'guest',
+  ])('user_type').notNull(),
   entityType: pgEnum('varchar', [
     'ANIME',
     'LIGHT-NOVEL',
     'MANGA',
   ])('entity_type').notNull(),
-  status: varchar('status', {
+  entityStatus: varchar('entity_status', {
     length: 255,
   }).notNull(),
   malId: integer('mal_id').notNull(),
@@ -99,6 +103,7 @@ export const entityActionsTracker = pgTable('entity_actions_tracker', {
   operation: varchar('operation', {
     length: 255,
   }).notNull(),
+  actionTime: timestamp('action_time').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });

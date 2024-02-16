@@ -26,3 +26,20 @@ export function json(payload: Record<string, any>, init?: ResponseInit) {
     headers: { ...init?.headers, 'Content-Type': 'application/json' },
   });
 }
+
+export class HttpError extends Error {
+  public status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.message = message;
+  }
+}
+
+export const entityStatus = [
+  'COMPLETED',
+  'WATCHING',
+  'PLANNING',
+  'DROPPED',
+  'ON_HOLD',
+] as const;

@@ -16,7 +16,7 @@ export function Dropdown(props: { list: { href: string; label: JSX.Element }[]; 
       </button>
       <ul
         class={clsx(
-          isActive() ? 'h-36' : 'h-0',
+          isActive() ? 'h-48' : 'h-0',
           'overflow-hidden duration-300',
         )}
       >

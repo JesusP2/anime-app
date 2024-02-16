@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { paginationSchema } from './pagination'
 import { apiItemSchema, imagesSchema } from './generic'
 
-const schema = z.object({
+export const mangaSchema = z.object({
   mal_id: z.number(),
   url: z.string(),
   images: imagesSchema,
@@ -31,9 +31,9 @@ const schema = z.object({
   demographics: z.array(apiItemSchema),
 })
 
-export const mangaSchema = z.object({
-  data: z.array(schema),
+export const mangaPageSchema = z.object({
+  data: z.array(mangaSchema),
   pagination: paginationSchema,
 })
 
-export type Manga = z.infer<typeof schema>;
+export type Manga = z.infer<typeof mangaSchema>;

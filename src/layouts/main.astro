@@ -6,12 +6,19 @@ import Tab from '@/components/tab.astro';
 import { Dropdown } from '@/components/solid/mangas-dropdown';
 import { AvatarDropdown } from '@/components/solid/avatar-dropdown';
 import { SearchBar } from '@/components/solid/search-bar';
+import crypto from 'node:crypto'
+
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 const session = await Astro.locals.auth.validate();
+if (!session && !Astro.cookies.has('guest_id')) {
+  Astro.cookies.set('guest_id', crypto.randomBytes(32).toString('hex'), {
+    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+  });
+}
 ---
 
 <!doctype html>
@@ -65,6 +72,7 @@ const session = await Astro.locals.auth.validate();
                   { href: '/animes/not-started', label: 'Not started' },
                   { href: '/animes/started', label: 'Started' },
                   { href: '/animes/finished', label: 'Finished' },
+                  { href: '/animes/dropped', label: 'Dropped' },
                 ]}
                 client:load
               />
@@ -74,6 +82,7 @@ const session = await Astro.locals.auth.validate();
                   { href: '/mangas/not-started', label: 'Not started' },
                   { href: '/mangas/started', label: 'Started' },
                   { href: '/mangas/finished', label: 'Finished' },
+                  { href: '/mangas/dropped', label: 'Dropped' },
                 ]}
                 client:load
               />
@@ -83,6 +92,7 @@ const session = await Astro.locals.auth.validate();
                   { href: '/light-novels/not-started', label: 'Not started' },
                   { href: '/light-novels/started', label: 'Started' },
                   { href: '/light-novels/finished', label: 'Finished' },
+                  { href: '/light-novels/dropped', label: 'Dropped' },
                 ]}
                 client:load
               />
