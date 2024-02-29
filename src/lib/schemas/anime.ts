@@ -20,7 +20,7 @@ export const animeSchema = z.object({
       title: z.string(),
     }),
   ),
-  type: z.enum(['TV', 'OVA', 'Movie', 'Special', 'ONA', 'Music', 'PV']).nullish(),
+  type: z.enum(['TV', 'OVA', 'Movie', 'Special', 'ONA', 'Music', 'PV', 'CM', 'TV Special']).nullish(),
   source: z.string().nullish(),
   episodes: z.number().nullish(),
   status: z.string().nullish(),
