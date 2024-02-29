@@ -27,7 +27,12 @@ const animes = await animesReq.json();
   <div class="grid auto-fill-grid">
     {
       animes.map(({ anime }: any) => (
-        <AnimeCard anime={anime} userId={userId} userType={userType} />
+        <AnimeCard
+          entityId={anime.id}
+          anime={anime}
+          userId={userId}
+          userType={userType}
+        />
       ))
     }
   </div>
