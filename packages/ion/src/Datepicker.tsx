@@ -2,7 +2,7 @@
 // ion/DatePicker: Generated with Ion on 2/26/2024, 3:24:46 PM
 import { Popover, PopoverTrigger, PopoverContent } from "./Popover";
 import { Calendar } from "./Calendar";
-import { UseInputOptions, useInput } from "react-day-picker";
+import { type UseInputOptions, useInput } from "react-day-picker";
 import React, { useEffect, useRef } from "react";
 import { inputClassNames, inputContainerClasses } from "./Input";
 import clsx from "clsx";
