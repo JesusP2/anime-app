@@ -4,8 +4,8 @@ import * as React from "react";
 import { useState } from "react";
 
 import {
-  ColumnDef,
-  SortingState,
+  type ColumnDef,
+  type SortingState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,

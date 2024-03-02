@@ -2,7 +2,7 @@
 // ion/Collapsible: Generated with Ion on 2/26/2024, 3:24:46 PM
 import { useState } from "react";
 import clsx from "clsx";
-import { CollapsibleProps as RadixCollapsibleProps } from "@radix-ui/react-collapsible";
+import type { CollapsibleProps as RadixCollapsibleProps } from "@radix-ui/react-collapsible";
 import { CaretDown } from "@phosphor-icons/react";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 

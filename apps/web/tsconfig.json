@@ -2,13 +2,13 @@
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "baseUrl": ".",
+    "baseUrl": "/home/lotus/dev/projects/astro-transition-api/apps/web",
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
