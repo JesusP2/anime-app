@@ -10,6 +10,7 @@ import { type Character } from '@/lib/schemas/character';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
 import { z } from 'zod';
 import { paginationSchema } from '@/lib/schemas/pagination';
+import { apiFetch } from '@/lib/services/fetch.service';
 
 let errorType: string;
 let data: {
@@ -31,7 +32,7 @@ let data: {
 const url = new URL(Astro.request.url);
 const animeApiUrl = createAnimeApiUrl(url);
 
-const res = await fetch(animeApiUrl);
+const res = await apiFetch(animeApiUrl);
 if (!res.ok) {
   errorType = res.statusText;
 } else {

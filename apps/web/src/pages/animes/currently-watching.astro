@@ -1,6 +1,7 @@
 ---
 import AnimeCard from '@/components/anime-card.astro';
 import Layout from '@/layouts/main.astro';
+import { apiFetch } from '@/lib/services/fetch.service';
 const session = await Astro.locals.auth.validate();
 const userId = session?.user?.id || Astro.cookies.get('guest_id')?.value!;
 let userType: 'signed-in' | 'guest' = 'signed-in';
@@ -14,7 +15,7 @@ url.searchParams.set('userId', userId);
 url.searchParams.set('entityStatus', 'WATCHING');
 url.searchParams.set('entityType', 'ANIME');
 
-const animesReq = await fetch(url, {
+const animesReq = await apiFetch(url, {
   method: 'GET',
   headers: {
     Accept: 'application/json',

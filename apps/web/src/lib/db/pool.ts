@@ -7,3 +7,4 @@ export const pool = new Pool({
   connectionString: import.meta.env.DATABASE_URL,
 });
 export const db = drizzle(pool, { schema });
+export type DBSchema = typeof schema;
