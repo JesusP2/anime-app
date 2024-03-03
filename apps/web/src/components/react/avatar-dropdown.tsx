@@ -1,5 +1,5 @@
 import { As } from '@kobalte/core';
-import { Avatar } from '@repo/ion'
+import { Avatar } from '@repo/ion/Avatar'
 
 export function AvatarDropdown(props: {
   src: string;
