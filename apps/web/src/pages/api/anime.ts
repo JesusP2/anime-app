@@ -38,22 +38,6 @@ export const POST: APIRoute = async (context) => {
   }
   const userId = payload.data.userId;
 
-  // console.log(session?.userId, cookie.guest_id, payload.data.userId, session?.user.role)
-  // let userId: string;
-  // if (payload.data.userType === 'guest' && cookie.guest_id) {
-  //   userId = cookie.guest_id;
-  // } else if (
-  //   session?.userId !== payload.data.userId &&
-  //   cookie.guest_id !== payload.data.userId &&
-  //   session?.user.role !== 'ADMINISTRATOR'
-  // ) {
-  //   return json({ message: 'Unauthorized' }, { status: 401 });
-  // } else if (payload.data.userType === 'signed-in' && session) {
-  //   userId = session.userId;
-  // } else {
-  //   return json({ message: 'Unauthorized' }, { status: 401 });
-  // }
-
   let isEntityStoredInDb: boolean;
   if (payload.data.entity === 'ANIME') {
     isEntityStoredInDb = !!(
