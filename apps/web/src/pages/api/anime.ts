@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { db } from '@/lib/db/pool';
+import { db } from '../../lib/db/pool';
 import {
   anime,
   entityActionsTracker,
@@ -12,7 +12,7 @@ import { animeSchema } from '@/lib/schemas/anime';
 import { randomUUID } from 'crypto';
 import { entityStatus, json } from '@/lib/utils';
 import { fetchEntityByMalId } from '@/lib/jikan';
-import { getUserEntities } from '@/lib/db/queries';
+import { userTrackedEntityRepository } from '@/lib/db/repositories/user-tracked-entity.repository';
 import { parseCookie } from 'lucia/utils';
 import type { mangaSchema } from '@/lib/schemas/manga';
 import { postSchema } from '@/lib/schemas/generic';
@@ -73,9 +73,9 @@ export const POST: APIRoute = async (context) => {
     )[0];
   }
 
-  let entityFetched: typeof payload.data.entity extends 'ANIME'
-    ? z.infer<typeof animeSchema>
-    : z.infer<typeof mangaSchema>;
+  let entityFetched: typeof payload.data.entity extends 'ANIME' ?
+    z.infer<typeof animeSchema>
+  : z.infer<typeof mangaSchema>;
   if (!isEntityStoredInDb) {
     const _entityFetched = await fetchEntityByMalId(
       payload.data.entity,
@@ -87,10 +87,11 @@ export const POST: APIRoute = async (context) => {
         { status: 500 },
       );
     }
-    entityFetched =
-      _entityFetched.data as typeof payload.data.entity extends 'ANIME'
-        ? z.infer<typeof animeSchema>
-        : z.infer<typeof mangaSchema>;
+    entityFetched = _entityFetched.data as typeof payload.data.entity extends (
+      'ANIME'
+    ) ?
+      z.infer<typeof animeSchema>
+    : z.infer<typeof mangaSchema>;
   }
 
   const isUserTrackingEntity = !!(
@@ -104,6 +105,13 @@ export const POST: APIRoute = async (context) => {
         ),
       )
   )[0];
+  // await userTrackedEntityRepository.create({
+  //   payload: payload.data,
+  //   isUserTrackingEntity,
+  //   entityFetched,
+  //   userId,
+  //   isEntityStoredInDb,
+  // });
   await db.transaction(async (tx) => {
     const trackedEntityId = randomUUID();
     if (!isUserTrackingEntity) {
@@ -154,10 +162,10 @@ export const GET: APIRoute = async (context) => {
   }
 
   return json(
-    await getUserEntities(
-      payload.data.userId,
-      payload.data.entityType,
-      payload.data.entityStatus,
-    ),
+    await userTrackedEntityRepository.findEntities({
+      userId: payload.data.userId,
+      entityType: payload.data.entityType,
+      status: payload.data.entityStatus,
+    }),
   );
 };

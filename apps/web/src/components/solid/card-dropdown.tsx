@@ -13,9 +13,10 @@ import {
 import type { z } from 'zod';
 import type { postSchema } from '@/lib/schemas/generic';
 import type { JSX } from 'solid-js';
+import { apiFetch } from '@/lib/services/fetch.service';
 
 async function updateEntityClassification(data: z.infer<typeof postSchema>) {
-  await fetch(`/api/anime`, {
+  await apiFetch(`/api/anime`, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
