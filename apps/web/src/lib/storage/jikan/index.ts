@@ -5,14 +5,14 @@ import { HttpError } from '@/lib/utils';
 import { apiFetch } from '@/lib/utils/fetch';
 import type { z } from 'zod';
 
-class JikanStorage<T extends Record<string, unknown>> {
+export class JikanStorage<T extends Record<string, unknown>> {
   constructor(
     private schema: z.ZodObject<z.ZodRawShape, 'strip', z.ZodTypeAny, T, T>,
     private entity: 'anime' | 'manga',
     private baseUrl: string,
   ) {}
 
-  async findById(id: number): Promise<ErrorResponse | SuccessResponse<T>> {
+  async findById(id: string): Promise<ErrorResponse | SuccessResponse<T>> {
     const url = `${this.baseUrl}/${this.entity}/${id}`;
     const result = await apiFetch(url);
     if (!result.success) {
