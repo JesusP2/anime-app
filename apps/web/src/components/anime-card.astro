@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import type { Anime } from '@/lib/schemas/anime';
+import type { Anime } from '@/lib/types';
 import Icon from 'astro-icon';
 import { idxToMonth } from '@/lib/utils';
 import { EntityClassificationDropdown } from './solid/card-dropdown';
@@ -21,7 +21,7 @@ const { anime, entityId, userId, userType } = Astro.props;
     <Image
       loading="lazy"
       class="duration-200 group-hover:scale-110 object-cover"
-      src={anime.images.jpg.large_image_url || ''}
+      src={anime.images?.jpg?.large_image_url || ''}
       width={290}
       height={50}
       alt="Shoes"
@@ -70,10 +70,10 @@ const { anime, entityId, userId, userType } = Astro.props;
   </div>
   <div class="px-6 pb-8 text-black">
     <h3
-      title={anime.titles[0]?.title || ''}
+      title={anime.titles?.[0]?.title || ''}
       class="font-inter text-lg mt-3 mb-5 truncate"
     >
-      {anime.titles[0]?.title || ''}
+      {anime.titles?.[0]?.title || ''}
     </h3>
     <p class="text-clip mb-3 h-[100px]">{anime.synopsis}</p>
     <div class="flex items-center justify-between">
