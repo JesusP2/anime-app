@@ -11,11 +11,16 @@ import {
   DropdownMenuGroup,
 } from './ui/dropdown-menu';
 import type { z } from 'zod';
-import type { postSchema } from '@/lib/schemas/generic';
+import type { postSchema } from '@/lib/schemas';
 import type { JSX } from 'solid-js';
-import { apiFetch } from '@/lib/services/fetch.service';
+import { apiFetch } from '@/lib/utils/fetch';
 
-async function updateEntityClassification(data: z.infer<typeof postSchema>) {
+type Data<T> = {
+  [k in keyof T]: T[k] | undefined;
+};
+async function updateEntityClassification(
+  data: Data<z.infer<typeof postSchema>>,
+) {
   await apiFetch(`/api/anime`, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -26,8 +31,8 @@ async function updateEntityClassification(data: z.infer<typeof postSchema>) {
   });
 }
 export function EntityClassificationDropdown(props: {
-  data: Omit<z.infer<typeof postSchema>, 'entityStatus'>;
-  entityId?: string;
+  data: Data<Omit<z.infer<typeof postSchema>, 'entityStatus'>>;
+  entityId: string | undefined;
 }) {
   return (
     <div class="flex-col">
@@ -93,17 +98,21 @@ export function EntityClassificationDropdown(props: {
               On hold
             </DropdownMenuItem>
           </DropdownMenuGroup>
-          {props.entityId ? (
+          {props.entityId ?
             <>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 as={() => (
-                  <a href={`/me/${props.data.entity}/${props.entityId}`} class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-zinc-100">View your stats</a>
+                  <a
+                    href={`/me/${props.data.entity}/${props.entityId}`}
+                    class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-zinc-100"
+                  >
+                    View your stats
+                  </a>
                 )}
-              >
-              </DropdownMenuItem>
+              ></DropdownMenuItem>
             </>
-          ) : null}
+          : null}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
