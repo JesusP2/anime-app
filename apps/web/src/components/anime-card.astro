@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import type { Anime } from '@/lib/schemas/anime';
+import Icon from 'astro-icon';
+import { idxToMonth } from '@/lib/utils';
+import { EntityClassificationDropdown } from './solid/card-dropdown';
+interface Props {
+  entityId?: string;
+  anime: Anime;
+  userId: string;
+  userType: 'signed-in' | 'guest';
+}
+
+const { anime, entityId, userId, userType } = Astro.props;
+---
+
+<div
+  class="group w-72 mx-auto overflow-hidden rounded-md duration-300 shadow-lg hover:shadow-2xl my-4"
+>
+  <div class="h-40 overflow-hidden">
+    <Image
+      loading="lazy"
+      class="duration-200 group-hover:scale-110 object-cover"
+      src={anime.images.jpg.large_image_url || ''}
+      width={290}
+      height={50}
+      alt="Shoes"
+    />
+  </div>
+  <div class="flex gap-x-2 mx-6 mt-4 mb-3">
+    <div
+      class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]"
+    >
+      {
+        anime.aired?.prop?.from?.month &&
+        idxToMonth[anime.aired?.prop?.from?.month - 1] ? (
+          <>
+            {idxToMonth[anime.aired.prop.from.month - 1]!.at(0) +
+              idxToMonth[anime.aired.prop.from.month - 1]!.toLowerCase().slice(
+                1,
+              )}
+            &nbsp;
+            {anime.aired.prop.from.day},&nbsp;{anime.aired.prop.from.year}
+          </>
+        ) : (
+          'N/A'
+        )
+      }
+    </div>
+    {
+      anime.type === 'TV' ? (
+        anime.episodes ? (
+          <div class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]">
+            <div>
+              <span class="font-semibold">Episodes:&nbsp;</span>{' '}
+              {anime.episodes}
+            </div>
+          </div>
+        ) : (
+          <div class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]">
+            <div>Airing</div>
+          </div>
+        )
+      ) : anime.type ? (
+        <div class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]">
+          {anime.type}
+        </div>
+      ) : null
+    }
+  </div>
+  <div class="px-6 pb-8 text-black">
+    <h3
+      title={anime.titles[0]?.title || ''}
+      class="font-inter text-lg mt-3 mb-5 truncate"
+    >
+      {anime.titles[0]?.title || ''}
+    </h3>
+    <p class="text-clip mb-3 h-[100px]">{anime.synopsis}</p>
+    <div class="flex items-center justify-between">
+      <button
+        class="text-blue-500 font-medium flex gap-x-1 items-center text-sm hover:bg-neutral-50 hover:text-blue-600 px-3 py-2 rounded-md relative right-3"
+      >
+        Read more
+        <Icon
+          pack="ri"
+          name="arrow-right-line"
+          class="w-4 relative top-[1px]"
+        />
+      </button>
+      <EntityClassificationDropdown
+        client:load
+        entityId={entityId}
+        data={{
+          entity: 'ANIME',
+          malId: anime.mal_id,
+          userId,
+          userType,
+        }}
+      />
+    </div>
+  </div>
+</div>
