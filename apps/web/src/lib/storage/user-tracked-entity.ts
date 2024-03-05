@@ -58,7 +58,7 @@ class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
         .from(dbEntity)
         .where(eq(dbEntity.mal_id, payload.malId))
     )[0];
-    const entity = isEntityStoredInDB ? null : undefined;
+    const entity = isEntityStoredInDB ? null : dbEntity;
 
     await this.db.transaction(async (tx) => {
       const trackedEntityId = randomUUID();
