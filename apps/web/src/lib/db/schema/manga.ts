@@ -1,4 +1,3 @@
-import { sql } from 'drizzle-orm';
 import {
   timestamp,
   pgTable,
@@ -9,35 +8,48 @@ import {
   json,
   numeric,
 } from 'drizzle-orm/pg-core';
+import { createId } from '@paralleldrive/cuid2';
 
 export const manga = pgTable('manga', {
   id: varchar('id', {
     length: 255,
   })
     .primaryKey()
-    .default(sql`gen_random_uuid()`),
+    .$defaultFn(createId),
   mal_id: integer('mal_id'),
-  url: text('url'),
+  url: varchar('url', {
+    length: 255,
+  }),
   images: json('images'),
-  image_url: text('image_url'),
   approved: boolean('approved'),
   titles: json('titles'),
-  type: varchar('type', { length: 255 }),
+  title_synonyms: json('title_synonyms'),
+  type: varchar('type', {
+    length: 255,
+  }),
   chapters: integer('chapters'),
   volumes: integer('volumes'),
-  status: varchar('status', { length: 255 }),
+  status: varchar('status', {
+    length: 255,
+  }),
+  publishing: boolean('publishing'),
+  published: json('published'),
   score: numeric('score'),
   scored_by: integer('scored_by'),
+  rank: integer('rank'),
+  popularity: integer('popularity'),
   members: integer('members'),
-  favorites: integer('rank'),
+  favorites: integer('favorites'),
   synopsis: text('synopsis'),
   background: text('background'),
-  authors: json('authors').notNull(),
-  serializations: json('serializations').notNull(),
-  genres: json('genres').notNull(),
-  explicit_genres: json('explicit_genres').notNull(),
-  themes: json('themes').notNull(),
-  demographics: json('demographics').notNull(),
+  authors: json('authors'),
+  serializations: json('serializations'),
+  genres: json('genres'),
+  explicit_genres: json('explicit_genres'),
+  themes: json('themes'),
+  demographics: json('demographics'),
+  relations: json('relations'),
+  external: json('external'),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
