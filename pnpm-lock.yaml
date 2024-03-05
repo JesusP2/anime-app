@@ -89,6 +89,12 @@ importers:
       lucia:
         specifier: ^2.7.1
         version: 2.7.7
+      openapi-fetch:
+        specifier: ^0.9.2
+        version: 0.9.2
+      p-memoize:
+        specifier: ^7.1.1
+        version: 7.1.1
       pg:
         specifier: ^8.11.3
         version: 8.11.3
@@ -7373,6 +7379,16 @@ packages:
       mimic-fn: 4.0.0
     dev: false
 
+  /openapi-fetch@0.9.2:
+    resolution: {integrity: sha512-EEzVCoGAbGP1Z3eTZXI0urHtvb+JRKLnPbnemsUzeTWcHCaAXsdhAWYfdLAx4fTNNUaL23BQLup8dQjMMkCRqA==}
+    dependencies:
+      openapi-typescript-helpers: 0.0.7
+    dev: false
+
+  /openapi-typescript-helpers@0.0.7:
+    resolution: {integrity: sha512-7nwlAtdA1fULipibFRBWE/rnF114q6ejRYzNvhdA/x+qTWAZhXGLc/368dlwMlyJDvCQMCnADjpzb5BS5ZmNSA==}
+    dev: false
+
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
@@ -7486,6 +7502,14 @@ packages:
     dependencies:
       aggregate-error: 3.1.0
     dev: true
+
+  /p-memoize@7.1.1:
+    resolution: {integrity: sha512-DZ/bONJILHkQ721hSr/E9wMz5Am/OTJ9P6LhLFo2Tu+jL8044tgc9LwHO8g4PiaYePnlVVRAJcKmgy8J9MVFrA==}
+    engines: {node: '>=14.16'}
+    dependencies:
+      mimic-fn: 4.0.0
+      type-fest: 3.13.1
+    dev: false
 
   /p-queue@8.0.1:
     resolution: {integrity: sha512-NXzu9aQJTAzbBqOt2hwsR63ea7yvxJc0PwN/zobNAudYfb1B7R08SzB4TsLeSbUCuG467NhnoT0oO6w1qRO+BA==}
@@ -9334,6 +9358,11 @@ packages:
   /type-fest@2.19.0:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
+    dev: false
+
+  /type-fest@3.13.1:
+    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /type@1.2.0:
