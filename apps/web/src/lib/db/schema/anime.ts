@@ -65,6 +65,6 @@ export const anime2 = pgTable('anime', {
   theme: json('theme'),
   external: json('external'),
   streaming: json('streaming'),
-  created_at: timestamp('created_at'),
-  updated_at: timestamp('updated_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
 });
