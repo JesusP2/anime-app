@@ -5,85 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1691902580087,
-      "tag": "0000_lovely_psynapse",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1691906055938,
-      "tag": "0001_chunky_frightful_four",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1693103381122,
-      "tag": "0002_boring_karnak",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1693118312049,
-      "tag": "0003_purple_major_mapleleaf",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1693178593866,
-      "tag": "0004_safe_hellion",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1697341647981,
-      "tag": "0005_omniscient_proteus",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1697341724901,
-      "tag": "0006_charming_master_mold",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "5",
-      "when": 1697343411982,
-      "tag": "0007_demonic_trauma",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "5",
-      "when": 1697348980883,
-      "tag": "0008_acoustic_centennial",
-      "breakpoints": true
-    },
-    {
-      "idx": 9,
-      "version": "5",
-      "when": 1697350053790,
-      "tag": "0009_busy_romulus",
-      "breakpoints": true
-    },
-    {
-      "idx": 10,
-      "version": "5",
-      "when": 1707635227279,
-      "tag": "0010_sticky_carmella_unuscione",
-      "breakpoints": true
-    },
-    {
-      "idx": 11,
-      "version": "5",
-      "when": 1709616308021,
-      "tag": "0011_robust_speed",
+      "when": 1709617335597,
+      "tag": "0000_smooth_miracleman",
       "breakpoints": true
     }
   ]
