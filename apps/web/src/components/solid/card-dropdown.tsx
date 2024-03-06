@@ -11,7 +11,7 @@ import {
   DropdownMenuGroup,
 } from './ui/dropdown-menu';
 import type { z } from 'zod';
-import type { postSchema } from '@/lib/schemas';
+import { postSchema } from '@/lib/schemas';
 import type { JSX } from 'solid-js';
 import { apiFetch } from '@/lib/utils/fetch';
 

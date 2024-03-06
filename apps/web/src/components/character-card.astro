@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
-import type { Character } from '@/lib/schemas/character';
+import type { Character } from '@/lib/types';
 interface Props {
   character: Character;
 }
@@ -15,7 +15,7 @@ const { character } = Astro.props;
   <div class="h-40 overflow-hidden">
     <Image
       class="duration-200 group-hover:scale-110 object-cover"
-      src={character.images.jpg.image_url || ''}
+      src={character.images?.jpg?.image_url || ''}
       width={290}
       height={50}
       alt="Shoes"

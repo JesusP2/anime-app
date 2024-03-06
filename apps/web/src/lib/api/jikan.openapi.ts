@@ -280,14 +280,14 @@ export interface paths {
      * @deprecated
      * @description User Anime lists have been discontinued since May 1st, 2022. <a href='https://docs.google.com/document/d/1-6H-agSnqa8Mfmw802UYfGQrceIEnAaEh4uCXAPiX5A'>Read more</a>
      */
-    get: operations["getUserAnimelist"];
+    // get: operations["getUserAnimelist"];
   };
   "/users/{username}/mangalist": {
     /**
      * @deprecated
      * @description User Manga lists have been discontinued since May 1st, 2022. <a href='https://docs.google.com/document/d/1-6H-agSnqa8Mfmw802UYfGQrceIEnAaEh4uCXAPiX5A'>Read more</a>
      */
-    get: operations["getUserMangaList"];
+    // get: operations["getUserMangaList"];
   };
   "/users/{username}/reviews": {
     get: operations["getUserReviews"];
@@ -3555,7 +3555,6 @@ export interface operations {
         /** @description When supplied, it will filter entries with the `Kids` Genre Demographic. When supplied as `kids=true`, it will return only Kid entries and when supplied as `kids=false`, it will filter out any Kid entries. Defaults to `false`. */
         kids?: "true" | "false";
         /** @description 'Safe For Work'. When supplied, it will filter entries with the `Hentai` Genre. When supplied as `sfw=true`, it will return only SFW entries and when supplied as `sfw=false`, it will filter out any Hentai entries. Defaults to `false`. */
-        sfw?: "true" | "false";
         sfw?: components["parameters"]["sfw"];
         unapproved?: components["parameters"]["unapproved"];
         limit?: components["parameters"]["limit"];
@@ -3591,7 +3590,6 @@ export interface operations {
         status?: components["schemas"]["anime_search_query_status"];
         rating?: components["schemas"]["anime_search_query_rating"];
         /** @description Filter out Adult entries */
-        sfw?: boolean;
         /** @description Filter by genre(s) IDs. Can pass multiple with a comma as a delimiter. e.g 1,2,3 */
         genres?: string;
         /** @description Exclude genre(s) IDs. Can pass multiple with a comma as a delimiter. e.g 1,2,3 */
@@ -3637,7 +3635,6 @@ export interface operations {
         max_score?: number;
         status?: components["schemas"]["manga_search_query_status"];
         /** @description Filter out Adult entries */
-        sfw?: boolean;
         /** @description Filter by genre(s) IDs. Can pass multiple with a comma as a delimiter. e.g 1,2,3 */
         genres?: string;
         /** @description Exclude genre(s) IDs. Can pass multiple with a comma as a delimiter. e.g 1,2,3 */
