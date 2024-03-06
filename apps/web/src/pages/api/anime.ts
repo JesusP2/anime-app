@@ -8,14 +8,13 @@ import {
 } from '@/lib/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
-import { animeSchema } from '@/lib/schemas/anime';
 import { randomUUID } from 'crypto';
 import { entityStatus, json } from '@/lib/utils';
 import { fetchEntityByMalId } from '@/lib/jikan';
 import { userTrackedEntityRepository } from '@/lib/db/repositories/user-tracked-entity.repository';
 import { parseCookie } from 'lucia/utils';
-import type { mangaSchema } from '@/lib/schemas/manga';
-import { postSchema } from '@/lib/schemas/generic';
+import type { MangaFull, AnimeFull } from '@/lib/types';
+import { postSchema } from '@/lib/schemas';
 
 /**
  * @description
@@ -58,8 +57,8 @@ export const POST: APIRoute = async (context) => {
   }
 
   let entityFetched: typeof payload.data.entity extends 'ANIME' ?
-    z.infer<typeof animeSchema>
-  : z.infer<typeof mangaSchema>;
+   AnimeFull 
+  : MangaFull;
   if (!isEntityStoredInDb) {
     const _entityFetched = await fetchEntityByMalId(
       payload.data.entity,
@@ -74,8 +73,8 @@ export const POST: APIRoute = async (context) => {
     entityFetched = _entityFetched.data as typeof payload.data.entity extends (
       'ANIME'
     ) ?
-      z.infer<typeof animeSchema>
-    : z.infer<typeof mangaSchema>;
+      AnimeFull
+    : MangaFull;
   }
 
   const isUserTrackingEntity = !!(

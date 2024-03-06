@@ -1,8 +1,9 @@
 ---
 import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
-import { animePageSchema } from '@/lib/schemas/anime';
+import type { Pagination as IPagination, Anime } from '@/lib/types';
 import Pagination from '@/components/pagination.astro';
+import { apiFetch } from '@/lib/utils/fetch';
 
 const url = new URL(Astro.request.url);
 const _page = url.searchParams.get('page') || '1';
@@ -10,7 +11,7 @@ const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
 
 const api_url = new URL(import.meta.env.ANIME_API + '/seasons/now');
 api_url.searchParams.set('page', page.toString() ?? '1');
-const result = animePageSchema.safeParse(await (await fetch(api_url)).json());
+const result = await apiFetch<{ data: Anime[]; pagination: IPagination }>(api_url);
 if (!result.success) {
   console.error(result.error)
   return Astro.redirect('/404');
@@ -24,7 +25,7 @@ if (!result.success) {
   <div class="text-black flex justify-center mt-10">
     <Pagination
       value={page}
-      count={result.data.pagination.last_visible_page}
+      count={result.data.pagination.last_visible_page || 0}
       url={url}
     />
   </div>

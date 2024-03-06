@@ -10,7 +10,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { createId } from '@paralleldrive/cuid2';
 
-export const anime2 = pgTable('anime', {
+export const anime = pgTable('anime', {
   id: varchar('id', {
     length: 255,
   })

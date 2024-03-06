@@ -2,18 +2,13 @@
 import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
 import Pagination from '@/components/pagination.astro';
-import AnimeFilter from '@/components/anime-filter.astro';
-import { animePageSchema, type Anime } from '@/lib/schemas/anime';
-import { mangaSchema, type Manga } from '@/lib/schemas/manga';
-import { characterSchema, type Character } from '@/lib/schemas/character';
+import type { Anime, Manga, Character, Pagination as IPagination } from '@/lib/types';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
-import { z } from 'zod';
-import { paginationSchema } from '@/lib/schemas/pagination';
+import { apiFetch } from '@/lib/utils/fetch';
 
-let errorType: string;
 let data: {
   data: (Anime | Manga | Character)[];
-  pagination: z.infer<typeof paginationSchema>;
+  pagination: IPagination;
 } = {
   data: [],
   pagination: {
@@ -30,11 +25,13 @@ let data: {
 const url = new URL(Astro.request.url);
 const animeApiUrl = createAnimeApiUrl(url);
 
-const res = await fetch(animeApiUrl);
-if (!res.ok) {
-  errorType = res.statusText;
+let errorType: string;
+const result = await apiFetch(animeApiUrl);
+if (!result.success) {
+  errorType = result.error?.message
+  console.error(errorType)
 } else {
-  data = await res.json();
+  data = await result.data;
 }
 
 // const search = url.searchParams.get('search');
@@ -74,7 +71,7 @@ if (!res.ok) {
   <div class="text-black flex justify-center mt-10">
     <Pagination
       value={data.pagination.current_page}
-      count={data.pagination.last_visible_page}
+      count={data.pagination.last_visible_page || 0}
       url={url}
     />
   </div>
