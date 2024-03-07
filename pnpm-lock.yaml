@@ -147,6 +147,9 @@ importers:
       tsx:
         specifier: ^4.7.1
         version: 4.7.1
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
 
   packages/eslint-config-custom:
     dependencies:

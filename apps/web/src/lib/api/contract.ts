@@ -7,4 +7,9 @@ export interface ApiContract {
   ) => Promise<
     ErrorResponse | SuccessResponse<components['schemas']['anime_full']>
   >;
+  findMangaById: (
+    id: number,
+  ) => Promise<
+    ErrorResponse | SuccessResponse<components['schemas']['manga_full']>
+  >;
 }

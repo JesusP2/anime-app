@@ -35,6 +35,9 @@ export const manga = pgTable('manga', {
   publishing: boolean('publishing'),
   published: json('published'),
   score: numeric('score'),
+  // score: varchar('score', {
+  //   length: 20,
+  // }),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),
