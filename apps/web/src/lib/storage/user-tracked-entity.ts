@@ -1,10 +1,22 @@
 import { eq, and } from 'drizzle-orm';
 import { db, type DBSchema } from '../db/pool';
 import type { entityStatus } from '../utils';
-import { anime, manga, trackedEntity, entityActionsTracker } from '../db/schema';
+import {
+  anime,
+  manga,
+  trackedEntity,
+  entityActionsTracker,
+} from '../db/schema';
 import { randomUUID } from 'crypto';
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
+import { Api } from '../api';
+import { DBApi } from '../api/db';
+import { Cache } from '../api/cache';
+import { client } from '../api/jikan.client';
 
+const dbApi = new DBApi(db);
+const cache = new Cache(dbApi);
+const api = new Api(cache, dbApi, client);
 class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
   constructor(private db: T) {}
 
@@ -58,7 +70,10 @@ class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
         .from(dbEntity)
         .where(eq(dbEntity.mal_id, payload.malId))
     )[0];
-    const entity = isEntityStoredInDB ? null : dbEntity;
+    const entity =
+      isEntityStoredInDB ? null
+      : payload.entity === 'ANIME' ? await api.findAnimeById(payload.malId)
+      : await api.findMangaById(payload.malId);
 
     await this.db.transaction(async (tx) => {
       const trackedEntityId = randomUUID();
