@@ -41,7 +41,9 @@ export const anime = pgTable('anime', {
   rating: varchar('rating', {
     length: 255,
   }),
-  score: numeric('score'),
+  score: varchar('score', {
+    length: 20,
+  }),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),

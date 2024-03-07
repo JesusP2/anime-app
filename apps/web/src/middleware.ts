@@ -1,8 +1,8 @@
 import { auth } from './lib/db/lucia';
 
-import type { MiddlewareResponseHandler } from 'astro';
+import type { MiddlewareHandler } from 'astro';
 
-export const onRequest: MiddlewareResponseHandler = async (context, next) => {
+export const onRequest: MiddlewareHandler = async (context, next) => {
   try {
     context.locals.auth = auth.handleRequest(context);
   } catch (err) {
