@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import type { Anime } from '@/lib/types';
+import type { Anime, UserType } from '@/lib/types';
 import Icon from 'astro-icon';
 import { idxToMonth } from '@/lib/utils';
 import { EntityClassificationDropdown } from './solid/card-dropdown';
@@ -8,7 +8,7 @@ interface Props {
   entityId?: string;
   anime: Anime;
   userId: string;
-  userType: 'signed-in' | 'guest';
+  userType: UserType;
 }
 
 const { anime, entityId, userId, userType } = Astro.props;
@@ -91,7 +91,7 @@ const { anime, entityId, userId, userType } = Astro.props;
         client:load
         entityId={entityId}
         data={{
-          entity: 'ANIME',
+          entityType: 'ANIME',
           malId: anime.mal_id,
           userId,
           userType,
