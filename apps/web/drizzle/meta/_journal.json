@@ -8,6 +8,13 @@
       "when": 1709617335597,
       "tag": "0000_smooth_miracleman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709953693090,
+      "tag": "0001_cloudy_patriot",
+      "breakpoints": true
     }
   ]
 }
