@@ -1,6 +1,5 @@
 import { createId } from '@paralleldrive/cuid2';
 import {
-  pgTable,
   bigint,
   varchar,
   uniqueIndex,
@@ -8,6 +7,7 @@ import {
   timestamp,
   pgEnum,
 } from 'drizzle-orm/pg-core';
+import { pgTable } from './table'
 export * from './anime';
 export * from './manga';
 

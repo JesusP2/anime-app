@@ -1,19 +1,18 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "36123feb-4d9f-408d-bda9-ccc888703c49",
+  "id": "f13dbc95-c584-49af-8d6a-93b0b406ed77",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "entity_actions_tracker": {
-      "name": "entity_actions_tracker",
+    "anime_entity_actions_tracker": {
+      "name": "anime_entity_actions_tracker",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(255)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "tracked_entity_id": {
           "name": "tracked_entity_id",
@@ -54,8 +53,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_key": {
-      "name": "user_key",
+    "anime_user_key": {
+      "name": "anime_user_key",
       "schema": "",
       "columns": {
         "id": {
@@ -79,10 +78,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_key_user_id_auth_user_id_fk": {
-          "name": "user_key_user_id_auth_user_id_fk",
-          "tableFrom": "user_key",
-          "tableTo": "auth_user",
+        "anime_user_key_user_id_anime_auth_user_id_fk": {
+          "name": "anime_user_key_user_id_anime_auth_user_id_fk",
+          "tableFrom": "anime_user_key",
+          "tableTo": "anime_auth_user",
           "columnsFrom": [
             "user_id"
           ],
@@ -96,8 +95,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_session": {
-      "name": "user_session",
+    "anime_user_session": {
+      "name": "anime_user_session",
       "schema": "",
       "columns": {
         "id": {
@@ -127,10 +126,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_session_user_id_auth_user_id_fk": {
-          "name": "user_session_user_id_auth_user_id_fk",
-          "tableFrom": "user_session",
-          "tableTo": "auth_user",
+        "anime_user_session_user_id_anime_auth_user_id_fk": {
+          "name": "anime_user_session_user_id_anime_auth_user_id_fk",
+          "tableFrom": "anime_user_session",
+          "tableTo": "anime_auth_user",
           "columnsFrom": [
             "user_id"
           ],
@@ -144,16 +143,15 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "tracked_entity": {
-      "name": "tracked_entity",
+    "anime_tracked_entity": {
+      "name": "anime_tracked_entity",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(255)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "user_id": {
           "name": "user_id",
@@ -205,8 +203,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "auth_user": {
-      "name": "auth_user",
+    "anime_auth_user": {
+      "name": "anime_auth_user",
       "schema": "",
       "columns": {
         "id": {
@@ -259,8 +257,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "auth_user_email_unique": {
-          "name": "auth_user_email_unique",
+        "anime_auth_user_email_unique": {
+          "name": "anime_auth_user_email_unique",
           "nullsNotDistinct": false,
           "columns": [
             "email"
@@ -268,8 +266,8 @@
         }
       }
     },
-    "anime": {
-      "name": "anime",
+    "anime_anime": {
+      "name": "anime_anime",
       "schema": "",
       "columns": {
         "id": {
@@ -364,7 +362,7 @@
         },
         "score": {
           "name": "score",
-          "type": "numeric",
+          "type": "varchar(20)",
           "primaryKey": false,
           "notNull": false
         },
@@ -498,13 +496,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -512,16 +512,15 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "manga": {
-      "name": "manga",
+    "anime_manga": {
+      "name": "anime_manga",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "varchar(255)",
           "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "mal_id": {
           "name": "mal_id",
@@ -531,19 +530,13 @@
         },
         "url": {
           "name": "url",
-          "type": "text",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
         },
         "images": {
           "name": "images",
           "type": "json",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "image_url": {
-          "name": "image_url",
-          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -555,6 +548,12 @@
         },
         "titles": {
           "name": "titles",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title_synonyms": {
+          "name": "title_synonyms",
           "type": "json",
           "primaryKey": false,
           "notNull": false
@@ -583,6 +582,18 @@
           "primaryKey": false,
           "notNull": false
         },
+        "publishing": {
+          "name": "publishing",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "published": {
+          "name": "published",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
         "score": {
           "name": "score",
           "type": "numeric",
@@ -595,14 +606,26 @@
           "primaryKey": false,
           "notNull": false
         },
+        "rank": {
+          "name": "rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "popularity": {
+          "name": "popularity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
         "members": {
           "name": "members",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "rank": {
-          "name": "rank",
+        "favorites": {
+          "name": "favorites",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -623,37 +646,49 @@
           "name": "authors",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "serializations": {
           "name": "serializations",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "genres": {
           "name": "genres",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "explicit_genres": {
           "name": "explicit_genres",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "themes": {
           "name": "themes",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "demographics": {
           "name": "demographics",
           "type": "json",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
+        },
+        "relations": {
+          "name": "relations",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "external": {
+          "name": "external",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
         },
         "created_at": {
           "name": "created_at",
