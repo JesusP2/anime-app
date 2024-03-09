@@ -18,7 +18,7 @@ import { apiFetch } from '@/lib/utils/fetch';
 type Data<T> = {
   [k in keyof T]: T[k] | undefined;
 };
-async function updateEntityClassification(
+async function trackEntity(
   data: Data<z.infer<typeof postSchema>>,
 ) {
   await apiFetch(`/api/anime`, {
@@ -49,7 +49,7 @@ export function EntityClassificationDropdown(props: {
             <DropdownMenuGroupLabel>Move to:</DropdownMenuGroupLabel>
             <DropdownMenuItem
               onSelect={() =>
-                updateEntityClassification({
+                trackEntity({
                   ...props.data,
                   entityStatus: 'COMPLETED',
                 })
@@ -59,7 +59,7 @@ export function EntityClassificationDropdown(props: {
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() =>
-                updateEntityClassification({
+                trackEntity({
                   ...props.data,
                   entityStatus: 'WATCHING',
                 })
@@ -69,7 +69,7 @@ export function EntityClassificationDropdown(props: {
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() =>
-                updateEntityClassification({
+                trackEntity({
                   ...props.data,
                   entityStatus: 'PLANNING',
                 })
@@ -79,7 +79,7 @@ export function EntityClassificationDropdown(props: {
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() =>
-                updateEntityClassification({
+                trackEntity({
                   ...props.data,
                   entityStatus: 'DROPPED',
                 })
@@ -89,7 +89,7 @@ export function EntityClassificationDropdown(props: {
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() =>
-                updateEntityClassification({
+                trackEntity({
                   ...props.data,
                   entityStatus: 'ON_HOLD',
                 })
@@ -104,7 +104,7 @@ export function EntityClassificationDropdown(props: {
               <DropdownMenuItem
                 as={() => (
                   <a
-                    href={`/me/${props.data.entity}/${props.entityId}`}
+                    href={`/me/${props.data.entityType}/${props.entityId}`}
                     class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-zinc-100"
                   >
                     View your stats

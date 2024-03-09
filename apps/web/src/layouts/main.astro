@@ -6,7 +6,6 @@ import Tab from '@/components/tab.astro';
 import { Dropdown } from '@/components/solid/mangas-dropdown';
 import { AvatarDropdown } from '@/components/solid/avatar-dropdown';
 import { SearchBar } from '@/components/solid/search-bar';
-import crypto from 'node:crypto'
 
 export interface Props {
   title: string;
@@ -14,11 +13,6 @@ export interface Props {
 
 const { title } = Astro.props;
 const session = await Astro.locals.auth.validate();
-if (!session && !Astro.cookies.has('guest_id')) {
-  Astro.cookies.set('guest_id', crypto.randomBytes(32).toString('hex'), {
-    expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
-  });
-}
 ---
 
 <!doctype html>
@@ -42,13 +36,13 @@ if (!session && !Astro.cookies.has('guest_id')) {
             <li>
               <Tab href="/">
                 <Icon pack="ph" name="house-light" class="w-6" />
-                 Home
+                Home
               </Tab>
             </li>
             <li>
               <Tab href="/current-season">
                 <Icon pack="ph" name="calendar-blank" class="w-6" />
-                 Current season
+                Current season
               </Tab>
             </li>
             <li>
@@ -64,14 +58,17 @@ if (!session && !Astro.cookies.has('guest_id')) {
                     d="M1 3h16v2H1Zm0 6h6v2H1Zm0 6h8v2H1Zm8-4.24h3.85L14.5 7l1.65 3.76H20l-3 3.17l.9 4.05l-3.4-2.14L11.1 18l.9-4.05Z"
                   ></path>
                 </svg>
-                 Watchlist
+                Watchlist
               </Tab>
               <Dropdown
                 title="Animes"
                 list={[
                   { href: '/animes/completed', label: 'Completed' },
                   { href: '/animes/currently-watching', label: 'Watching' },
-                  { href: '/animes/planning-to-watch', label: 'Planning to watch' },
+                  {
+                    href: '/animes/planning-to-watch',
+                    label: 'Planning to watch',
+                  },
                   { href: '/animes/dropped', label: 'Dropped' },
                   { href: '/animes/on-hold', label: 'Paused' },
                 ]}
@@ -82,7 +79,10 @@ if (!session && !Astro.cookies.has('guest_id')) {
                 list={[
                   { href: '/mangas/completed', label: 'Completed' },
                   { href: '/mangas/currently-watching', label: 'Watching' },
-                  { href: '/mangas/planning-to-watch', label: 'Planning to watch' },
+                  {
+                    href: '/mangas/planning-to-watch',
+                    label: 'Planning to watch',
+                  },
                   { href: '/mangas/dropped', label: 'Dropped' },
                   { href: '/mangas/on-hold', label: 'Paused' },
                 ]}
@@ -92,8 +92,14 @@ if (!session && !Astro.cookies.has('guest_id')) {
                 title="Light Novels"
                 list={[
                   { href: '/light-novels/completed', label: 'Completed' },
-                  { href: '/light-novels/currently-watching', label: 'Watching' },
-                  { href: '/light-novels/planning-to-watch', label: 'Planning to watch' },
+                  {
+                    href: '/light-novels/currently-watching',
+                    label: 'Watching',
+                  },
+                  {
+                    href: '/light-novels/planning-to-watch',
+                    label: 'Planning to watch',
+                  },
                   { href: '/light-novels/dropped', label: 'Dropped' },
                   { href: '/light-novels/on-hold', label: 'Paused' },
                 ]}
