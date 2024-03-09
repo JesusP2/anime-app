@@ -4,6 +4,7 @@ import AnimeCard from '@/components/anime-card.astro';
 import type { Pagination as IPagination, Anime } from '@/lib/types';
 import Pagination from '@/components/pagination.astro';
 import { apiFetch } from '@/lib/utils/fetch';
+import { getOrCreateUserId } from '@/lib/utils';
 
 const url = new URL(Astro.request.url);
 const _page = url.searchParams.get('page') || '1';
@@ -11,16 +12,23 @@ const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
 
 const api_url = new URL(import.meta.env.ANIME_API + '/seasons/now');
 api_url.searchParams.set('page', page.toString() ?? '1');
-const result = await apiFetch<{ data: Anime[]; pagination: IPagination }>(api_url);
+const result = await apiFetch<{ data: Anime[]; pagination: IPagination }>(
+  api_url,
+);
 if (!result.success) {
-  console.error(result.error)
+  console.error(result.error);
   return Astro.redirect('/404');
 }
+const { userId, userType } = await getOrCreateUserId(Astro);
 ---
 
 <Layout title="Current season">
   <div class="grid auto-fill-grid">
-    {result.data.data.map((anime) => <AnimeCard anime={anime} />)}
+    {
+      result.data.data.map((anime) => (
+        <AnimeCard userType={userType} userId={userId} anime={anime} />
+      ))
+    }
   </div>
   <div class="text-black flex justify-center mt-10">
     <Pagination
