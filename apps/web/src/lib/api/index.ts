@@ -12,10 +12,14 @@ export class Api<T extends NodePgDatabase<DBSchema>> implements ApiContract {
     private db: DBApi<T>,
     private client: typeof jikanClient,
   ) {}
-
+  /**
+   * @method
+   * @name findAnimeById
+   * @description checks if the data is in the cache, if it's not, it retrieves it from the jikan api and stores it in the database
+   */
   findAnimeById: ApiContract['findAnimeById'] = async (id) => {
     if (await this.cache.has('findAnimeById', id)) {
-      return await this.db.findAnimeById(id)
+      return await this.db.findAnimeById(id);
     }
     const anime = await this.client.GET('/anime/{id}/full', {
       params: {
@@ -30,16 +34,21 @@ export class Api<T extends NodePgDatabase<DBSchema>> implements ApiContract {
         error: new HttpError(404, 'Anime not found'),
       };
     }
-    await this.db.setAnime(anime.data.data)
+    await this.db.setAnime(anime.data.data);
     return {
       success: true,
       data: anime.data.data,
     };
   };
 
+  /**
+   * @method
+   * @name findAnimeById
+   * @description checks if the data is in the cache, if it's not, it retrieves it from the jikan api and stores it in the database
+   */
   findMangaById: ApiContract['findMangaById'] = async (id) => {
     if (await this.cache.has('findMangaById', id)) {
-      return await this.db.findMangaById(id)
+      return await this.db.findMangaById(id);
     }
     const manga = await this.client.GET('/manga/{id}/full', {
       params: {
@@ -54,7 +63,7 @@ export class Api<T extends NodePgDatabase<DBSchema>> implements ApiContract {
         error: new HttpError(404, 'manga not found'),
       };
     }
-    await this.db.setManga(manga.data.data)
+    await this.db.setManga(manga.data.data);
     return {
       success: true,
       data: manga.data.data,

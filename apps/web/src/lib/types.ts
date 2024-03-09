@@ -1,6 +1,7 @@
 import type { components } from './api/jikan.openapi';
 import type { HttpError } from './utils';
 
+export type UserType = 'signed-in' | 'guest';
 export interface ErrorResponse {
   success: false;
   error: HttpError;
