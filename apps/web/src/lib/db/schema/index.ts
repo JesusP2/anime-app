@@ -1,4 +1,4 @@
-import { sql } from 'drizzle-orm';
+import { createId } from '@paralleldrive/cuid2';
 import {
   pgTable,
   bigint,
@@ -70,7 +70,7 @@ export const trackedEntity = pgTable('tracked_entity', {
     length: 255,
   })
     .primaryKey()
-    .default(sql`gen_random_uuid()`),
+    .$defaultFn(createId),
   userId: varchar('user_id', {
     length: 64,
   }).notNull(),
@@ -96,7 +96,7 @@ export const entityActionsTracker = pgTable('entity_actions_tracker', {
     length: 255,
   })
     .primaryKey()
-    .default(sql`gen_random_uuid()`),
+    .$defaultFn(createId),
   trackedEntityId: varchar('tracked_entity_id', {
     length: 255,
   }),
