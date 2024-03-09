@@ -9,7 +9,7 @@ export class Cache<T extends NodePgDatabase<DBSchema>> {
     params: Parameters<DBApi<T>[Fn]>[0],
   ) {
     const result = await this.dbApi[fn](params as any);
-    // TODO: check expiration date
+    // TODO: check expiration date too
     if (
       result &&
       (!result.success ||
@@ -21,4 +21,3 @@ export class Cache<T extends NodePgDatabase<DBSchema>> {
     return true;
   }
 }
-

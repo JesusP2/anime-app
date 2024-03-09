@@ -7,20 +7,21 @@ import {
   trackedEntity,
   entityActionsTracker,
 } from '../db/schema';
-import { randomUUID } from 'crypto';
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { Api } from '../api';
 import { DBApi } from '../api/db';
 import { Cache } from '../api/cache';
 import { client } from '../api/jikan.client';
+import { createId } from '@paralleldrive/cuid2';
+import type { UserType } from '../types';
 
 const dbApi = new DBApi(db);
 const cache = new Cache(dbApi);
 const api = new Api(cache, dbApi, client);
-class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
+class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
   constructor(private db: T) {}
 
-  findEntities({
+  findUsersEntities({
     userId,
     entityType,
     status,
@@ -43,57 +44,70 @@ class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
       .leftJoin(entitiesTable, eq(trackedEntity.malId, entitiesTable.mal_id));
   }
 
-  async create<
+  async createOrUpdateUsersEntity<
     T extends {
-      userType: 'signed-in' | 'guest';
-      entity: 'ANIME' | 'MANGA' | 'LIGHT-NOVEL';
+      userType: UserType;
+      entityType: 'ANIME' | 'MANGA' | 'LIGHT-NOVEL';
       entityStatus: string;
       malId: number;
     },
-  >({
-    payload,
-    isUserTrackingEntity,
-    entityFetched,
-    userId,
-    isEntityStoredInDb,
-  }: {
-    payload: T;
-    isUserTrackingEntity: boolean;
-    entityFetched: any;
-    userId: string;
-    isEntityStoredInDb: boolean;
-  }) {
-    const dbEntity = payload.entity === 'ANIME' ? anime : manga;
-    const isEntityStoredInDB = !!(
-      await this.db
+  >({ payload, userId }: { payload: T; userId: string }) {
+    const entityOptions = {
+      entityType: payload.entityType,
+    } as {
+      entityType: 'ANIME' | 'MANGA' | 'LIGHT-NOVEL';
+      entity: typeof anime | typeof manga;
+      verifyEntityFn: 'findAnimeById' | 'findMangaById';
+    };
+    if (payload.entityType === 'ANIME') {
+      entityOptions.entity = anime;
+      entityOptions.verifyEntityFn = 'findAnimeById';
+    } else if (payload.entityType === 'MANGA') {
+      entityOptions.entity = manga;
+      entityOptions.verifyEntityFn = 'findMangaById';
+    }
+
+    // checks if entity exists otherwise creates it
+    await api[entityOptions.verifyEntityFn](payload.malId);
+
+    const isUserTrackingEntity = !!(
+      await db
         .select()
-        .from(dbEntity)
-        .where(eq(dbEntity.mal_id, payload.malId))
+        .from(trackedEntity)
+        .where(
+          and(
+            eq(trackedEntity.userId, userId),
+            eq(trackedEntity.malId, payload.malId),
+          ),
+        )
     )[0];
-    const entity =
-      isEntityStoredInDB ? null
-      : payload.entity === 'ANIME' ? await api.findAnimeById(payload.malId)
-      : await api.findMangaById(payload.malId);
 
     await this.db.transaction(async (tx) => {
-      const trackedEntityId = randomUUID();
+      const trackedEntityId = createId();
+      // If the user is not tracking the entity, we create a new enty,
+      // otherwise we update the entity status
       if (!isUserTrackingEntity) {
         await tx.insert(trackedEntity).values({
           id: trackedEntityId,
           userId,
           userType: payload.userType,
-          entityType: payload.entity,
+          entityType: payload.entityType,
           entityStatus: payload.entityStatus,
           malId: payload.malId,
         });
       } else {
-        await tx.update(trackedEntity).set({ entityType: payload.entity });
+        await tx
+          .update(trackedEntity)
+          .set({ entityStatus: payload.entityStatus })
+          .where(
+            and(
+              eq(trackedEntity.userId, userId),
+              eq(trackedEntity.malId, payload.malId),
+            ),
+          );
       }
 
-      if (!isEntityStoredInDb) {
-        await tx.insert(anime).values(entityFetched as any);
-      }
-
+      // We store the action in the entityActionsTracker table
       await tx.insert(entityActionsTracker).values({
         trackedEntityId,
         operation: payload.entityStatus,
@@ -102,4 +116,4 @@ class UserTrackedEntity<T extends NodePgDatabase<DBSchema>> {
   }
 }
 
-export const userTrackedEntityRepository = new UserTrackedEntity(db);
+export const usersTrackedEntitiesRepository = new UsersTrackedEntities(db);

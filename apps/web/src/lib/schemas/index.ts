@@ -23,7 +23,7 @@ export const imagesSchema = z.object({
 
 export const postSchema = z.object({
   entityStatus: z.enum(entityStatus),
-  entity: z.enum(['ANIME', 'MANGA']),
+  entityType: z.enum(['ANIME', 'MANGA']),
   userType: z.enum(['signed-in', 'guest']),
   malId: z.coerce.number(),
   userId: z.string(),

@@ -14,7 +14,7 @@ export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
       const data = await this.db
         .select()
         .from(manga)
-        .where(eq(manga.id, id.toString()));
+        .where(eq(manga.mal_id, id));
       return {
         success: true,
         data: data[0] as components['schemas']['manga_full'],
@@ -34,7 +34,7 @@ export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
       const data = await this.db
         .select()
         .from(anime)
-        .where(eq(anime.id, id.toString()));
+        .where(eq(anime.mal_id, id));
       return {
         success: true,
         data: data[0] as components['schemas']['anime_full'],
