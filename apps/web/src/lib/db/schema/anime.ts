@@ -1,13 +1,12 @@
 import {
   timestamp,
-  pgTable,
   varchar,
   integer,
   text,
   boolean,
   json,
-  numeric,
 } from 'drizzle-orm/pg-core';
+import { pgTable } from './table'
 import { createId } from '@paralleldrive/cuid2';
 
 export const anime = pgTable('anime', {

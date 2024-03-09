@@ -1,6 +1,5 @@
 import {
   timestamp,
-  pgTable,
   varchar,
   integer,
   text,
@@ -8,6 +7,7 @@ import {
   json,
   numeric,
 } from 'drizzle-orm/pg-core';
+import { pgTable } from './table'
 import { createId } from '@paralleldrive/cuid2';
 
 export const manga = pgTable('manga', {
