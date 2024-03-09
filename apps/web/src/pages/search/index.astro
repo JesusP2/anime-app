@@ -7,6 +7,7 @@ import Pagination from '@/components/pagination.astro';
 import type { Anime, Manga, Character, Pagination as IPagination } from '@/lib/types';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
 import { apiFetch } from '@/lib/utils/fetch';
+import { getOrCreateUserId } from '@/lib/utils';
 
 // let errorType: string;
 let data: {
@@ -32,12 +33,7 @@ const res = await apiFetch(animeApiUrl);
 if (res.success) {
   data = res.data;
 }
-const session = await Astro.locals.auth.validate();
-const userId = session?.user?.id || Astro.cookies.get('guest_id')?.value!;
-let userType: 'signed-in' | 'guest' = 'signed-in';
-if (!session?.user?.id) {
-  userType = 'guest';
-}
+const { userId, userType } = await getOrCreateUserId(Astro);
 ---
 
 <Layout title={url.searchParams.get('q') ?? ''}>

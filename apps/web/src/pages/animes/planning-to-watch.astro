@@ -1,13 +1,9 @@
 ---
 import AnimeCard from '@/components/anime-card.astro';
 import Layout from '@/layouts/main.astro';
+import { getOrCreateUserId } from '@/lib/utils';
 import { apiFetch } from '@/lib/utils/fetch';
-const session = await Astro.locals.auth.validate();
-const userId = session?.user?.id || Astro.cookies.get('guest_id')?.value!;
-let userType: 'signed-in' | 'guest' = 'signed-in';
-if (!session?.user?.id) {
-  userType = 'guest';
-}
+const { userType, userId } = await getOrCreateUserId(Astro);
 const url = new URL('http://localhost:3000/api/anime');
 // const searchParams = new URLSearchParams();
 url.searchParams.set('userType', userType);

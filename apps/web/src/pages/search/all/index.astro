@@ -2,9 +2,15 @@
 import Layout from '@/layouts/main.astro';
 import AnimeCard from '@/components/anime-card.astro';
 import Pagination from '@/components/pagination.astro';
-import type { Anime, Manga, Character, Pagination as IPagination } from '@/lib/types';
+import type {
+  Anime,
+  Manga,
+  Character,
+  Pagination as IPagination,
+} from '@/lib/types';
 import { createAnimeApiUrl } from '@/lib/parse-queries';
 import { apiFetch } from '@/lib/utils/fetch';
+import { getOrCreateUserId } from '@/lib/utils';
 
 let data: {
   data: (Anime | Manga | Character)[];
@@ -28,24 +34,13 @@ const animeApiUrl = createAnimeApiUrl(url);
 let errorType: string;
 const result = await apiFetch(animeApiUrl);
 if (!result.success) {
-  errorType = result.error?.message
-  console.error(errorType)
+  errorType = result.error?.message;
+  console.error(errorType);
 } else {
   data = await result.data;
 }
 
-// const search = url.searchParams.get('search');
-// const searchType = url.searchParams.get('type');
-// const _page = url.searchParams.get('page') || '1';
-// const page = isNaN(parseInt(_page || '')) ? 1 : parseInt(_page);
-// const api_url = new URL(import.meta.env.ANIME_API + '/anime');
-// api_url.searchParams.set('q', search ?? '');
-// api_url.searchParams.set('page', page.toString() ?? '1');
-// searchType && api_url.searchParams.set('type', searchType);
-// const result = animePageSchema.safeParse(await (await fetch(api_url)).json());
-// if (!result.success) {
-//   return Astro.redirect('/404');
-// }
+const { userId, userType } = await getOrCreateUserId(Astro);
 ---
 
 <Layout title={url.searchParams.get('q') ?? ''}>
@@ -63,7 +58,9 @@ if (!result.success) {
     {
       data.data.map((anime) => {
         if ('episodes' in anime) {
-          return <AnimeCard anime={anime} />;
+          return (
+            <AnimeCard anime={anime} userId={userId} userType={userType} />
+          );
         }
       })
     }
