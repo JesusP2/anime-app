@@ -3,9 +3,8 @@ import '@fontsource-variable/inter';
 import { Icon } from 'astro-icon';
 import Search from '../components/search.astro';
 import Tab from '@/components/tab.astro';
-import { Dropdown } from '@/components/solid/mangas-dropdown';
-import { AvatarDropdown } from '@/components/solid/avatar-dropdown';
-import { SearchBar } from '@/components/solid/search-bar';
+// import { Dropdown } from '@/components/solid/mangas-dropdown';
+// import { SearchBar } from '@/components/solid/search-bar';
 
 export interface Props {
   title: string;
@@ -60,63 +59,63 @@ const session = await Astro.locals.auth.validate();
                 </svg>
                 Watchlist
               </Tab>
-              <Dropdown
-                title="Animes"
-                list={[
-                  { href: '/animes/completed', label: 'Completed' },
-                  { href: '/animes/currently-watching', label: 'Watching' },
-                  {
-                    href: '/animes/planning-to-watch',
-                    label: 'Planning to watch',
-                  },
-                  { href: '/animes/dropped', label: 'Dropped' },
-                  { href: '/animes/on-hold', label: 'Paused' },
-                ]}
-                client:load
-              />
-              <Dropdown
-                title="Mangas"
-                list={[
-                  { href: '/mangas/completed', label: 'Completed' },
-                  { href: '/mangas/currently-watching', label: 'Watching' },
-                  {
-                    href: '/mangas/planning-to-watch',
-                    label: 'Planning to watch',
-                  },
-                  { href: '/mangas/dropped', label: 'Dropped' },
-                  { href: '/mangas/on-hold', label: 'Paused' },
-                ]}
-                client:load
-              />
-              <Dropdown
-                title="Light Novels"
-                list={[
-                  { href: '/light-novels/completed', label: 'Completed' },
-                  {
-                    href: '/light-novels/currently-watching',
-                    label: 'Watching',
-                  },
-                  {
-                    href: '/light-novels/planning-to-watch',
-                    label: 'Planning to watch',
-                  },
-                  { href: '/light-novels/dropped', label: 'Dropped' },
-                  { href: '/light-novels/on-hold', label: 'Paused' },
-                ]}
-                client:load
-              />
+              <!-- <Dropdown -->
+              <!--   title="Animes" -->
+              <!--   list={[ -->
+              <!--     { href: '/animes/completed', label: 'Completed' }, -->
+              <!--     { href: '/animes/currently-watching', label: 'Watching' }, -->
+              <!--     { -->
+              <!--       href: '/animes/planning-to-watch', -->
+              <!--       label: 'Planning to watch', -->
+              <!--     }, -->
+              <!--     { href: '/animes/dropped', label: 'Dropped' }, -->
+              <!--     { href: '/animes/on-hold', label: 'Paused' }, -->
+              <!--   ]} -->
+              <!--   client:load -->
+              <!-- /> -->
+              <!-- <Dropdown -->
+              <!--   title="Mangas" -->
+              <!--   list={[ -->
+              <!--     { href: '/mangas/completed', label: 'Completed' }, -->
+              <!--     { href: '/mangas/currently-watching', label: 'Watching' }, -->
+              <!--     { -->
+              <!--       href: '/mangas/planning-to-watch', -->
+              <!--       label: 'Planning to watch', -->
+              <!--     }, -->
+              <!--     { href: '/mangas/dropped', label: 'Dropped' }, -->
+              <!--     { href: '/mangas/on-hold', label: 'Paused' }, -->
+              <!--   ]} -->
+              <!--   client:load -->
+              <!-- /> -->
+              <!-- <Dropdown -->
+              <!--   title="Light Novels" -->
+              <!--   list={[ -->
+              <!--     { href: '/light-novels/completed', label: 'Completed' }, -->
+              <!--     { -->
+              <!--       href: '/light-novels/currently-watching', -->
+              <!--       label: 'Watching', -->
+              <!--     }, -->
+              <!--     { -->
+              <!--       href: '/light-novels/planning-to-watch', -->
+              <!--       label: 'Planning to watch', -->
+              <!--     }, -->
+              <!--     { href: '/light-novels/dropped', label: 'Dropped' }, -->
+              <!--     { href: '/light-novels/on-hold', label: 'Paused' }, -->
+              <!--   ]} -->
+              <!--   client:load -->
+              <!-- /> -->
             </li>
           </ul>
         </div>
         {
           session ? (
             <div class="mb-4">
-              <AvatarDropdown
-                name={session?.user?.username || ''}
-                src={session?.user.avatar_image!}
-                alt="banana"
-                client:load
-              />
+              <!-- <AvatarDropdown -->
+              <!--   name={session?.user?.username || ''} -->
+              <!--   src={session?.user.avatar_image!} -->
+              <!--   alt="banana" -->
+              <!--   client:load -->
+              <!-- /> -->
             </div>
           ) : (
             <a
@@ -131,7 +130,7 @@ const session = await Astro.locals.auth.validate();
       <div
         class="flex-1 h-screen overflow-y-auto overflow-x-hidden font-inter px-20 py-10"
       >
-        <SearchBar client:load />
+        <!-- <SearchBar client:load /> -->
         <slot />
       </div>
     </div>
