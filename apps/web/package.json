@@ -15,6 +15,7 @@
     "db:studio": "env-cmd drizzle-kit studio"
   },
   "dependencies": {
+    "@astrojs/check": "^0.5.6",
     "@astrojs/cloudflare": "^7.5.1",
     "@astrojs/deno": "^5.0.1",
     "@astrojs/image": "^0.16.9",
