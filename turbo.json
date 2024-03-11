@@ -1,12 +1,29 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env"],
+  "globalDotEnv": [
+    ".env"
+  ],
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", "umd/**", "build/**"]
+      "outputs": [
+        "dist/**",
+        "umd/**",
+        "build/**"
+      ],
+      "dependsOn": [
+        "typecheck",
+        "lint"
+      ]
+    },
+    "typecheck": {
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+      ]
     },
     "test": {},
     "lint": {},
+    "format": {},
     "dev": {
       "cache": false,
       "persistent": true
