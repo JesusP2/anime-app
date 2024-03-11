@@ -15,12 +15,7 @@
         "typecheck"
       ]
     },
-    "typecheck": {
-      "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx"
-      ]
-    },
+    "typecheck": {},
     "test": {},
     "lint": {},
     "format": {},
@@ -28,6 +23,6 @@
       "cache": false,
       "persistent": true,
       "dependsOn": ["^build"]
-    },
+    }
   }
 }
