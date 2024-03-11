@@ -11,7 +11,7 @@ export type BannerProps = {
   action?: React.ReactNode;
 };
 
-const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
+export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
   (
     { icon, title, description, color = "primary", className = "", action },
     ref
@@ -53,5 +53,3 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
   }
 );
 Banner.displayName = "Banner";
-
-export default Banner;

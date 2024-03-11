@@ -8,7 +8,7 @@ interface HintProps extends React.HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
-function Hint({
+export function Hint({
   className,
   children,
   error,
@@ -34,5 +34,3 @@ function Hint({
     </p>
   );
 }
-
-export default Hint;

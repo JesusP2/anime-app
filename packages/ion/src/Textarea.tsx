@@ -2,8 +2,8 @@
 // ion/Textarea: Generated with Ion on 2/26/2024, 3:24:49 PM
 import * as React from "react";
 import clsx from "clsx";
-import Label from "./Label";
-import Hint from "./Hint";
+import { Label } from "./Label";
+import { Hint } from "./Hint";
 import { useState } from "react";
 
 export interface TextareaProps
@@ -17,7 +17,7 @@ export interface TextareaProps
   showCount?: boolean;
 }
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       className,
@@ -101,5 +101,3 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   }
 );
 Textarea.displayName = "Textarea";
-
-export default Textarea;

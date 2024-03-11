@@ -7,8 +7,8 @@ import React, { useEffect, useRef } from "react";
 import { inputClassNames, inputContainerClasses } from "./Input";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
-import Label from "./Label";
-import Hint from "./Hint";
+import { Label } from "./Label";
+import { Hint } from "./Hint";
 
 type DatePickerProps = {
   className?: string;
@@ -26,7 +26,7 @@ type DatePickerProps = {
   placeholder?: string;
 };
 
-function Datepicker({
+export function Datepicker({
   error,
   value,
   onSelect,
@@ -159,5 +159,3 @@ function Datepicker({
     </div>
   );
 }
-
-export default Datepicker;

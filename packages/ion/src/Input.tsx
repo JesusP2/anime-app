@@ -1,7 +1,7 @@
 // ion/Input: Generated with Ion on 2/26/2024, 3:24:47 PM
 import * as React from "react";
-import Label from "./Label";
-import Hint from "./Hint";
+import { Label } from "./Label";
+import { Hint } from "./Hint";
 import clsx from "clsx";
 
 export const inputContainerClasses = (error?: boolean) =>
@@ -43,7 +43,7 @@ export interface InputProps
   showHintIcon?: boolean;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -121,5 +121,3 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 Input.displayName = "Input";
-
-export default Input;

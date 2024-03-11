@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ModalPrimitive from "@radix-ui/react-dialog";
 import clsx from "clsx";
 import { X } from "@phosphor-icons/react";
-import Button from "./Button";
+import { Button } from "./Button";
 
 const ModalTrigger = ModalPrimitive.Trigger;
 
@@ -186,8 +186,6 @@ const Modal = React.forwardRef<
   )
 );
 Modal.displayName = "Modal";
-
-export default Modal;
 
 export {
   ModalPortal,

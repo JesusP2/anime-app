@@ -5,8 +5,8 @@ import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check } from "@phosphor-icons/react";
 import clsx from "clsx";
-import Label from "./Label";
-import Hint from "./Hint";
+import { Label } from "./Label";
+import { Hint } from "./Hint";
 import { CaretDown } from "@phosphor-icons/react";
 import { twMerge } from "tailwind-merge";
 
