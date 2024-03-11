@@ -60,7 +60,7 @@
     "@types/react-dom": "^18.2.19",
     "drizzle-kit": "^0.19.13",
     "eslint": "latest",
-    "eslint-config-custom": "*",
+    "eslint-config-custom": "workspace:*",
     "eslint-plugin-astro": "latest",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3"
