@@ -9,7 +9,102 @@
     "lint": "eslint -c ./.eslintrc.js ./src/**/*.ts"
   },
   "exports": {
-    "./*": "./src/*"
+    "./avatar": {
+      "default": "./dist/Avatar.mjs",
+      "types": "./dist/Avatar.d.mts"
+    },
+    "./badge": {
+      "default": "./dist/Badge.mjs",
+      "types": "./dist/Badge.d.mts"
+    },
+    "./banner": {
+      "default": "./dist/Banner.mjs",
+      "types": "./dist/Banner.d.mts"
+    },
+    "./button": {
+      "default": "./dist/Button.mjs",
+      "types": "./dist/Button.d.mts"
+    },
+    "./calendar": {
+      "default": "./dist/Calendar.mjs",
+      "types": "./dist/Calendar.d.mts"
+    },
+    "./checkbox": {
+      "default": "./dist/Checkbox.mjs",
+      "types": "./dist/Checkbox.d.mts"
+    },
+    "./collapsible": {
+      "default": "./dist/Collapsible.mjs",
+      "types": "./dist/Collapsible.d.mts"
+    },
+    "./datepicker": {
+      "default": "./dist/Datepicker.mjs",
+      "types": "./dist/Datepicker.d.mts"
+    },
+    "./divider": {
+      "default": "./dist/Divider.mjs",
+      "types": "./dist/Divider.d.mts"
+    },
+    "./hint": {
+      "default": "./dist/Hint.mjs",
+      "types": "./dist/Hint.d.mts"
+    },
+    "./input": {
+      "default": "./dist/Input.mjs",
+      "types": "./dist/Input.d.mts"
+    },
+    "./label": {
+      "default": "./dist/Label.mjs",
+      "types": "./dist/Label.d.mts"
+    },
+    "./modal": {
+      "default": "./dist/Modal.mjs",
+      "types": "./dist/Modal.d.mts"
+    },
+    "./navigation": {
+      "default": "./dist/Navigation.mjs",
+      "types": "./dist/Navigation.d.mts"
+    },
+    "./popover": {
+      "default": "./dist/Popover.mjs",
+      "types": "./dist/Popover.d.mts"
+    },
+    "./progress": {
+      "default": "./dist/Progress.mjs",
+      "types": "./dist/Progress.d.mts"
+    },
+    "./radio": {
+      "default": "./dist/Radio.mjs",
+      "types": "./dist/Radio.d.mts"
+    },
+    "./select": {
+      "default": "./dist/Select.mjs",
+      "types": "./dist/Select.d.mts"
+    },
+    "./slider": {
+      "default": "./dist/Slider.mjs",
+      "types": "./dist/Slider.d.mts"
+    },
+    "./switch": {
+      "default": "./dist/Switch.mjs",
+      "types": "./dist/Switch.d.mts"
+    },
+    "./table": {
+      "default": "./dist/Table.mjs",
+      "types": "./dist/Table.d.mts"
+    },
+    "./tabs": {
+      "default": "./dist/Tabs.mjs",
+      "types": "./dist/Tabs.d.mts"
+    },
+    "./tag": {
+      "default": "./dist/Tag.mjs",
+      "types": "./dist/Tag.d.mts"
+    },
+    "./textarea": {
+      "default": "./dist/Textarea.mjs",
+      "types": "./dist/Textarea.d.mts"
+    }
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
@@ -43,6 +138,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.0.1",
+    "tsup": "^8.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8",

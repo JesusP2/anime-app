@@ -79,7 +79,7 @@ type TagProps = OmitButtonType & {
   className?: string;
 };
 
-const Tag = React.forwardRef<HTMLButtonElement, TagProps>(
+export const Tag = React.forwardRef<HTMLButtonElement, TagProps>(
   (
     {
       className,
@@ -124,5 +124,3 @@ const Tag = React.forwardRef<HTMLButtonElement, TagProps>(
   }
 );
 Tag.displayName = "Tag";
-
-export default Tag;

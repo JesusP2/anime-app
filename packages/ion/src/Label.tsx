@@ -17,7 +17,7 @@ type LabelProps = React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
     description?: string;
     helper?: string;
   };
-const Label = React.forwardRef<
+export const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   LabelProps
 >(
@@ -74,5 +74,3 @@ const Label = React.forwardRef<
   }
 );
 Label.displayName = LabelPrimitive.Root.displayName;
-
-export default Label;

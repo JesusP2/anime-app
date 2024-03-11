@@ -2,11 +2,11 @@
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check, Minus } from "@phosphor-icons/react";
-import Label from "./Label";
+import { Label } from "./Label";
 
 import clsx from "clsx";
 
-const Checkbox = React.forwardRef<
+export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> & {
     label?: string;
@@ -62,5 +62,3 @@ const Checkbox = React.forwardRef<
   );
 });
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
-
-export default Checkbox;

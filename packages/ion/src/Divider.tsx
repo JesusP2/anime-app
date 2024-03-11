@@ -4,7 +4,7 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
 import clsx from "clsx";
 
-const Divider = React.forwardRef<
+export const Divider = React.forwardRef<
   React.ElementRef<typeof SeparatorPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> & {
     children?: React.ReactNode;
@@ -43,5 +43,3 @@ const Divider = React.forwardRef<
   )
 );
 Divider.displayName = SeparatorPrimitive.Root.displayName;
-
-export default Divider;

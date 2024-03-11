@@ -197,7 +197,7 @@ type BadgeProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
 };
 
-const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   (
     {
       className,
@@ -234,5 +234,3 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   }
 );
 Badge.displayName = "Badge";
-
-export default Badge;

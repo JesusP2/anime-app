@@ -184,7 +184,7 @@ interface AvatarProps {
   className?: string;
 }
 
-const Avatar = React.forwardRef<
+export const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & AvatarProps
 >(
@@ -242,5 +242,3 @@ const Avatar = React.forwardRef<
   )
 );
 Avatar.displayName = "Avatar";
-
-export default Avatar;

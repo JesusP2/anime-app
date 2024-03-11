@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import clsx from "clsx";
-import Label from "./Label";
+import { Label } from "./Label";
 
 type SwitchProps = React.ComponentPropsWithoutRef<
   typeof SwitchPrimitives.Root
@@ -14,7 +14,7 @@ type SwitchProps = React.ComponentPropsWithoutRef<
   helper?: string;
 };
 
-const Switch = React.forwardRef<
+export const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   SwitchProps
 >(
@@ -71,5 +71,3 @@ const Switch = React.forwardRef<
   }
 );
 Switch.displayName = SwitchPrimitives.Root.displayName;
-
-export default Switch;

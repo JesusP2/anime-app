@@ -74,5 +74,3 @@ function Collapsible({
 }
 
 export { RadixCollapsible, CollapsibleTrigger, CollapsibleContent };
-
-export default Collapsible;
