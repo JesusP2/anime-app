@@ -1,0 +1,25 @@
+
+
+> @repo/ion@0.1.0 lint /home/lotus/dev/projects/astro-transition-api/packages/ion
+> eslint -c ./.eslintrc.js ./src/**/*.ts
+
+
+Oops! Something went wrong! :(
+
+ESLint: 8.57.0
+
+Error: Cannot read config file: /home/lotus/dev/projects/astro-transition-api/packages/ion/.eslintrc.js
+Error: Cannot find module '/home/lotus/dev/projects/astro-transition-api/packages/ion/.eslintrc.js'
+Require stack:
+- /home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/noop.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at resolveFileName (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/resolve-from@4.0.0/node_modules/resolve-from/index.js:29:39)
+    at resolveFrom (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/resolve-from@4.0.0/node_modules/resolve-from/index.js:43:9)
+    at module.exports (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/resolve-from@4.0.0/node_modules/resolve-from/index.js:46:41)
+    at module.exports [as default] (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/import-fresh@3.3.0/node_modules/import-fresh/index.js:14:19)
+    at loadJSConfigFile (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2583:47)
+    at loadConfigFile (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2667:20)
+    at ConfigArrayFactory._loadConfigData (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2984:42)
+    at ConfigArrayFactory.loadFile (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2850:40)
+    at createCLIConfigArray (/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3660:35)
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m

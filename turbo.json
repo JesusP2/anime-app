@@ -11,8 +11,8 @@
         "build/**"
       ],
       "dependsOn": [
-        "typecheck",
-        "lint"
+        "^build",
+        "typecheck"
       ]
     },
     "typecheck": {
@@ -26,8 +26,8 @@
     "format": {},
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["^build"]
     },
-    "serve": {}
   }
 }

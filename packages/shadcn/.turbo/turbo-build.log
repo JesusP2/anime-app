@@ -1,0 +1,34 @@
+
+
+> @repo/shadcn@0.1.0 build /home/lotus/dev/projects/astro-transition-api/packages/shadcn
+> tsup
+
+[34mCLI[39m Building entry: src/components/avatar.tsx, src/components/button.tsx, src/components/collapsible.tsx, src/components/dropdown-menu.tsx, src/utils.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.0.2
+[34mCLI[39m Using tsup config: /home/lotus/dev/projects/astro-transition-api/packages/shadcn/tsup.config.ts
+[34mCLI[39m Target: es6
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mdist/components/avatar.mjs            [22m[32m1.54 KB[39m
+[32mESM[39m [1mdist/components/collapsible.mjs       [22m[32m485.00 B[39m
+[32mESM[39m [1mdist/components/button.mjs            [22m[32m1.83 KB[39m
+[32mESM[39m [1mdist/utils.mjs                        [22m[32m127.00 B[39m
+[32mESM[39m [1mdist/components/dropdown-menu.mjs     [22m[32m7.27 KB[39m
+[32mESM[39m [1mdist/chunk-ND6ETLZQ.mjs               [22m[32m207.00 B[39m
+[32mESM[39m [1mdist/chunk-AS756XSC.mjs               [22m[32m1.17 KB[39m
+[32mESM[39m [1mdist/components/avatar.mjs.map        [22m[32m2.22 KB[39m
+[32mESM[39m [1mdist/components/collapsible.mjs.map   [22m[32m572.00 B[39m
+[32mESM[39m [1mdist/utils.mjs.map                    [22m[32m71.00 B[39m
+[32mESM[39m [1mdist/components/button.mjs.map        [22m[32m2.63 KB[39m
+[32mESM[39m [1mdist/chunk-ND6ETLZQ.mjs.map           [22m[32m358.00 B[39m
+[32mESM[39m [1mdist/components/dropdown-menu.mjs.map [22m[32m10.00 KB[39m
+[32mESM[39m [1mdist/chunk-AS756XSC.mjs.map           [22m[32m71.00 B[39m
+[32mESM[39m ⚡️ Build success in 14ms
+[34mDTS[39m Build start
+[32mDTS[39m ⚡️ Build success in 2339ms
+[32mDTS[39m [1mdist/components/avatar.d.mts        [22m[32m694.00 B[39m
+[32mDTS[39m [1mdist/components/button.d.mts        [22m[32m756.00 B[39m
+[32mDTS[39m [1mdist/components/collapsible.d.mts   [22m[32m609.00 B[39m
+[32mDTS[39m [1mdist/components/dropdown-menu.d.mts [22m[32m3.01 KB[39m
+[32mDTS[39m [1mdist/utils.d.mts                    [22m[32m106.00 B[39m

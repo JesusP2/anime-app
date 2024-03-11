@@ -1,0 +1,1540 @@
+
+
+> anime-site@0.0.1 typecheck /home/lotus/dev/projects/astro-transition-api/apps/web
+> astro check && tsc --noEmit
+
+[2m20:24:41[22m To continue, Astro requires the following dependency to be installed: [1m@astrojs/check[22m.
+[2m20:24:41[22m 
+  [35mAstro will run the following command:[39m
+  [2mIf you skip this step, you can always run it yourself later[22m
+
+ ╭────────────────────────────────────────╮
+ │ [1mnpm[22m install [36m@astrojs/check typescript[39m  │
+ ╰────────────────────────────────────────╯
+
+[?25l[2K[1G[36m?[39m [1mContinue?[22m [90m›[39m [90m(Y/n)[39m[2K[G[2K[1G[32m✔[39m [1mContinue?[22m [90m…[39m yes
+[?25h[?25l[1G[1G[36m⠋[39m Installing dependencies...[1G[0K[36m⠙[39m Installing dependencies...[1G[0K[36m⠹[39m Installing dependencies...[1G[0K[36m⠸[39m Installing dependencies...[1G[0K[36m⠼[39m Installing dependencies...[1G[0K[36m⠴[39m Installing dependencies...[1G[0K[36m⠦[39m Installing dependencies...[1G[0K[36m⠧[39m Installing dependencies...[1G[0K[36m⠇[39m Installing dependencies...[1G[0K[36m⠏[39m Installing dependencies...[1G[0K[36m⠋[39m Installing dependencies...[1G[0K[36m⠙[39m Installing dependencies...[1G[0K[36m⠹[39m Installing dependencies...[1G[0K[36m⠸[39m Installing dependencies...[1G[0K[36m⠼[39m Installing dependencies...[1G[0K[36m⠴[39m Installing dependencies...[1G[0K[36m⠦[39m Installing dependencies...[1G[0K[36m⠧[39m Installing dependencies...[1G[0K[36m⠇[39m Installing dependencies...[1G[0K[36m⠏[39m Installing dependencies...[1G[0K[36m⠋[39m Installing dependencies...[1G[0K[36m⠙[39m Installing dependencies...[1G[0K[36m⠹[39m Installing dependencies...[1G[0K[36m⠸[39m Installing dependencies...[1G[0K[36m⠼[39m Installing dependencies...[1G[0K[36m⠴[39m Installing dependencies...[1G[0K[36m⠦[39m Installing dependencies...[1G[0K[36m⠧[39m Installing dependencies...[1G[0K[36m⠇[39m Installing dependencies...[1G[0K[36m⠏[39m Installing dependencies...[1G[0K[36m⠋[39m Installing dependencies...[1G[0K[36m⠙[39m Installing dependencies...[1G[0K[36m⠹[39m Installing dependencies...[1G[0K[36m⠸[39m Installing dependencies...[1G[0K[36m⠼[39m Installing dependencies...[1G[0K[36m⠴[39m Installing dependencies...[1G[0K[36m⠦[39m Installing dependencies...[1G[0K[?25h[31m✖[39m Installing dependencies...
+[31m[1m20:24:44[22m [ERROR] [check][39m The `@astrojs/check` and `typescript` packages are required for this command to work. Please manually install them into your project and try again.
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m10[0m:[93m6[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenu'.
+
+[7m10[0m     <DropdownMenu>
+[7m  [0m [91m     ~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m11[0m:[93m8[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuTrigger'.
+
+[7m11[0m       <DropdownMenuTrigger class="ml-4 flex gap-x-4 items-center">
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m12[0m:[93m30[0m - [91merror[0m[90m TS2322: [0mType '{ src: string; class: string; width: string; alt: string; }' is not assignable to type 'DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>'. Did you mean 'className'?
+
+[7m12[0m         <img src={props.src} class="rounded-full" width="40" alt={props.alt} />
+[7m  [0m [91m                             ~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m14[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuTrigger'.
+
+[7m14[0m       </DropdownMenuTrigger>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m15[0m:[93m8[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuContent'.
+
+[7m15[0m       <DropdownMenuContent>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m16[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m16[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m21[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+    Type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+        Type 'Node' is not assignable to type 'ReactNode'.
+
+[7m21[0m           <As component="a" href="/profile">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m22[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m22[0m             <CgProfile size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m22[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'CgProfile'.
+
+[7m22[0m             <CgProfile size={17} />
+[7m  [0m [91m             ~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m25[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m25[0m         </DropdownMenuItem>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m26[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m26[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m31[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+
+[7m31[0m           <As component="a" href="/settings">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m32[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m32[0m             <FiSettings size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m32[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'FiSettings'.
+
+[7m32[0m             <FiSettings size={17} />
+[7m  [0m [91m             ~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m35[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m35[0m         </DropdownMenuItem>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m36[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuSeparator'.
+
+[7m36[0m         <DropdownMenuSeparator />
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m37[0m:[93m10[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m37[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m42[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+
+[7m42[0m           <As component="a" href="/auth/signout">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m43[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m43[0m             <IoLogOutOutline size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m43[0m:[93m14[0m - [91merror[0m[90m TS2304: [0mCannot find name 'IoLogOutOutline'.
+
+[7m43[0m             <IoLogOutOutline size={17} />
+[7m  [0m [91m             ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m46[0m:[93m11[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuItem'.
+
+[7m46[0m         </DropdownMenuItem>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m47[0m:[93m9[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenuContent'.
+
+[7m47[0m       </DropdownMenuContent>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/react/avatar-dropdown.tsx[0m:[93m48[0m:[93m7[0m - [91merror[0m[90m TS2304: [0mCannot find name 'DropdownMenu'.
+
+[7m48[0m     </DropdownMenu>
+[7m  [0m [91m      ~~~~~~~~~~~~[0m
+
+[96msrc/components/react/ui/dropdown-menu.tsx[0m:[93m97[0m:[93m4[0m - [91merror[0m[90m TS2375: [0mType '{ children: (Element | ReactNode)[]; id?: string | undefined; role?: AriaRole | undefined; key?: Key | null | undefined; slot?: string | undefined; ... 266 more ...; checked: CheckedState | undefined; }' is not assignable to type 'DropdownMenuCheckboxItemProps' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'checked' are incompatible.
+    Type 'CheckedState | undefined' is not assignable to type 'CheckedState'.
+      Type 'undefined' is not assignable to type 'CheckedState'.
+
+[7m97[0m   <DropdownMenuPrimitive.CheckboxItem
+[7m  [0m [91m   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m20[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenu' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuRootProps>' is not a valid JSX element type.
+    Type 'Component<DropdownMenuRootProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m20[0m     <DropdownMenu>
+[7m  [0m [91m     ~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m21[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m21[0m       <DropdownMenuTrigger class="ml-4 flex gap-x-4 items-center">
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m22[0m         <img src={props.src} class="rounded-full" width="40" alt={props.alt} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m23[0m         <div>{props.name}</div>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m24[0m       </DropdownMenuTrigger>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m21[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuTrigger' cannot be used as a JSX component.
+  Its type '(props: MenuTriggerProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuTriggerProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m21[0m       <DropdownMenuTrigger class="ml-4 flex gap-x-4 items-center">
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m22[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m22[0m         <img src={props.src} class="rounded-full" width="40" alt={props.alt} />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m22[0m:[93m30[0m - [91merror[0m[90m TS2322: [0mType '{ src: string; class: string; width: string; alt: string; }' is not assignable to type 'DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>'. Did you mean 'className'?
+
+[7m22[0m         <img src={props.src} class="rounded-full" width="40" alt={props.alt} />
+[7m  [0m [91m                             ~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m23[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m23[0m         <div>{props.name}</div>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m25[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 25[0m       <DropdownMenuContent>
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 26[0m         <DropdownMenuItem
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 56[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 57[0m       </DropdownMenuContent>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m25[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuContent' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuContentProps>' is not a valid JSX element type.
+    Type 'Component<DropdownMenuContentProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m25[0m       <DropdownMenuContent>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 26[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 27[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 34[0m           </As>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m 35[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m26[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+    Type 'Component<MenuItemProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m26[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m31[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m31[0m           <As component="a" href="/profile">
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m32[0m             <CgProfile size={17} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m33[0m             Profile
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~[0m
+[7m34[0m           </As>
+[7m  [0m [91m~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemProps'
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m31[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+
+[7m31[0m           <As component="a" href="/profile">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m32[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m32[0m             <CgProfile size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m32[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'CgProfile' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m32[0m             <CgProfile size={17} />
+[7m  [0m [91m             ~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m36[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 36[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 37[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 44[0m           </As>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m 45[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m36[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m36[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m41[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m41[0m           <As component="a" href="/settings">
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m42[0m             <FiSettings size={17} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m43[0m             Settings
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~[0m
+[7m44[0m           </As>
+[7m  [0m [91m~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemProps'
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m41[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+
+[7m41[0m           <As component="a" href="/settings">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m42[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m42[0m             <FiSettings size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m42[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'FiSettings' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m42[0m             <FiSettings size={17} />
+[7m  [0m [91m             ~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m46[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m46[0m         <DropdownMenuSeparator />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m46[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuSeparator' cannot be used as a JSX component.
+  Its type 'Component<SeparatorRootProps>' is not a valid JSX element type.
+    Type 'Component<SeparatorRootProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m46[0m         <DropdownMenuSeparator />
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m47[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 47[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 48[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 55[0m           </As>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m 56[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m47[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m47[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m52[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m52[0m           <As component="a" href="/auth/signout">
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m53[0m             <IoLogOutOutline size={17} />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m54[0m             Logout
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[7m55[0m           </As>
+[7m  [0m [91m~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemProps'
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m52[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'As' cannot be used as a JSX component.
+  Its type '<T extends ValidComponent>(props: DynamicProps<T>) => Element' is not a valid JSX element type.
+
+[7m52[0m           <As component="a" href="/auth/signout">
+[7m  [0m [91m           ~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m53[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m53[0m             <IoLogOutOutline size={17} />
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar-dropdown.tsx[0m:[93m53[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'IoLogOutOutline' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m53[0m             <IoLogOutOutline size={17} />
+[7m  [0m [91m             ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/avatar.tsx[0m:[93m6[0m:[93m10[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'. Did you mean 'className'?
+
+[7m6[0m     <div class="flex">
+[7m [0m [91m         ~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m38[0m:[93m10[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'. Did you mean 'className'?
+
+[7m38[0m     <div class="flex-col">
+[7m  [0m [91m         ~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m39[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenu' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuRootProps>' is not a valid JSX element type.
+
+[7m39[0m       <DropdownMenu>
+[7m  [0m [91m       ~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m40[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 40[0m         <DropdownMenuTrigger
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~[0m
+[7m 41[0m           as={(props: { children: JSX.Element }) => (
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 45[0m           <FiMenu size={20} />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 46[0m         </DropdownMenuTrigger>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m40[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuTrigger' cannot be used as a JSX component.
+  Its type '(props: MenuTriggerProps) => Element' is not a valid JSX element type.
+
+[7m40[0m         <DropdownMenuTrigger
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m41[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType '(props: {    children: JSX.Element;}) => React.JSX.Element' is not assignable to type 'ValidComponent'.
+  Type '(props: {    children: JSX.Element;}) => React.JSX.Element' is not assignable to type 'Component<any>'.
+    Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m41[0m           as={(props: { children: JSX.Element }) => (
+[7m  [0m [91m          ~~[0m
+
+  [96m../../node_modules/.pnpm/@kobalte+core@0.11.2_solid-js@1.8.15/node_modules/@kobalte/core/dist/types/polymorphic/polymorphic.d.ts[0m:[93m7[0m:[93m5[0m
+    [7m7[0m     as?: ValidComponent;
+    [7m [0m [96m    ~~[0m
+    The expected type comes from property 'as' which is declared here on type 'IntrinsicAttributes & MenuTriggerProps'
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m42[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'Button' cannot be used as a JSX component.
+  Its type 'Component<ButtonProps>' is not a valid JSX element type.
+    Type 'Component<ButtonProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m42[0m             <Button variant="ghost" {...props} />
+[7m  [0m [91m             ~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m45[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m45[0m           <FiMenu size={20} />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuTriggerProps'
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m45[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'FiMenu' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m45[0m           <FiMenu size={20} />
+[7m  [0m [91m           ~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m47[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 47[0m         <DropdownMenuContent class="w-48">
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 48[0m           <DropdownMenuGroup>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m115[0m           : null}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m116[0m         </DropdownMenuContent>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m47[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuContent' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuContentProps>' is not a valid JSX element type.
+
+[7m47[0m         <DropdownMenuContent class="w-48">
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m48[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 48[0m           <DropdownMenuGroup>
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~[0m
+[7m 49[0m             <DropdownMenuGroupLabel>Move to:</DropdownMenuGroupLabel>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 99[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m100[0m           </DropdownMenuGroup>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m48[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuGroup' cannot be used as a JSX component.
+  Its type '(props: MenuGroupProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuGroupProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m48[0m           <DropdownMenuGroup>
+[7m  [0m [91m           ~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m49[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m49[0m             <DropdownMenuGroupLabel>Move to:</DropdownMenuGroupLabel>
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m49[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuGroupLabel' cannot be used as a JSX component.
+  Its type 'Component<MenuGroupLabelProps>' is not a valid JSX element type.
+    Type 'Component<MenuGroupLabelProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m49[0m             <DropdownMenuGroupLabel>Move to:</DropdownMenuGroupLabel>
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m50[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 50[0m             <DropdownMenuItem
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[7m 51[0m               onSelect={() =>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 58[0m               <span>Completed</span>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 59[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m50[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m50[0m             <DropdownMenuItem
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m58[0m:[93m15[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m58[0m               <span>Completed</span>
+[7m  [0m [91m              ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemProps'
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m60[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 60[0m             <DropdownMenuItem
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[7m 61[0m               onSelect={() =>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 68[0m               Watching
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 69[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m60[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m60[0m             <DropdownMenuItem
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m70[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 70[0m             <DropdownMenuItem
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[7m 71[0m               onSelect={() =>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 78[0m               Planning to watch
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 79[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m70[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m70[0m             <DropdownMenuItem
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m80[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 80[0m             <DropdownMenuItem
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[7m 81[0m               onSelect={() =>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 88[0m               Dropped
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 89[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m80[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m80[0m             <DropdownMenuItem
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m90[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 90[0m             <DropdownMenuItem
+[7m   [0m [91m            ~~~~~~~~~~~~~~~~~[0m
+[7m 91[0m               onSelect={() =>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 98[0m               On hold
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 99[0m             </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m90[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m90[0m             <DropdownMenuItem
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m101[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'Element | null' is not assignable to type 'string | Element'.
+  Type 'Element' is not assignable to type 'string | Element'.
+
+[7m101[0m           {props.entityId ?
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~[0m
+[7m102[0m             <>
+[7m   [0m [91m~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m114[0m             </>
+[7m   [0m [91m~~~~~~~~~~~~~~~[0m
+[7m115[0m           : null}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m103[0m:[93m16[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuSeparator' cannot be used as a JSX component.
+  Its type 'Component<SeparatorRootProps>' is not a valid JSX element type.
+
+[7m103[0m               <DropdownMenuSeparator />
+[7m   [0m [91m               ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m104[0m:[93m16[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m104[0m               <DropdownMenuItem
+[7m   [0m [91m               ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m105[0m:[93m17[0m - [91merror[0m[90m TS2322: [0mType '() => React.JSX.Element' is not assignable to type 'ValidComponent'.
+  Type '() => React.JSX.Element' is not assignable to type 'Component<any>'.
+    Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m105[0m                 as={() => (
+[7m   [0m [91m                ~~[0m
+
+  [96m../../node_modules/.pnpm/@kobalte+core@0.11.2_solid-js@1.8.15/node_modules/@kobalte/core/dist/types/polymorphic/polymorphic.d.ts[0m:[93m7[0m:[93m5[0m
+    [7m7[0m     as?: ValidComponent;
+    [7m [0m [96m    ~~[0m
+    The expected type comes from property 'as' which is declared here on type 'IntrinsicAttributes & MenuItemProps'
+
+[96msrc/components/solid/card-dropdown.tsx[0m:[93m108[0m:[93m21[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; href: string; class: string; }' is not assignable to type 'DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>'. Did you mean 'className'?
+
+[7m108[0m                     class="focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-zinc-100"
+[7m   [0m [91m                    ~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m TS6133: [0m'props' is declared but its value is never read.
+
+[7m9[0m export function AvatarDropdown(props: { mal_id: number; removeOption?: boolean; }) {
+[7m [0m [91m                               ~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m11[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenu' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuRootProps>' is not a valid JSX element type.
+
+[7m11[0m     <DropdownMenu>
+[7m  [0m [91m     ~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m12[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m12[0m       <DropdownMenuTrigger>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m13[0m         <BsThreeDots />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m14[0m       </DropdownMenuTrigger>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m12[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuTrigger' cannot be used as a JSX component.
+  Its type '(props: MenuTriggerProps) => Element' is not a valid JSX element type.
+
+[7m12[0m       <DropdownMenuTrigger>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m13[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m13[0m         <BsThreeDots />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuTriggerProps'
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m13[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'BsThreeDots' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m13[0m         <BsThreeDots />
+[7m  [0m [91m         ~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m15[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 15[0m       <DropdownMenuContent>
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 16[0m         <DropdownMenuItem
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 35[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 36[0m       </DropdownMenuContent>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m15[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuContent' cannot be used as a JSX component.
+  Its type 'Component<DropdownMenuContentProps>' is not a valid JSX element type.
+
+[7m15[0m       <DropdownMenuContent>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m16[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 16[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 17[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 19[0m           Move to queue
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 20[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m16[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m16[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m21[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 21[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 22[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 24[0m           Start watching
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 25[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m21[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m21[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m26[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 26[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 27[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 29[0m           Move to finished
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 30[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m26[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m26[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m31[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 31[0m         <DropdownMenuItem
+[7m   [0m [91m        ~~~~~~~~~~~~~~~~~[0m
+[7m 32[0m           class="flex gap-x-2"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 34[0m           Move to dropped
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 35[0m         </DropdownMenuItem>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/item-actions-dropdown.tsx[0m:[93m31[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuItem' cannot be used as a JSX component.
+  Its type 'Component<MenuItemProps>' is not a valid JSX element type.
+
+[7m31[0m         <DropdownMenuItem
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/mangas-dropdown.tsx[0m:[93m10[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType '{ children: (string | Element)[]; onClick: () => boolean; class: string; }' is not assignable to type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'. Did you mean 'className'?
+
+[7m10[0m         class={clsx(
+[7m  [0m [91m        ~~~~~[0m
+
+[96msrc/components/solid/mangas-dropdown.tsx[0m:[93m18[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>'. Did you mean 'className'?
+
+[7m18[0m         class={clsx(
+[7m  [0m [91m        ~~~~~[0m
+
+[96msrc/components/solid/mangas-dropdown.tsx[0m:[93m24[0m:[93m15[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>'. Did you mean 'className'?
+
+[7m24[0m           <li class="mt-2 flex gap-x-4 ml-10 hover:text-white p-2 text-neutral-300">
+[7m  [0m [91m              ~~~~~[0m
+
+[96msrc/components/solid/mangas-dropdown.tsx[0m:[93m25[0m:[93m48[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'ReactNode'.
+
+[7m25[0m             <a class="w-full" href={item.href}>{item.label}</a>
+[7m  [0m [91m                                               ~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@types+react@18.2.61/node_modules/@types/react/index.d.ts[0m:[93m2314[0m:[93m9[0m
+    [7m2314[0m         children?: ReactNode | undefined;
+    [7m    [0m [96m        ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>'
+
+[96msrc/components/solid/mangas-dropdown.tsx[0m:[93m36[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string | undefined; xmlns: string; width: string; height: string; viewBox: string; }' is not assignable to type 'SVGProps<SVGSVGElement>'.
+  Property 'class' does not exist on type 'SVGProps<SVGSVGElement>'. Did you mean 'className'?
+
+[7m36[0m       class={props.class}
+[7m  [0m [91m      ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m16[0m:[93m41[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; action: string; method: string; class: string; }' is not assignable to type 'DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>'. Did you mean 'className'?
+
+[7m16[0m     <form action="/search" method="get" class="pl-10">
+[7m  [0m [91m                                        ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m17[0m:[93m12[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'. Did you mean 'className'?
+
+[7m17[0m       <div class="flex relative">
+[7m  [0m [91m           ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m18[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'Select' cannot be used as a JSX component.
+  Its type '<Option, OptGroup = never>(props: SelectRootProps<Option, OptGroup>) => Element' is not a valid JSX element type.
+
+[7m18[0m         <Select
+[7m  [0m [91m         ~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m24[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType '(props: SelectBaseItemComponentProps<string>) => Element' is not assignable to type 'Component<SelectBaseItemComponentProps<string>>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m24[0m           itemComponent={(props) => (
+[7m  [0m [91m          ~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@kobalte+core@0.11.2_solid-js@1.8.15/node_modules/@kobalte/core/dist/types/select/select-base.d.ts[0m:[93m73[0m:[93m5[0m
+    [7m73[0m     itemComponent?: Component<SelectBaseItemComponentProps<Option>>;
+    [7m  [0m [96m    ~~~~~~~~~~~~~[0m
+    The expected type comes from property 'itemComponent' which is declared here on type 'IntrinsicAttributes & SelectRootProps<string, string>'
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m25[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'SelectItem' cannot be used as a JSX component.
+  Its type 'Component<ListboxItemProps>' is not a valid JSX element type.
+
+[7m25[0m             <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+[7m  [0m [91m             ~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m28[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 28[0m           <SelectTrigger
+[7m   [0m [91m          ~~~~~~~~~~~~~~[0m
+[7m 29[0m             name="searchType"
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 34[0m             <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 35[0m           </SelectTrigger>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m28[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'SelectTrigger' cannot be used as a JSX component.
+  Its type 'Component<SelectTriggerProps>' is not a valid JSX element type.
+
+[7m28[0m           <SelectTrigger
+[7m  [0m [91m           ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m34[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m34[0m             <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m  [0m [91m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & SelectTriggerProps'
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m34[0m:[93m14[0m - [91merror[0m[90m TS2786: [0m'SelectValue' cannot be used as a JSX component.
+  Its type '<T>(props: SelectValueProps<T>) => Element' is not a valid JSX element type.
+
+[7m34[0m             <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m  [0m [91m             ~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m36[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m36[0m           <SelectContent class={clsx("w-40 bg-white h-[6.6rem]")} />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m36[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'SelectContent' cannot be used as a JSX component.
+  Its type 'Component<SelectContentProps>' is not a valid JSX element type.
+
+[7m36[0m           <SelectContent class={clsx("w-40 bg-white h-[6.6rem]")} />
+[7m  [0m [91m           ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m41[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType '{ name: string; class: string; placeholder: string; }' is not assignable to type 'DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>'. Did you mean 'className'?
+
+[7m41[0m           class="flex border border-input bg-transparent px-3 py-2 file:border-0 file:bg-transparent file:text-sm placeholder:text-[14px] file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-gray-500 w-full min-w-[100px] max-w-[288px] h-10 text-[14px] border-l-0 text-gray-500"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m45[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'. Did you mean 'className'?
+
+[7m45[0m           class="inline-flex overflow-hidden relative items-center justify-center transitions-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none text-sm font-montserrat font-semibold text-white bg-neutral-800 hover:bg-neutral-900 rounded-none h-10 w-12 rounded-r-md p-0 flex-none"
+[7m  [0m [91m          ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m47[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'AiOutlineSearch' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m47[0m           <AiOutlineSearch size={18} />
+[7m  [0m [91m           ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m50[0m:[93m10[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'. Did you mean 'className'?
+
+[7m50[0m       <p class="text-neutral-500 font-medium text-sm my-2">Filters:</p>
+[7m  [0m [91m         ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m51[0m:[93m12[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>'. Did you mean 'className'?
+
+[7m51[0m       <div class="flex gap-x-10">
+[7m  [0m [91m           ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m52[0m:[93m9[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 2 of 2, '(props: { when: boolean | null | undefined; keyed: true; fallback?: Element; children: Element | ((item: true) => Element); }): Element', gave the following error.
+    Type 'Element' is not assignable to type 'string | Element'.
+  Overload 2 of 2, '(props: { when: boolean | null | undefined; keyed: true; fallback?: Element; children: Element | ((item: true) => Element); }): Element', gave the following error.
+    Type 'Element' is not assignable to type 'string | Element'.
+
+[7m52[0m         <Show when={searchType() === 'anime'}>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m52[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'Show' cannot be used as a JSX component.
+  Its type '{ <T, TRenderFunction extends (item: Accessor<NonNullable<T>>) => Element>(props: { when: false | T | null | undefined; keyed?: false; fallback?: Element; children: Element | RequiredParameter<...>; }): Element; <T, TRenderFunction extends (item: NonNullable<...>) => Element>(props: { ...; }): Element; }' is not a valid JSX element type.
+    Type '{ <T, TRenderFunction extends (item: Accessor<NonNullable<T>>) => Element>(props: { when: false | T | null | undefined; keyed?: false; fallback?: Element; children: Element | RequiredParameter<...>; }): Element; <T, TRenderFunction extends (item: NonNullable<...>) => Element>(props: { ...; }): Element; }' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m52[0m         <Show when={searchType() === 'anime'}>
+[7m  [0m [91m         ~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m53[0m:[93m18[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'. Did you mean 'className'?
+
+[7m53[0m           <label class="text-neutral-500 text-sm">
+[7m  [0m [91m                 ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m54[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'. Did you mean 'className'?
+
+[7m54[0m             <p class="mb-2 font-medium">Type:</p>
+[7m  [0m [91m               ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m60[0m:[93m18[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'. Did you mean 'className'?
+
+[7m60[0m           <label class="text-neutral-500 text-sm">
+[7m  [0m [91m                 ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m61[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'. Did you mean 'className'?
+
+[7m61[0m             <p class="mb-2 font-medium">Status:</p>
+[7m  [0m [91m               ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m68[0m:[93m9[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+  Overload 2 of 2, '(props: { when: boolean | null | undefined; keyed: true; fallback?: Element; children: Element | ((item: true) => Element); }): Element', gave the following error.
+    Type 'Element' is not assignable to type 'string | Element'.
+  Overload 2 of 2, '(props: { when: boolean | null | undefined; keyed: true; fallback?: Element; children: Element | ((item: true) => Element); }): Element', gave the following error.
+    Type 'Element' is not assignable to type 'string | Element'.
+
+[7m68[0m         <Show when={searchType() === 'manga'}>
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m68[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'Show' cannot be used as a JSX component.
+  Its type '{ <T, TRenderFunction extends (item: Accessor<NonNullable<T>>) => Element>(props: { when: false | T | null | undefined; keyed?: false; fallback?: Element; children: Element | RequiredParameter<...>; }): Element; <T, TRenderFunction extends (item: NonNullable<...>) => Element>(props: { ...; }): Element; }' is not a valid JSX element type.
+
+[7m68[0m         <Show when={searchType() === 'manga'}>
+[7m  [0m [91m         ~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m69[0m:[93m18[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'. Did you mean 'className'?
+
+[7m69[0m           <label class="text-neutral-500 text-sm">
+[7m  [0m [91m                 ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m70[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'. Did you mean 'className'?
+
+[7m70[0m             <p class="mb-2 font-medium">Type:</p>
+[7m  [0m [91m               ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m85[0m:[93m18[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element[]; class: string; }' is not assignable to type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>'. Did you mean 'className'?
+
+[7m85[0m           <label class="text-neutral-500 text-sm">
+[7m  [0m [91m                 ~~~~~[0m
+
+[96msrc/components/solid/search-bar.tsx[0m:[93m86[0m:[93m16[0m - [91merror[0m[90m TS2322: [0mType '{ children: string; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>'. Did you mean 'className'?
+
+[7m86[0m             <p class="mb-2 font-medium">Status:</p>
+[7m  [0m [91m               ~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m19[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'Select' cannot be used as a JSX component.
+  Its type '<Option, OptGroup = never>(props: SelectRootProps<Option, OptGroup>) => Element' is not a valid JSX element type.
+    Type '<Option, OptGroup = never>(props: SelectRootProps<Option, OptGroup>) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m19[0m       <Select
+[7m  [0m [91m       ~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m25[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType '(props: SelectBaseItemComponentProps<string>) => Element' is not assignable to type 'Component<SelectBaseItemComponentProps<string>>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m25[0m         itemComponent={(props) => (
+[7m  [0m [91m        ~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/@kobalte+core@0.11.2_solid-js@1.8.15/node_modules/@kobalte/core/dist/types/select/select-base.d.ts[0m:[93m73[0m:[93m5[0m
+    [7m73[0m     itemComponent?: Component<SelectBaseItemComponentProps<Option>>;
+    [7m  [0m [96m    ~~~~~~~~~~~~~[0m
+    The expected type comes from property 'itemComponent' which is declared here on type 'IntrinsicAttributes & SelectRootProps<string, string>'
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m26[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'SelectItem' cannot be used as a JSX component.
+  Its type 'Component<ListboxItemProps>' is not a valid JSX element type.
+    Type 'Component<ListboxItemProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m26[0m           <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
+[7m  [0m [91m           ~~~~~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m29[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 29[0m         <SelectTrigger
+[7m   [0m [91m        ~~~~~~~~~~~~~~[0m
+[7m 30[0m           class={clsx('w-32 rounded-l-md flex-none text-gray-500 h-10')}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 32[0m           <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 33[0m         </SelectTrigger>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m29[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'SelectTrigger' cannot be used as a JSX component.
+  Its type 'Component<SelectTriggerProps>' is not a valid JSX element type.
+    Type 'Component<SelectTriggerProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m29[0m         <SelectTrigger
+[7m  [0m [91m         ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m32[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m32[0m           <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & SelectTriggerProps'
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m32[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'SelectValue' cannot be used as a JSX component.
+  Its type '<T>(props: SelectValueProps<T>) => Element' is not a valid JSX element type.
+    Type '<T>(props: SelectValueProps<T>) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m32[0m           <SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+[7m  [0m [91m           ~~~~~~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m34[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m34[0m         <SelectContent class={clsx('w-40 h-[9.5rem] bg-white')} />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/select-search-type.tsx[0m:[93m34[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'SelectContent' cannot be used as a JSX component.
+  Its type 'Component<SelectContentProps>' is not a valid JSX element type.
+    Type 'Component<SelectContentProps>' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m34[0m         <SelectContent class={clsx('w-40 h-[9.5rem] bg-white')} />
+[7m  [0m [91m         ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/button.tsx[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: ButtonProps) => Element' is not assignable to type 'Component<ButtonProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m39[0m const Button: Component<ButtonProps> = (props) => {
+[7m  [0m [91m      ~~~~~~[0m
+
+[96msrc/components/solid/ui/button.tsx[0m:[93m43[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '{ autofocus?: boolean; disabled?: boolean; form?: string; formaction?: string | SerializableAttributeValue; formenctype?: HTMLFormEncType; ... 291 more ...; class: string; }' is not assignable to type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'. Did you mean 'className'?
+
+[7m43[0m       class={cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)}
+[7m  [0m [91m      ~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m9[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: DropdownMenuRootProps) => Element' is not assignable to type 'Component<DropdownMenuRootProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m9[0m const DropdownMenu: Component<DropdownMenuPrimitive.DropdownMenuRootProps> = (
+[7m [0m [91m      ~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m12[0m:[93m11[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.Root' cannot be used as a JSX component.
+  Its type '(props: DropdownMenuRootProps) => Element' is not a valid JSX element type.
+    Type '(props: DropdownMenuRootProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m12[0m   return <DropdownMenuPrimitive.Root gutter={4} {...props} />;
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m19[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: DropdownMenuContentProps) => Element' is not assignable to type 'Component<DropdownMenuContentProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m19[0m const DropdownMenuContent: Component<
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m24[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.Portal' cannot be used as a JSX component.
+  Its type '(props: MenuPortalProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuPortalProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m24[0m     <DropdownMenuPrimitive.Portal>
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m25[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m 25[0m       <DropdownMenuPrimitive.Content
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 26[0m         class={cn(
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 30[0m         {...rest}
+[7m   [0m [91m~~~~~~~~~~~~~~~~~[0m
+[7m 31[0m       />
+[7m   [0m [91m~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/web/types/index.d.ts[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: JSX.Element;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuPortalProps'
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m25[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.Content' cannot be used as a JSX component.
+  Its type '(props: DropdownMenuContentProps) => Element' is not a valid JSX element type.
+    Type '(props: DropdownMenuContentProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m25[0m       <DropdownMenuPrimitive.Content
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m36[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuItemProps) => Element' is not assignable to type 'Component<MenuItemProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m36[0m const DropdownMenuItem: Component<
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m41[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.Item' cannot be used as a JSX component.
+  Its type '(props: MenuItemProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuItemProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m41[0m     <DropdownMenuPrimitive.Item
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m51[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: HTMLAttributes<HTMLSpanElement>) => Element' is not assignable to type 'Component<HTMLAttributes<HTMLSpanElement>>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m51[0m const DropdownMenuShortcut: Component<ComponentProps<'span'>> = (props) => {
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m55[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '{ accessKey?: string; contenteditable?: boolean | "inherit" | "plaintext-only"; contextmenu?: string; dir?: HTMLDir; draggable?: boolean | "true" | "false"; hidden?: boolean | "hidden" | "until-found"; ... 270 more ...; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'. Did you mean 'className'?
+
+[7m55[0m       class={cn('ml-auto text-xs tracking-widest opacity-60', props.class)}
+[7m  [0m [91m      ~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m61[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: SeparatorRootProps) => Element' is not assignable to type 'Component<SeparatorRootProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m61[0m const DropdownMenuSeparator: Component<
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m66[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.Separator' cannot be used as a JSX component.
+  Its type '(props: SeparatorRootProps) => Element' is not a valid JSX element type.
+    Type '(props: SeparatorRootProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m66[0m     <DropdownMenuPrimitive.Separator
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m75[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuSubTriggerProps) => Element' is not assignable to type 'Component<MenuSubTriggerProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m75[0m const DropdownMenuSubTrigger: Component<
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m80[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.SubTrigger' cannot be used as a JSX component.
+  Its type '(props: MenuSubTriggerProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuSubTriggerProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m80[0m     <DropdownMenuPrimitive.SubTrigger
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m88[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m88[0m       <TbChevronRight class="ml-auto h-4 w-4" />
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m88[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'TbChevronRight' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+    Type 'IconTypes' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m88[0m       <TbChevronRight class="ml-auto h-4 w-4" />
+[7m  [0m [91m       ~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m93[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuSubContentProps) => Element' is not assignable to type 'Component<MenuSubContentProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m93[0m const DropdownMenuSubContent: Component<
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m98[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.SubContent' cannot be used as a JSX component.
+  Its type '(props: MenuSubContentProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuSubContentProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m98[0m     <DropdownMenuPrimitive.SubContent
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m108[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuCheckboxItemProps) => Element' is not assignable to type 'Component<MenuCheckboxItemProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m108[0m const DropdownMenuCheckboxItem: Component<
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m113[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.CheckboxItem' cannot be used as a JSX component.
+  Its type '(props: MenuCheckboxItemProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuCheckboxItemProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m113[0m     <DropdownMenuPrimitive.CheckboxItem
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m120[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m120[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m121[0m         <DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m123[0m         </DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m124[0m       </span>
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m120[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'. Did you mean 'className'?
+
+[7m120[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m   [0m [91m            ~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m121[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.ItemIndicator' cannot be used as a JSX component.
+  Its type '(props: MenuItemIndicatorProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuItemIndicatorProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m121[0m         <DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m122[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m122[0m           <TbCheck class="h-4 w-4" />
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemIndicatorProps'
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m122[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'TbCheck' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m122[0m           <TbCheck class="h-4 w-4" />
+[7m   [0m [91m           ~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m132[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuGroupLabelProps) => Element' is not assignable to type 'Component<MenuGroupLabelProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m132[0m const DropdownMenuGroupLabel: Component<
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m137[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.GroupLabel' cannot be used as a JSX component.
+  Its type '(props: MenuGroupLabelProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuGroupLabelProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m137[0m     <DropdownMenuPrimitive.GroupLabel
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m146[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: MenuRadioItemProps) => Element' is not assignable to type 'Component<MenuRadioItemProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m146[0m const DropdownMenuRadioItem: Component<
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m151[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.RadioItem' cannot be used as a JSX component.
+  Its type '(props: MenuRadioItemProps) => Element' is not a valid JSX element type.
+    Type '(props: MenuRadioItemProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m151[0m     <DropdownMenuPrimitive.RadioItem
+[7m   [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m158[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m158[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m159[0m         <DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m161[0m         </DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m162[0m       </span>
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m158[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'. Did you mean 'className'?
+
+[7m158[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m   [0m [91m            ~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m159[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'DropdownMenuPrimitive.ItemIndicator' cannot be used as a JSX component.
+  Its type '(props: MenuItemIndicatorProps) => Element' is not a valid JSX element type.
+
+[7m159[0m         <DropdownMenuPrimitive.ItemIndicator>
+[7m   [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m160[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m160[0m           <TbCircle class="h-2 w-2 fill-current" />
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & MenuItemIndicatorProps'
+
+[96msrc/components/solid/ui/dropdown-menu.tsx[0m:[93m160[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'TbCircle' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m160[0m           <TbCircle class="h-2 w-2 fill-current" />
+[7m   [0m [91m           ~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m13[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: SelectTriggerProps) => Element' is not assignable to type 'Component<SelectTriggerProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m13[0m const SelectTrigger: Component<SelectPrimitive.SelectTriggerProps> = (
+[7m  [0m [91m      ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m18[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Trigger' cannot be used as a JSX component.
+  Its type '(props: SelectTriggerProps) => Element' is not a valid JSX element type.
+    Type '(props: SelectTriggerProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m18[0m     <SelectPrimitive.Trigger
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m26[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m26[0m       <SelectPrimitive.Icon>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m27[0m         <TbChevronDown class="h-4 w-4 opacity-50" />
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m28[0m       </SelectPrimitive.Icon>
+[7m  [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m26[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Icon' cannot be used as a JSX component.
+  Its type '(props: SelectIconProps) => Element' is not a valid JSX element type.
+    Type '(props: SelectIconProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m26[0m       <SelectPrimitive.Icon>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m27[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m27[0m         <TbChevronDown class="h-4 w-4 opacity-50" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & SelectIconProps'
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m27[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'TbChevronDown' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m27[0m         <TbChevronDown class="h-4 w-4 opacity-50" />
+[7m  [0m [91m         ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m33[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: SelectContentProps) => Element' is not assignable to type 'Component<SelectContentProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m33[0m const SelectContent: Component<SelectPrimitive.SelectContentProps> = (
+[7m  [0m [91m      ~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m38[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Portal' cannot be used as a JSX component.
+  Its type '(props: SelectPortalProps) => Element' is not a valid JSX element type.
+    Type '(props: SelectPortalProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m38[0m     <SelectPrimitive.Portal>
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m 39[0m       <SelectPrimitive.Content
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 40[0m         class={cn(
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 46[0m         <SelectPrimitive.Listbox class="m-0 p-1" />
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 47[0m       </SelectPrimitive.Content>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/web/types/index.d.ts[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: JSX.Element;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & SelectPortalProps'
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m39[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Content' cannot be used as a JSX component.
+  Its type '(props: SelectContentProps) => Element' is not a valid JSX element type.
+    Type '(props: SelectContentProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m39[0m       <SelectPrimitive.Content
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m46[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m46[0m         <SelectPrimitive.Listbox class="m-0 p-1" />
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & SelectContentProps'
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m46[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Listbox' cannot be used as a JSX component.
+  Its type '<Option = any, OptGroup = never>(props: SelectListboxProps<Option, OptGroup>) => Element' is not a valid JSX element type.
+    Type '<Option = any, OptGroup = never>(props: SelectListboxProps<Option, OptGroup>) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m46[0m         <SelectPrimitive.Listbox class="m-0 p-1" />
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m52[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType '(props: ListboxItemProps) => Element' is not assignable to type 'Component<ListboxItemProps>'.
+  Type 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m52[0m const SelectItem: Component<SelectPrimitive.SelectItemProps> = (props) => {
+[7m  [0m [91m      ~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m55[0m:[93m6[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.Item' cannot be used as a JSX component.
+  Its type '(props: ListboxItemProps) => Element' is not a valid JSX element type.
+    Type '(props: ListboxItemProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m55[0m     <SelectPrimitive.Item
+[7m  [0m [91m     ~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m62[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m 62[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m   [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 63[0m         <SelectPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m...[0m 
+[7m 65[0m         </SelectPrimitive.ItemIndicator>
+[7m   [0m [91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[7m 66[0m       </span>
+[7m   [0m [91m~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m62[0m:[93m13[0m - [91merror[0m[90m TS2322: [0mType '{ children: Element; class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'.
+  Property 'class' does not exist on type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'. Did you mean 'className'?
+
+[7m62[0m       <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+[7m  [0m [91m            ~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m63[0m:[93m10[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.ItemIndicator' cannot be used as a JSX component.
+  Its type '(props: ListboxItemIndicatorProps) => Element' is not a valid JSX element type.
+    Type '(props: ListboxItemIndicatorProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m63[0m         <SelectPrimitive.ItemIndicator>
+[7m  [0m [91m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m64[0m:[93m11[0m - [91merror[0m[90m TS2322: [0mType 'React.JSX.Element' is not assignable to type 'import("/home/lotus/dev/projects/astro-transition-api/node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx").JSX.Element'.
+
+[7m64[0m           <TbCheck class="h-4 w-4" />
+[7m  [0m [91m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  [96m../../node_modules/.pnpm/solid-js@1.8.15/node_modules/solid-js/types/jsx.d.ts[0m:[93m190[0m:[93m5[0m
+    [7m190[0m     children?: Element;
+    [7m   [0m [96m    ~~~~~~~~[0m
+    The expected type comes from property 'children' which is declared here on type 'IntrinsicAttributes & ListboxItemIndicatorProps'
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m64[0m:[93m12[0m - [91merror[0m[90m TS2786: [0m'TbCheck' cannot be used as a JSX component.
+  Its type 'IconTypes' is not a valid JSX element type.
+
+[7m64[0m           <TbCheck class="h-4 w-4" />
+[7m  [0m [91m           ~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m67[0m:[93m7[0m - [91merror[0m[90m TS2322: [0mType 'Element' is not assignable to type 'string | Element'.
+
+[7m67[0m       <SelectPrimitive.ItemLabel>{props.children}</SelectPrimitive.ItemLabel>
+[7m  [0m [91m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/solid/ui/select.tsx[0m:[93m67[0m:[93m8[0m - [91merror[0m[90m TS2786: [0m'SelectPrimitive.ItemLabel' cannot be used as a JSX component.
+  Its type '(props: ListboxItemLabelProps) => Element' is not a valid JSX element type.
+    Type '(props: ListboxItemLabelProps) => Element' is not assignable to type '(props: any, deprecatedLegacyContext?: any) => ReactNode'.
+      Type 'Element' is not assignable to type 'ReactNode'.
+
+[7m67[0m       <SelectPrimitive.ItemLabel>{props.children}</SelectPrimitive.ItemLabel>
+[7m  [0m [91m       ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+Found 198 errors in 12 files.
+
+Errors  Files
+    23  src/components/react/avatar-dropdown.tsx[90m:10[0m
+     1  src/components/react/ui/dropdown-menu.tsx[90m:97[0m
+    28  src/components/solid/avatar-dropdown.tsx[90m:20[0m
+     1  src/components/solid/avatar.tsx[90m:6[0m
+    30  src/components/solid/card-dropdown.tsx[90m:38[0m
+    16  src/components/solid/item-actions-dropdown.tsx[90m:9[0m
+     5  src/components/solid/mangas-dropdown.tsx[90m:10[0m
+    28  src/components/solid/search-bar.tsx[90m:16[0m
+     9  src/components/solid/select-search-type.tsx[90m:19[0m
+     2  src/components/solid/ui/button.tsx[90m:39[0m
+    34  src/components/solid/ui/dropdown-menu.tsx[90m:9[0m
+    21  src/components/solid/ui/select.tsx[90m:13[0m
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m

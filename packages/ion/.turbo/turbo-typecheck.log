@@ -1,0 +1,5 @@
+
+
+> @repo/ion@0.1.0 typecheck /home/lotus/dev/projects/astro-transition-api/packages/ion
+> tsc --noEmit
+
