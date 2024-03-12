@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import type { Anime, UserType } from '@/lib/types';
 import Icon from 'astro-icon';
 import { idxToMonth } from '@/lib/utils';
-// import { EntityClassificationDropdown } from './solid/card-dropdown';
+import { EntityClassificationDropdown } from './react/card-dropdown';
 interface Props {
   entityId?: string;
   anime: Anime;
@@ -87,16 +87,16 @@ const { anime, entityId, userId, userType } = Astro.props;
           class="w-4 relative top-[1px]"
         />
       </button>
-      <!-- <EntityClassificationDropdown -->
-      <!--   client:load -->
-      <!--   entityId={entityId} -->
-      <!--   data={{ -->
-      <!--     entityType: 'ANIME', -->
-      <!--     malId: anime.mal_id, -->
-      <!--     userId, -->
-      <!--     userType, -->
-      <!--   }} -->
-      <!-- /> -->
+      <EntityClassificationDropdown
+        client:load
+        entityId={entityId}
+        data={{
+          entityType: 'ANIME',
+          malId: anime.mal_id,
+          userId,
+          userType,
+        }}
+      />
     </div>
   </div>
 </div>

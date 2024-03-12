@@ -1,6 +1,7 @@
 ---
 import AnimeCard from '@/components/anime-card.astro';
 import Layout from '@/layouts/main.astro';
+// import { usersTrackedEntitiesRepository } from '@/lib/storage/user-tracked-entity';
 import { getOrCreateUserId } from '@/lib/utils';
 import { apiFetch } from '@/lib/utils/fetch';
 const { userId, userType } = await getOrCreateUserId(Astro);
