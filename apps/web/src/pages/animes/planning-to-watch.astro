@@ -1,6 +1,7 @@
 ---
 import AnimeCard from '@/components/anime-card.astro';
 import Layout from '@/layouts/main.astro';
+import { usersTrackedEntitiesRepository } from '@/lib/storage/user-tracked-entity';
 import { getOrCreateUserId } from '@/lib/utils';
 import { apiFetch } from '@/lib/utils/fetch';
 const { userType, userId } = await getOrCreateUserId(Astro);
@@ -12,13 +13,18 @@ url.searchParams.set('entityStatus', 'PLANNING');
 url.searchParams.set('entityType', 'ANIME');
 
 const animes = await apiFetch(url);
+const idk = await usersTrackedEntitiesRepository.findUsersEntities({
+  userId,
+  entityType: 'ANIME',
+  status: 'WATCHING',
+});
+console.log(idk)
 if (!animes.success) {
   console.error(animes.error);
 }
 ---
 
 <Layout title="Animes watching">
-  <div class="text-black">asdhjsadkjsakdj sad ksajdjk sad kjsadjksadsk j</div>
   {
     animes.success && (
       <div class="grid auto-fill-grid">
