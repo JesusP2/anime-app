@@ -1,9 +1,10 @@
 ---
 import '@fontsource-variable/inter';
+import '@fontsource/bungee';
 import { Icon } from 'astro-icon';
 import Search from '../components/search.astro';
 import Tab from '@/components/tab.astro';
-import { Sidebar } from '@/components/react/sidebar'
+import { Sidebar } from '@/components/react/sidebar';
 // import { Dropdown } from '@/components/solid/mangas-dropdown';
 // import { SearchBar } from '@/components/solid/search-bar';
 
@@ -24,117 +25,10 @@ const session = await Astro.locals.auth.validate();
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="text-white">
-    <Sidebar client:load />
-    <div class="flex">
-      <div
-        class="w-72 h-screen bg-neutral-900 shadow-zinc-900 shadow-lg flex-none flex flex-col justify-between overflow-y-scroll"
-      >
-        <div>
-          <h2 class="text-2xl text-center font-bold py-4">APP NAME</h2>
-          <Search />
-          <ul class="space-y-3 mt-10">
-            <li>
-              <Tab href="/">
-                <Icon pack="ph" name="house-light" class="w-6" />
-                Home
-              </Tab>
-            </li>
-            <li>
-              <Tab href="/current-season">
-                <Icon pack="ph" name="calendar-blank" class="w-6" />
-                Current season
-              </Tab>
-            </li>
-            <li>
-              <Tab href="/watchlist">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1.5em"
-                  height="1.5em"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M1 3h16v2H1Zm0 6h6v2H1Zm0 6h8v2H1Zm8-4.24h3.85L14.5 7l1.65 3.76H20l-3 3.17l.9 4.05l-3.4-2.14L11.1 18l.9-4.05Z"
-                  ></path>
-                </svg>
-                Watchlist
-              </Tab>
-              <!-- <Dropdown -->
-              <!--   title="Animes" -->
-              <!--   list={[ -->
-              <!--     { href: '/animes/completed', label: 'Completed' }, -->
-              <!--     { href: '/animes/currently-watching', label: 'Watching' }, -->
-              <!--     { -->
-              <!--       href: '/animes/planning-to-watch', -->
-              <!--       label: 'Planning to watch', -->
-              <!--     }, -->
-              <!--     { href: '/animes/dropped', label: 'Dropped' }, -->
-              <!--     { href: '/animes/on-hold', label: 'Paused' }, -->
-              <!--   ]} -->
-              <!--   client:load -->
-              <!-- /> -->
-              <!-- <Dropdown -->
-              <!--   title="Mangas" -->
-              <!--   list={[ -->
-              <!--     { href: '/mangas/completed', label: 'Completed' }, -->
-              <!--     { href: '/mangas/currently-watching', label: 'Watching' }, -->
-              <!--     { -->
-              <!--       href: '/mangas/planning-to-watch', -->
-              <!--       label: 'Planning to watch', -->
-              <!--     }, -->
-              <!--     { href: '/mangas/dropped', label: 'Dropped' }, -->
-              <!--     { href: '/mangas/on-hold', label: 'Paused' }, -->
-              <!--   ]} -->
-              <!--   client:load -->
-              <!-- /> -->
-              <!-- <Dropdown -->
-              <!--   title="Light Novels" -->
-              <!--   list={[ -->
-              <!--     { href: '/light-novels/completed', label: 'Completed' }, -->
-              <!--     { -->
-              <!--       href: '/light-novels/currently-watching', -->
-              <!--       label: 'Watching', -->
-              <!--     }, -->
-              <!--     { -->
-              <!--       href: '/light-novels/planning-to-watch', -->
-              <!--       label: 'Planning to watch', -->
-              <!--     }, -->
-              <!--     { href: '/light-novels/dropped', label: 'Dropped' }, -->
-              <!--     { href: '/light-novels/on-hold', label: 'Paused' }, -->
-              <!--   ]} -->
-              <!--   client:load -->
-              <!-- /> -->
-            </li>
-          </ul>
-        </div>
-        {
-          session ? (
-            <div class="mb-4">
-              <!-- <AvatarDropdown -->
-              <!--   name={session?.user?.username || ''} -->
-              <!--   src={session?.user.avatar_image!} -->
-              <!--   alt="banana" -->
-              <!--   client:load -->
-              <!-- /> -->
-            </div>
-          ) : (
-            <a
-              href="/auth/signin"
-              class="mb-4 ml-4 text-center text-neutral-200 hover:text-white py-2 rounded-md w-20 font-inter border-neutral-400 border"
-            >
-              Sign in
-            </a>
-          )
-        }
-      </div>
-      <div
-        class="flex-1 h-screen overflow-y-auto overflow-x-hidden font-inter px-20 py-10"
-      >
-        <!-- <SearchBar client:load /> -->
-        <slot />
-      </div>
+  <body class="text-white flex">
+    <Sidebar pathname="3" client:load />
+    <div class="bg-red-100 flex-1">
+      <slot />
     </div>
     <style is:global>
       @tailwind base;
@@ -273,23 +167,25 @@ const session = await Astro.locals.auth.validate();
         background: #555;
       }
 
-.sidebar {
-  width: 4rem;
-}
+      .sidebar {
+        width: 4rem;
+      }
 
-.sidebar-text {
-  opacity: 0;
-  visibility: hidden;
-}
+      .sidebar-text {
+        opacity: 0;
+        visibility: hidden;
+      }
 
-body:has(.dropdown-menu-has-content) .sidebar, .sidebar:hover {
-  width: 18rem;
-}
+      body:has(.dropdown-menu-has-content) .sidebar,
+      .sidebar:hover {
+        width: 18rem;
+      }
 
-body:has(.dropdown-menu-has-content) .sidebar-text, .sidebar:hover .sidebar-text {
-  opacity: 1;
-  visibility: visible;
-}
+      body:has(.dropdown-menu-has-content) .sidebar-text,
+      .sidebar:hover .sidebar-text {
+        opacity: 1;
+        visibility: visible;
+      }
     </style>
   </body>
 </html>

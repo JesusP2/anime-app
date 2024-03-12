@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        bungee: ["Bungee" , ...defaultTheme.fontFamily.sans],
         inter: ["Inter Variable", "Inter", ...defaultTheme.fontFamily.sans],
       },
       colors: {
