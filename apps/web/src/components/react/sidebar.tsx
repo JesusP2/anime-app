@@ -17,7 +17,7 @@ import {
 import { UserDropdown } from '@/components/react/user-dropdown';
 import { SidebarLink } from './sidebar-link';
 import type { Session } from 'lucia';
-import { Button } from '@repo/ion/button';
+import { Button, buttonVariants as ionButtonVariants } from '@repo/ion/button';
 
 export function Sidebar({
   pathname,
@@ -216,7 +216,20 @@ export function Sidebar({
         <div className="border-t border-dashed border-stone-300 mt-4 pt-4 child">
           <UserDropdown />
         </div>
-      : <Button size="md" className="text-white">Login in</Button> }
+      : <a
+          href="/auth/signin"
+          className={cn(
+            ionButtonVariants({
+              color: 'primary',
+              size: 'md',
+              emphasis: 'high',
+            }),
+            'text-white',
+          )}
+        >
+          Log in
+        </a>
+      }
     </aside>
   );
 }

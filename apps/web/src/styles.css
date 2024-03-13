@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
     --primary-darkest: #1e40af;
@@ -219,6 +220,7 @@
       0px 4px 30px 0px rgba(256, 256, 256, 0.03),
       0px 0px 8px 0px rgba(256, 256, 256, 0.03);
   }
+
   [data-kb-theme='dark'] {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -265,18 +267,26 @@
   }
 }
 
-@layer base {
-  /* * { */
-  /*   @apply border-border; */
-  /* } */
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+@layer components {
+  .primary-focus {
+    outline: none;
+    box-shadow:
+      0px 0px 0px 4px var(--primary-lighter),
+      0px 0px 0px 2px var(--background);
+  }
+  .secondary-focus {
+    outline: none;
+    box-shadow:
+      0px 0px 0px 4px var(--secondary-lighter),
+      0px 0px 0px 2px var(--background);
+  }
+  .danger-focus {
+    outline: none;
+    box-shadow:
+      0px 0px 0px 4px var(--danger-lighter),
+      0px 0px 0px 2px var(--background);
   }
 }
-
 .text-clip {
   display: -webkit-box;
   -webkit-line-clamp: 4;
