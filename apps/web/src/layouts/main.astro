@@ -1,9 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '@fontsource/bungee';
-import { Icon } from 'astro-icon';
-import Search from '../components/search.astro';
-import Tab from '@/components/tab.astro';
+import '../styles.css'
 import { Sidebar } from '@/components/react/sidebar';
 // import { Dropdown } from '@/components/solid/mangas-dropdown';
 // import { SearchBar } from '@/components/solid/search-bar';
@@ -13,7 +11,7 @@ export interface Props {
 }
 
 const { title } = Astro.props;
-// const session = await Astro.locals.auth.validate();
+const session = await Astro.locals.auth.validate();
 ---
 
 <!doctype html>
@@ -26,166 +24,9 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="text-white flex">
-    <Sidebar pathname="3" client:load />
+    <Sidebar session={session} pathname="3" client:load />
     <div class="flex-1">
       <slot />
     </div>
-    <style is:global>
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-      .text-clip {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .auto-fill-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
-      @layer base {
-        :root {
-          --background: 0 0% 100%;
-          --foreground: 240 10% 3.9%;
-
-          --muted: 240 4.8% 95.9%;
-          --muted-foreground: 240 3.8% 46.1%;
-
-          --popover: 0 0% 100%;
-          --popover-foreground: 240 10% 3.9%;
-
-          --border: 240 5.9% 90%;
-          --input: 240 5.9% 90%;
-
-          --card: 0 0% 100%;
-          --card-foreground: 240 10% 3.9%;
-
-          --primary: 240 5.9% 10%;
-          --primary-foreground: 0 0% 98%;
-
-          --secondary: 240 4.8% 95.9%;
-          --secondary-foreground: 240 5.9% 10%;
-
-          --accent: 240 4.8% 95.9%;
-          --accent-foreground: 240 5.9% 10%;
-
-          --destructive: 0 84.2% 60.2%;
-          --destructive-foreground: 0 0% 98%;
-
-          --info: 204 94% 94%;
-          --info-foreground: 199 89% 48%;
-
-          --success: 149 80% 90%;
-          --success-foreground: 160 84% 39%;
-
-          --warning: 48 96% 89%;
-          --warning-foreground: 25 95% 53%;
-
-          --error: 0 93% 94%;
-          --error-foreground: 0 84% 60%;
-
-          --ring: 240 5.9% 10%;
-
-          --radius: 0.5rem;
-        }
-
-        [data-kb-theme='dark'] {
-          --background: 240 10% 3.9%;
-          --foreground: 0 0% 98%;
-
-          --muted: 240 3.7% 15.9%;
-          --muted-foreground: 240 5% 64.9%;
-
-          --accent: 240 3.7% 15.9%;
-          --accent-foreground: 0 0% 98%;
-
-          --popover: 240 10% 3.9%;
-          --popover-foreground: 0 0% 98%;
-
-          --border: 240 3.7% 15.9%;
-          --input: 240 3.7% 15.9%;
-
-          --card: 240 10% 3.9%;
-          --card-foreground: 0 0% 98%;
-
-          --primary: 0 0% 98%;
-          --primary-foreground: 240 5.9% 10%;
-
-          --secondary: 240 3.7% 15.9%;
-          --secondary-foreground: 0 0% 98%;
-
-          --destructive: 0 62.8% 30.6%;
-          --destructive-foreground: 0 0% 98%;
-
-          --info: 204 94% 94%;
-          --info-foreground: 199 89% 48%;
-
-          --success: 149 80% 90%;
-          --success-foreground: 160 84% 39%;
-
-          --warning: 48 96% 89%;
-          --warning-foreground: 25 95% 53%;
-
-          --error: 0 93% 94%;
-          --error-foreground: 0 84% 60%;
-
-          --ring: 240 4.9% 83.9%;
-
-          --radius: 0.5rem;
-        }
-      }
-
-      @layer base {
-        * {
-          @apply border-border;
-        }
-        body {
-          @apply bg-background text-foreground;
-          font-feature-settings:
-            'rlig' 1,
-            'calt' 1;
-        }
-      }
-      /* width */
-      ::-webkit-scrollbar {
-        width: 3px;
-      }
-
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-
-      .sidebar {
-        width: 4rem;
-      }
-
-      .sidebar-text {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      body:has(.dropdown-menu-has-content) .sidebar,
-      .sidebar:hover {
-        width: 18rem;
-      }
-
-      body:has(.dropdown-menu-has-content) .sidebar-text,
-      .sidebar:hover .sidebar-text {
-        opacity: 1;
-        visibility: visible;
-      }
-    </style>
   </body>
 </html>
