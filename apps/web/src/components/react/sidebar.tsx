@@ -1,13 +1,13 @@
 import { buttonVariants } from '@repo/shadcn/button';
 import { cn } from '@/lib/utils';
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { VscGroupByRefType } from 'react-icons/vsc';
-import { IoPauseCircleOutline } from "react-icons/io5";
-import { PiTrash } from "react-icons/pi";
-import { GrPlan } from "react-icons/gr";
+import { IoPauseCircleOutline } from 'react-icons/io5';
+import { PiTrash } from 'react-icons/pi';
+import { GrPlan } from 'react-icons/gr';
 import { FiChevronDown } from 'react-icons/fi';
 import { BsWindowStack } from 'react-icons/bs';
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch } from 'react-icons/io';
 import { GoGear } from 'react-icons/go';
 import {
   Collapsible,
@@ -16,9 +16,16 @@ import {
 } from '@repo/shadcn/collapsible';
 import { UserDropdown } from '@/components/react/user-dropdown';
 import { SidebarLink } from './sidebar-link';
+import type { Session } from 'lucia';
+import { Button } from '@repo/ion/button';
 
-export function Sidebar({ pathname }: { pathname: string }) {
-
+export function Sidebar({
+  pathname,
+  session,
+}: {
+  pathname: string;
+  session: Session | null;
+}) {
   return (
     <aside
       className={cn(
@@ -78,12 +85,17 @@ export function Sidebar({ pathname }: { pathname: string }) {
               )}
             >
               <SidebarLink pathname={pathname} href="/animes/completed">
-                <IoMdCheckmarkCircleOutline size={20} className="min-w-[20px]" />
+                <IoMdCheckmarkCircleOutline
+                  size={20}
+                  className="min-w-[20px]"
+                />
                 <span className="sidebar-text delay-200">Completed</span>
               </SidebarLink>
               <SidebarLink pathname={pathname} href="/animes/planning-to-watch">
                 <GrPlan size={16} className="min-w-[20px]" />
-                <span className="sidebar-text delay-200">Planning to watch</span>
+                <span className="sidebar-text delay-200">
+                  Planning to watch
+                </span>
               </SidebarLink>
               <SidebarLink pathname={pathname} href="/animes/dropped">
                 <PiTrash size={20} className="min-w-[20px]" />
@@ -120,12 +132,17 @@ export function Sidebar({ pathname }: { pathname: string }) {
               )}
             >
               <SidebarLink pathname={pathname} href="/mangas/completed">
-                <IoMdCheckmarkCircleOutline size={20} className="min-w-[20px]" />
+                <IoMdCheckmarkCircleOutline
+                  size={20}
+                  className="min-w-[20px]"
+                />
                 <span className="sidebar-text delay-200">Completed</span>
               </SidebarLink>
               <SidebarLink pathname={pathname} href="/mangas/planning-to-watch">
                 <GrPlan size={16} className="min-w-[20px]" />
-                <span className="sidebar-text delay-200">Planning to watch</span>
+                <span className="sidebar-text delay-200">
+                  Planning to watch
+                </span>
               </SidebarLink>
               <SidebarLink pathname={pathname} href="/mangas/dropped">
                 <PiTrash size={20} className="min-w-[20px]" />
@@ -162,12 +179,20 @@ export function Sidebar({ pathname }: { pathname: string }) {
               )}
             >
               <SidebarLink pathname={pathname} href="/light-novles/completed">
-                <IoMdCheckmarkCircleOutline size={20} className="min-w-[20px]" />
+                <IoMdCheckmarkCircleOutline
+                  size={20}
+                  className="min-w-[20px]"
+                />
                 <span className="sidebar-text delay-200">Completed</span>
               </SidebarLink>
-              <SidebarLink pathname={pathname} href="/light-novels/planning-to-watch">
+              <SidebarLink
+                pathname={pathname}
+                href="/light-novels/planning-to-watch"
+              >
                 <GrPlan size={16} className="min-w-[20px]" />
-                <span className="sidebar-text delay-200">Planning to watch</span>
+                <span className="sidebar-text delay-200">
+                  Planning to watch
+                </span>
               </SidebarLink>
               <SidebarLink pathname={pathname} href="/light-novels/dropped">
                 <PiTrash size={20} className="min-w-[20px]" />
@@ -187,9 +212,11 @@ export function Sidebar({ pathname }: { pathname: string }) {
           </SidebarLink>
         </div>
       </div>
-      <div className="border-t border-dashed border-stone-300 mt-4 pt-4 child">
-        <UserDropdown />
-      </div>
+      {session ?
+        <div className="border-t border-dashed border-stone-300 mt-4 pt-4 child">
+          <UserDropdown />
+        </div>
+      : <Button size="md" className="text-white">Login in</Button> }
     </aside>
   );
 }
