@@ -23,6 +23,7 @@ const { userId, userType } = await getOrCreateUserId(Astro);
 ---
 
 <Layout title="Current season">
+  <h1 class="mt-4 text-black text-4xl font-bold font-geist-sans">Current season</h1>
   <div class="grid auto-fill-grid">
     {
       result.data.data.map((anime) => (
