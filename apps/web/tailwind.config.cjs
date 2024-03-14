@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'geist-sans': ['Geist Sans', ...defaultTheme.fontFamily.sans],
         bungee: ['Bungee', ...defaultTheme.fontFamily.sans],
         inter: ['Inter Variable', 'Inter', ...defaultTheme.fontFamily.sans],
       },

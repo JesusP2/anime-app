@@ -1,0 +1,1 @@
+ALTER TABLE "anime_anime" ALTER COLUMN "score" SET DATA TYPE numeric;

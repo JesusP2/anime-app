@@ -5,6 +5,7 @@ import {
   text,
   boolean,
   json,
+  numeric,
 } from 'drizzle-orm/pg-core';
 import { pgTable } from './table'
 import { createId } from '@paralleldrive/cuid2';
@@ -40,9 +41,7 @@ export const anime = pgTable('anime', {
   rating: varchar('rating', {
     length: 255,
   }),
-  score: varchar('score', {
-    length: 20,
-  }),
+  score: numeric('score'),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),

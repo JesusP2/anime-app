@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '@fontsource/bungee';
+import '@fontsource/geist-sans';
 import '../styles.css'
 import { Sidebar } from '@/components/react/sidebar';
 // import { Dropdown } from '@/components/solid/mangas-dropdown';
@@ -25,7 +26,7 @@ const session = await Astro.locals.auth.validate();
   </head>
   <body class="text-white flex">
     <Sidebar session={session} pathname="3" client:load />
-    <div class="flex-1">
+    <div class="flex-1 px-10">
       <slot />
     </div>
   </body>

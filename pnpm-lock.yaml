@@ -50,6 +50,9 @@ importers:
       '@fontsource/bungee':
         specifier: ^5.0.19
         version: 5.0.19
+      '@fontsource/geist-sans':
+        specifier: ^5.0.2
+        version: 5.0.2
       '@fontsource/twinkle-star':
         specifier: ^5.0.14
         version: 5.0.18
@@ -104,6 +107,9 @@ importers:
       p-memoize:
         specifier: ^7.1.1
         version: 7.1.1
+      p-queue:
+        specifier: ^8.0.1
+        version: 8.0.1
       pg:
         specifier: ^8.11.3
         version: 8.11.3
@@ -1473,6 +1479,10 @@ packages:
 
   /@fontsource/bungee@5.0.19:
     resolution: {integrity: sha512-zFguI7t7ykUby40RF29pGLvQJl/BZupirhOkdfWgDXv0YE26nq7tHq5KEXPzktSuXbyzw9wYtK9LnF5xNK6l8A==}
+    dev: false
+
+  /@fontsource/geist-sans@5.0.2:
+    resolution: {integrity: sha512-i2djbiDmVBmoGAD3LbW0b75fnPIBFCTBJ0eOJB1VlcyNc5M7RbdmVNoSW38MVl3VPoXWIxXoQvlCHnhZMSJ4TA==}
     dev: false
 
   /@fontsource/twinkle-star@5.0.18:
