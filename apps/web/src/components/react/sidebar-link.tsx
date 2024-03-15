@@ -17,6 +17,7 @@ export const SidebarLink = forwardRef<
       ref={ref}
       className={cn(
         buttonVariants({ variant: isActive ? 'default' : 'secondary' }),
+        'hover:bg-zinc-100',
         className,
       )}
     >

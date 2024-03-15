@@ -17,7 +17,8 @@ import {
 import { UserDropdown } from '@/components/react/user-dropdown';
 import { SidebarLink } from './sidebar-link';
 import type { Session } from 'lucia';
-import { Button, buttonVariants as ionButtonVariants } from '@repo/ion/button';
+import { buttonVariants as ionButtonVariants } from '@repo/ion/button';
+import { IoLogInOutline } from 'react-icons/io5';
 
 export function Sidebar({
   pathname,
@@ -64,7 +65,7 @@ export function Sidebar({
             <CollapsibleTrigger
               className={cn(
                 buttonVariants({ variant: 'secondary' }),
-                'justify-between w-full gap-x-3 bg-white font-normal px-3',
+                'justify-between w-full gap-x-3 bg-white font-normal px-3 hover:bg-zinc-100',
               )}
             >
               <span className="flex gap-x-3">
@@ -111,7 +112,7 @@ export function Sidebar({
             <CollapsibleTrigger
               className={cn(
                 buttonVariants({ variant: 'secondary' }),
-                'justify-between w-full gap-x-3 bg-white font-normal px-3',
+                'justify-between w-full gap-x-3 bg-white font-normal px-3 hover:bg-zinc-100',
               )}
             >
               <span className="flex gap-x-3">
@@ -158,7 +159,7 @@ export function Sidebar({
             <CollapsibleTrigger
               className={cn(
                 buttonVariants({ variant: 'secondary' }),
-                'justify-between w-full gap-x-3 bg-white font-normal px-3',
+                'justify-between w-full gap-x-3 bg-white font-normal px-3 hover:bg-zinc-100',
               )}
             >
               <span className="flex gap-x-3">
@@ -227,7 +228,8 @@ export function Sidebar({
             'text-white',
           )}
         >
-          Log in
+          <IoLogInOutline size={20} className="min-w-[20px]" />
+          <span className="sidebar-text delay-200">Log in</span>
         </a>
       }
     </aside>

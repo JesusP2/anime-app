@@ -26,6 +26,10 @@
       "default": "./dist/components/dropdown-menu.mjs",
       "types": "./src/components/dropdown-menu.d.mts"
     },
+    "./dialog": {
+      "default": "./dist/components/dialog.mjs",
+      "types": "./src/components/dialog.d.mts"
+    },
     "./utils": {
       "default": "./dist/utils.mjs",
       "types": "./src/utils.d.mts"
