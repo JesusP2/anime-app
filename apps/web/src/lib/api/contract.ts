@@ -1,5 +1,5 @@
-import type { ErrorResponse, SuccessResponse } from "../types";
-import type { components } from "./jikan.openapi";
+import type { ErrorResponse, SuccessResponse } from '../types';
+import type { components } from './jikan.openapi';
 
 export interface ApiContract {
   findAnimeById: (
@@ -11,5 +11,10 @@ export interface ApiContract {
     id: number,
   ) => Promise<
     ErrorResponse | SuccessResponse<components['schemas']['manga_full']>
+  >;
+  findCharacterById: (
+    id: number,
+  ) => Promise<
+    ErrorResponse | SuccessResponse<components['schemas']['character_full']>
   >;
 }

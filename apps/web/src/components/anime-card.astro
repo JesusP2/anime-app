@@ -15,21 +15,21 @@ const { anime, entityId, userId, userType } = Astro.props;
 ---
 
 <div
-  class="group w-72 mx-auto overflow-hidden rounded-md duration-300 shadow-lg hover:shadow-2xl my-4"
+  class="group w-72 mx-auto overflow-hidden rounded-md duration-300 shadow-lg hover:shadow-2xl my-4 min-w-80"
 >
   <div class="h-40 overflow-hidden">
     <Image
       loading="lazy"
       class="duration-200 group-hover:scale-110 object-cover"
       src={anime.images?.jpg?.large_image_url || ''}
-      width={290}
+      width={320}
       height={50}
       alt="Shoes"
     />
   </div>
   <div class="flex gap-x-2 mx-6 mt-4 mb-3">
     <div
-      class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]"
+      class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px] truncate"
     >
       {
         anime.aired?.prop?.from?.month &&
@@ -50,7 +50,7 @@ const { anime, entityId, userId, userType } = Astro.props;
     {
       anime.type === 'TV' ? (
         anime.episodes ? (
-          <div class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px]">
+          <div class="border-gray-400 text-gray-500 text-sm px-2 pr-3 py-[1px] font-semibold bg-neutral-100 max-w-fit rounded-r-[2px] truncate">
             <div>
               <span class="font-semibold">Episodes:&nbsp;</span>{' '}
               {anime.episodes}

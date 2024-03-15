@@ -5,9 +5,32 @@ import { anime, manga } from '../db/schema';
 import { eq } from 'drizzle-orm';
 import type { components } from './jikan.openapi';
 import { HttpError } from '../utils';
+import { character } from '../db/schema/character';
 
 export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
   constructor(private db: T) {}
+
+  findCharacterById: ApiContract['findCharacterById'] = async (id) => {
+    try {
+      const data = await this.db
+        .select()
+        .from(character)
+        .where(eq(character.mal_id, id));
+      return {
+        success: true,
+        data: data[0] as components['schemas']['character_full'],
+      };
+    } catch (error) {
+      const msg =
+        error instanceof Error ?
+          error.message
+        : 'Could not find character by id';
+      return {
+        success: false,
+        error: new HttpError(500, msg),
+      };
+    }
+  };
 
   findMangaById: ApiContract['findMangaById'] = async (id) => {
     try {
@@ -66,4 +89,13 @@ export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
         .values(data as any)
         .execute();
     };
+
+  setCharacter: (
+    data: components['schemas']['character_full'],
+  ) => Promise<void> = async (data) => {
+    await this.db
+      .insert(character)
+      .values(data as any)
+      .execute();
+  };
 }

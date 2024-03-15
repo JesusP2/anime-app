@@ -10,6 +10,7 @@ import {
 import { pgTable } from './table'
 export * from './anime';
 export * from './manga';
+export * from './character';
 
 export const user = pgTable(
   'auth_user',

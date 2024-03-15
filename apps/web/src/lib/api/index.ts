@@ -69,4 +69,33 @@ export class Api<T extends NodePgDatabase<DBSchema>> implements ApiContract {
       data: manga.data.data,
     };
   };
+
+  /**
+   * @method
+   * @name findCharacterById
+   * @description checks if the data is in the cache, if it's not, it retrieves it from the jikan api and stores it in the database
+   */
+  findCharacterById: ApiContract['findCharacterById'] = async (id) => {
+    if (await this.cache.has('findCharacterById', id)) {
+      return await this.db.findCharacterById(id);
+    }
+    const character = await this.client.GET('/characters/{id}/full', {
+      params: {
+        path: {
+          id: id,
+        },
+      },
+    });
+    if (!character.data?.data) {
+      return {
+        success: false,
+        error: new HttpError(404, 'character not found'),
+      };
+    }
+    await this.db.setCharacter(character.data.data);
+    return {
+      success: true,
+      data: character.data.data,
+    };
+  };
 }
