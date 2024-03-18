@@ -1,15 +1,16 @@
 import type { MultiValue, SingleValue } from 'react-select';
 
+export type FormStateItem = { value: string; label: string };
 export type FormState = {
   q: string;
   search_type?: 'short' | 'full';
-  typee: string[];
-  subtype: string[];
-  status: string[];
-  authors: string[];
-  genres: string[];
-  themes: string[];
-  demographics: string[];
+  typee: FormStateItem[];
+  subtype: FormStateItem[];
+  status: FormStateItem[];
+  authors: FormStateItem[];
+  genres: FormStateItem[];
+  themes: FormStateItem[];
+  demographics: FormStateItem[];
 };
 export function getDefaultState(): FormState {
   return {
@@ -33,7 +34,7 @@ type OverwriteAction = {
 type ToggleAction = {
   type: 'TOGGLE_FIELD';
   field: keyof Omit<FormState, 'q' | 'search_type'>;
-  payload: SingleValue<string> | MultiValue<string>;
+  payload: SingleValue<FormStateItem> | MultiValue<FormStateItem>;
 };
 
 export type SearchAction = {

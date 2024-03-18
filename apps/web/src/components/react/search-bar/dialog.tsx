@@ -14,13 +14,13 @@ import Select, { type GroupBase } from 'react-select';
 import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 import { useReducer } from 'react';
-import { reducer, type Action, type FormState } from './form';
+import { reducer, type Action, type FormState, type FormStateItem } from './form';
 
 export const entityType = [
   { value: 'anime', label: 'Anime' },
   { value: 'manga', label: 'Manga' },
   { value: 'character', label: 'Character' },
-] as unknown as GroupBase<string>[];
+] as unknown as GroupBase<FormStateItem>[];
 const animeSubtypes = [
   { value: 'TV', label: 'TV' },
   { value: 'Movie', label: 'Movie' },
@@ -28,7 +28,7 @@ const animeSubtypes = [
   { value: 'Special', label: 'Special' },
   { value: 'ONA', label: 'ONA' },
   { value: 'Music', label: 'Music' },
-] as unknown as GroupBase<string>[];
+] as unknown as GroupBase<FormStateItem>[];
 const mangaSubtypes = [
   { value: 'Manga', label: 'Manga' },
   { value: 'Novel', label: 'Novel' },
@@ -37,19 +37,19 @@ const mangaSubtypes = [
   { value: 'Doujinshi', label: 'Doujinshi' },
   { value: 'Manhwa', label: 'Manhwa' },
   { value: 'OEL', label: 'OEL' },
-] as unknown as GroupBase<string>[];
+] as unknown as GroupBase<FormStateItem>[];
 const animeStatuses = [
   { value: 'Finished Airing', label: 'Finished Airing' },
   { value: 'Currently Airing', label: 'Currently Airing' },
   { value: 'Not yet aired', label: 'Not yet aired' },
-] as unknown as GroupBase<string>[];
+] as unknown as GroupBase<FormStateItem>[];
 const mangaStatuses = [
   { value: 'Finished', label: 'Finished' },
   { value: 'Publishing', label: 'Publishing' },
   { value: 'On Hiatus', label: 'On Hiatus' },
   { value: 'Discontinued', label: 'Discontinued' },
   { value: 'Not yet published', label: 'Not yet published' },
-] as unknown as GroupBase<string>[];
+] as unknown as GroupBase<FormStateItem>[];
 
 export function FiltersDialog({
   state,
