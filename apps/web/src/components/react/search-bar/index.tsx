@@ -90,7 +90,7 @@ export function SearchBar() {
         (t) => t.value,
       ),
       demographics: (state.demographics as unknown as { value: string }[]).map(
-        (t) => t,
+        (t) => t.value,
       ),
     };
     dispatch({
@@ -127,7 +127,7 @@ export function SearchBar() {
       </div>
       <Command.List
         className={clsx(
-          'px-1 py-1',
+          'px-1 has-[.children]:py-1',
         )}
       >
         {status === 'fetched' && state.q ?
@@ -137,15 +137,10 @@ export function SearchBar() {
           {searches?.map((item) => (
             <Command.Item
               value={item.mal_id?.toString()}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  console.log('Enter');
-                }
-              }}
               className="w-full flex justify-between items-center cursor-pointer text-zinc-700 text-sm py-[4px] px-2 outline-none rounded-sm data-[selected=true]:bg-zinc-100"
               key={item.mal_id}
             >
-              <div className="flex gap-x-2 items-center">
+              <div className="flex gap-x-2 items-center children">
                 <img src={item.image_url} width={20} height={20} />
                 {item.title}
               </div>
