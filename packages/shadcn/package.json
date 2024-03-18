@@ -30,6 +30,10 @@
       "default": "./dist/components/dialog.mjs",
       "types": "./src/components/dialog.d.mts"
     },
+    "./command": {
+      "default": "./dist/components/command.mjs",
+      "types": "./src/components/command.d.mts"
+    },
     "./utils": {
       "default": "./dist/utils.mjs",
       "types": "./src/utils.d.mts"
@@ -56,6 +60,7 @@
     "@tanstack/react-table": "^8.12.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "cmdk": "^1.0.0",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18.2.0",
@@ -69,8 +74,8 @@
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.0.1",
     "eslint": "latest",
-    "eslint-config-next": "14.1.0",
     "eslint-config-custom": "workspace:*",
+    "eslint-config-next": "14.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "tsup": "^8.0.1",
