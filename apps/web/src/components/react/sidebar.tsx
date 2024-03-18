@@ -219,6 +219,7 @@ export function Sidebar({
         </div>
       : <a
           href="/auth/signin"
+          title="Log in"
           className={cn(
             ionButtonVariants({
               color: 'primary',
@@ -228,8 +229,7 @@ export function Sidebar({
             'text-white',
           )}
         >
-          <IoLogInOutline size={20} className="min-w-[20px]" />
-          <span className="sidebar-text delay-200">Log in</span>
+          <IoLogInOutline size={20} className="min-w-[20px] relative right-[2px]" />
         </a>
       }
     </aside>
