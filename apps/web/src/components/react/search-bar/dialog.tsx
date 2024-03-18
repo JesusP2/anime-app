@@ -68,7 +68,7 @@ export function FiltersDialog({
       }}
     >
       <DialogTrigger asChild>
-        <Button className="bg-white active:bg-black active:text-gray-100 focus:bg-white focus:text-black hover:bg-black border-0 hover:text-gray-100 rounded-sm text-sm h-[34px] gap-x-1 ">
+        <Button className="bg-white active:bg-black active:text-gray-100 focus:bg-white focus:text-black hover:bg-black border-0 hover:text-gray-100 rounded-sm text-sm h-[34px] gap-x-1 text-black">
           <LuSettings2 size={17} />
           Filters
         </Button>

@@ -6,6 +6,17 @@ import { getDefaultState, reducer } from './form';
 import { FiltersDialog } from './dialog';
 import { DebouncedInput } from './debounce-input';
 import { z } from 'zod';
+import { Command } from 'cmdk';
+
+import {
+  FiCalendar,
+  FiCreditCard,
+  FiSettings,
+  FiSmile,
+  FiUser,
+} from 'react-icons/fi';
+import { BsCalculatorFill } from 'react-icons/bs';
+import clsx from 'clsx';
 
 // typee: "anime" | "manga" | "character"
 // search_type: "short" | "full"
@@ -47,7 +58,7 @@ const searchSchema = z.object({
 export function SearchBar() {
   const [state, dispatch] = useReducer(reducer, getDefaultState());
   const [status, setStatus] = useState<
-    'loading' | 'fetched' | 'error' | 'idle'
+    'loading' | 'idle' | 'fetched' | 'error'
   >('idle');
   const [searches, setSearches] = useState<z.infer<typeof searchSchema>[]>([]);
 
@@ -91,8 +102,15 @@ export function SearchBar() {
     ws.send(JSON.stringify(payload));
   }
   return (
-    <div>
-      <div className="h-12 bg-gray-100 border-0 outline-none p-3 rounded-sm flex items-center mt-4 gap-x-2">
+    <Command
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          console.log('Enter');
+        }
+      }}
+      className="rounded-lg border shadow-md mt-4 outline-none"
+    >
+      <div className="h-12 bg-gray-100 border-0 outline-none p-3 rounded-sm flex items-center gap-x-2">
         <GoSearch size={22} className="text-neutral-500" />
         <DebouncedInput
           type="search"
@@ -107,30 +125,35 @@ export function SearchBar() {
           <GoSearch size={17} className="text-white font-bold" />
         </Button>
       </div>
-      {status === 'fetched' && searches?.length ?
-        <div className="absolute w-full space-y-1 py-1 px-2 shadow-md rounded-sm">
-          {searches?.map((item, idx) => (
-            <button
-              aria-label={`search-results-${idx}`}
+      <Command.List
+        className={clsx(
+          'px-1 py-1',
+        )}
+      >
+        {status === 'fetched' && state.q ?
+          <Command.Empty>No results found.</Command.Empty>
+        : null}
+        <Command.Group>
+          {searches?.map((item) => (
+            <Command.Item
+              value={item.mal_id?.toString()}
               onKeyDown={(e) => {
-                if (e.key === ' ') {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.location.href = '/anime/' + item.mal_id;
+                if (e.key === 'Enter') {
+                  console.log('Enter');
                 }
-                // TODO: add arrow down and up functionality
-                // if (e.key === 'ArrowDown') {
-                // }
               }}
-              className="w-full flex items-center gap-x-2 text-zinc-700 text-sm hover:bg-zinc-100 cursor-pointer py-1 px-2 focus:bg-zinc-100 outline-none rounded-sm"
+              className="w-full flex justify-between items-center cursor-pointer text-zinc-700 text-sm py-[4px] px-2 outline-none rounded-sm data-[selected=true]:bg-zinc-100"
               key={item.mal_id}
             >
-              <img src={item.image_url} width={20} height={20} />
-              {item.title}-{item.mal_id}
-            </button>
+              <div className="flex gap-x-2 items-center">
+                <img src={item.image_url} width={20} height={20} />
+                {item.title}
+              </div>
+              {item.type}
+            </Command.Item>
           ))}
-        </div>
-      : null}
-    </div>
+        </Command.Group>
+      </Command.List>
+    </Command>
   );
 }
