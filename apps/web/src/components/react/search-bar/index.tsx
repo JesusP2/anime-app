@@ -8,29 +8,7 @@ import { DebouncedInput } from './debounce-input';
 import { z } from 'zod';
 import { Command } from 'cmdk';
 
-import {
-  FiCalendar,
-  FiCreditCard,
-  FiSettings,
-  FiSmile,
-  FiUser,
-} from 'react-icons/fi';
-import { BsCalculatorFill } from 'react-icons/bs';
 import clsx from 'clsx';
-
-// typee: "anime" | "manga" | "character"
-// search_type: "short" | "full"
-// authors: open
-// genres: open
-// themes: open
-// demographics: open
-// anime
-// status: "Finished Airing" | "Currently Airing" | "Not yet aired"
-// subtype: "TV" | "OVA" | "Movie" | "Special" | "ONA" | "Music"
-//
-// manga
-// status: "Finished" | "Publishing" | "On Hiatus" | "Discontinued" | "Not yet published";
-// subtype: "Manga" | "Novel" | "Light Novel" | "One-shot" | "Doujinshi" | "Manhua" | "Manhwa" | "OEL" | null;
 
 const searchSchema = z.object({
   episodes: z.coerce.number(),
@@ -69,30 +47,17 @@ export function SearchBar() {
 
   const ws = useMemo(() => startWebsocket(updateSearches), []);
   function search(value: string) {
+    const properties = Object.keys(state);
     const payload = {
       q: value,
-      typee: (state.typee as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      subtype: (state.subtype as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      status: (state.status as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      authors: (state.authors as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      genres: (state.genres as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      themes: (state.themes as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-      demographics: (state.demographics as unknown as { value: string }[]).map(
-        (t) => t.value,
-      ),
-    };
+    } as Record<string, string[] | string>;
+    for (const _prop of properties) {
+      const prop = _prop as keyof typeof state;
+      const idk = state[prop]
+      if (Array.isArray(idk)) {
+        payload[prop] = idk?.map((t) => t.value);
+      }
+    }
     dispatch({
       type: 'UPDATE_SEARCH',
       field: 'q',
