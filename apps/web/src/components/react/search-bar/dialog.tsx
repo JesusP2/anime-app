@@ -17,9 +17,9 @@ import { useReducer } from 'react';
 import { reducer, type Action, type FormState, type FormStateItem } from './form';
 
 export const entityType = [
-  { value: 'anime', label: 'Anime' },
-  { value: 'manga', label: 'Manga' },
-  { value: 'character', label: 'Character' },
+  { value: 'anime', label: 'anime' },
+  { value: 'manga', label: 'manga' },
+  { value: 'character', label: 'character' },
 ] as unknown as GroupBase<FormStateItem>[];
 const animeSubtypes = [
   { value: 'TV', label: 'TV' },

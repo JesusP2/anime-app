@@ -12,17 +12,59 @@ export type FormState = {
   themes: FormStateItem[];
   demographics: FormStateItem[];
 };
+
+function createFormStateField(
+  searchParams: URLSearchParams,
+  field: string,
+  type: 'string',
+  isNew?: boolean,
+): string;
+function createFormStateField(
+  searchParams: URLSearchParams,
+  field: string,
+  type: 'array',
+  isNew?: boolean,
+): FormStateItem[];
+function createFormStateField(
+  searchParams: URLSearchParams,
+  field: string,
+  type: 'string' | 'array',
+  isNew?: boolean,
+) {
+  if (type === 'string') {
+    return searchParams.get(field) || '';
+  }
+  const filters = searchParams.getAll(field);
+  if (filters.length === 0) {
+    return [] as FormStateItem[];
+  }
+  if (typeof isNew !== 'undefined') {
+    return filters.map((filter) => ({
+      value: filter,
+      label: filter,
+      __isNew__: isNew,
+    }));
+  }
+  return filters.map((filter) => ({
+    value: filter,
+    label: filter,
+  }));
+}
 export function getDefaultState(): FormState {
+  const params = new URLSearchParams(window.location.search);
   return {
-    q: '',
-    search_type: 'short',
-    typee: [],
-    subtype: [],
-    status: [],
-    authors: [],
-    genres: [],
-    themes: [],
-    demographics: [],
+    q: createFormStateField(params, 'q', 'string'),
+    search_type:
+      createFormStateField(params, 'search_type', 'string') === 'short' ?
+        'short'
+      : 'full',
+    typee: createFormStateField(params, 'typee', 'array'),
+    subtype: createFormStateField(params, 'subtype', 'array'),
+    status: createFormStateField(params, 'status', 'array'),
+    authors: createFormStateField(params, 'authors', 'array'),
+    genres: createFormStateField(params, 'genres', 'array'),
+    themes: createFormStateField(params, 'themes', 'array'),
+    demographics: createFormStateField(params, 'demographics', 'array'),
   };
 }
 
