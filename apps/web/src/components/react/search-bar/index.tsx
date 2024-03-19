@@ -10,6 +10,19 @@ import { Command } from 'cmdk';
 
 import clsx from 'clsx';
 
+function setSearchParam(key: string, value: string | string[]) {
+  const params = new URLSearchParams(window.location.search);
+  if (Array.isArray(value)) {
+    params.delete(key)
+    value.map((v) => params.append(key, v));
+  } else {
+    params.set(key, value);
+  }
+  const newUrl =
+    window.location.origin + window.location.pathname + '?' + params.toString();
+  window.history.pushState({ path: newUrl }, '', newUrl);
+}
+
 const searchSchema = z.object({
   episodes: z.coerce.number(),
   mal_id: z.coerce.number(),
@@ -34,7 +47,7 @@ const searchSchema = z.object({
   }),
 });
 export function SearchBar() {
-  const [state, dispatch] = useReducer(reducer, getDefaultState());
+  const [state, dispatch] = useReducer(reducer, null, getDefaultState);
   const [status, setStatus] = useState<
     'loading' | 'idle' | 'fetched' | 'error'
   >('idle');
@@ -51,11 +64,16 @@ export function SearchBar() {
     const payload = {
       q: value,
     } as Record<string, string[] | string>;
-    for (const _prop of properties) {
-      const prop = _prop as keyof typeof state;
-      const idk = state[prop]
-      if (Array.isArray(idk)) {
-        payload[prop] = idk?.map((t) => t.value);
+    for (const _key of properties) {
+      const key = _key as keyof typeof state;
+      const filters = state[key];
+      if (Array.isArray(filters)) {
+        payload[key] = filters.map(({ value }) => value);
+        setSearchParam(key, payload[key] as string[]);
+      } else if (filters) {
+        setSearchParam(key, filters)
+      } else if (value) {
+        setSearchParam(key, value)
       }
     }
     dispatch({
@@ -67,14 +85,7 @@ export function SearchBar() {
     ws.send(JSON.stringify(payload));
   }
   return (
-    <Command
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          console.log('Enter');
-        }
-      }}
-      className="rounded-lg border shadow-md mt-4 outline-none"
-    >
+    <Command className="rounded-lg border shadow-md mt-4 outline-none">
       <div className="h-12 bg-gray-100 border-0 outline-none p-3 rounded-sm flex items-center gap-x-2">
         <GoSearch size={22} className="text-neutral-500" />
         <DebouncedInput
@@ -90,11 +101,7 @@ export function SearchBar() {
           <GoSearch size={17} className="text-white font-bold" />
         </Button>
       </div>
-      <Command.List
-        className={clsx(
-          'px-1 has-[.children]:py-1',
-        )}
-      >
+      <Command.List className={clsx('px-1 has-[.children]:py-1')}>
         {status === 'fetched' && state.q ?
           <Command.Empty>No results found.</Command.Empty>
         : null}
@@ -104,12 +111,18 @@ export function SearchBar() {
               value={item.mal_id?.toString()}
               className="w-full flex justify-between items-center cursor-pointer text-zinc-700 text-sm py-[4px] px-2 outline-none rounded-sm data-[selected=true]:bg-zinc-100"
               key={item.mal_id}
+              asChild
             >
-              <div className="flex gap-x-2 items-center children">
-                <img src={item.image_url} width={20} height={20} />
-                {item.title}
-              </div>
-              {item.type}
+              <a
+                href={`/anime/${item.mal_id}`}
+                className="flex gap-x-2 items-center children"
+              >
+                <div className="flex gap-x-2 items-center children">
+                  <img src={item.image_url} width={20} height={20} />
+                  {item.title}
+                </div>
+                {item.type}
+              </a>
             </Command.Item>
           ))}
         </Command.Group>
