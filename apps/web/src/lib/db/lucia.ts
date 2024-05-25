@@ -6,9 +6,9 @@ import { google } from '@lucia-auth/oauth/providers';
 
 export const auth = lucia({
   adapter: pg(pool, {
-    user: 'auth_user',
-    session: 'user_session',
-    key: 'user_key',
+    user: 'anime_auth_user',
+    session: 'anime_user_session',
+    key: 'anime_user_key',
   }),
   env: import.meta.env.DEV ? 'DEV' : 'PROD',
   middleware: astro(),
