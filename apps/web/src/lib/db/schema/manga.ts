@@ -1,40 +1,32 @@
-import {
-  timestamp,
-  varchar,
-  integer,
-  text,
-  boolean,
-  json,
-  numeric,
-} from 'drizzle-orm/pg-core';
-import { pgTable } from './table'
 import { createId } from '@paralleldrive/cuid2';
+import { sqliteTable } from './table';
+import { integer, text } from 'drizzle-orm/sqlite-core';
 
-export const manga = pgTable('manga', {
-  id: varchar('id', {
+export const manga = sqliteTable('manga', {
+  id: text('id', {
     length: 255,
   })
     .primaryKey()
     .$defaultFn(createId),
   mal_id: integer('mal_id'),
-  url: varchar('url', {
+  url: text('url', {
     length: 255,
   }),
-  images: json('images'),
-  approved: boolean('approved'),
-  titles: json('titles'),
-  title_synonyms: json('title_synonyms'),
-  type: varchar('type', {
+  images: text('images'), //json
+  approved: integer('approved'), //boolean
+  titles: text('titles'), //json
+  title_synonyms: text('title_synonyms'), //json
+  type: text('type', {
     length: 255,
   }),
   chapters: integer('chapters'),
   volumes: integer('volumes'),
-  status: varchar('status', {
+  status: text('status', {
     length: 255,
   }),
-  publishing: boolean('publishing'),
-  published: json('published'),
-  score: numeric('score'),
+  publishing: integer('publishing'), //boolean
+  published: text('published'), //json
+  score: integer('score'),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),
@@ -42,14 +34,14 @@ export const manga = pgTable('manga', {
   favorites: integer('favorites'),
   synopsis: text('synopsis'),
   background: text('background'),
-  authors: json('authors'),
-  serializations: json('serializations'),
-  genres: json('genres'),
-  explicit_genres: json('explicit_genres'),
-  themes: json('themes'),
-  demographics: json('demographics'),
-  relations: json('relations'),
-  external: json('external'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
+  authors: text('authors'), //json
+  serializations: text('serializations'), //json
+  genres: text('genres'), //json
+  explicit_genres: text('explicit_genres'), //json
+  themes: text('themes'), //json
+  demographics: text('demographics'), //json
+  relations: text('relations'), //json
+  external: text('external'), //json
+  createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+  updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });

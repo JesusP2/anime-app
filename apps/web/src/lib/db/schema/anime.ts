@@ -1,47 +1,46 @@
 import {
   timestamp,
   varchar,
-  integer,
-  text,
   boolean,
   json,
   numeric,
 } from 'drizzle-orm/pg-core';
-import { pgTable } from './table'
+import { integer, text } from 'drizzle-orm/sqlite-core';
 import { createId } from '@paralleldrive/cuid2';
+import { sqliteTable } from './table';
 
-export const anime = pgTable('anime', {
-  id: varchar('id', {
+export const anime = sqliteTable('anime', {
+  id: text('id', {
     length: 255,
   })
     .primaryKey()
     .$defaultFn(createId),
   mal_id: integer('mal_id'),
   url: text('url'),
-  images: json('images'),
-  trailer: json('trailer'),
-  approved: boolean('approved'),
-  titles: json('titles'),
+  images: text('images'), //json
+  trailer: text('trailer'), //json
+  approved: integer('approved'), //boolean
+  titles:  text('titles'), //json
   // convert anime_full type to drizzle-orm type
-  type: varchar('type', {
+  type: text('type', {
     length: 255,
   }),
-  source: varchar('source', {
+  source: text('source', {
     length: 255,
   }),
   episodes: integer('episodes'),
-  status: varchar('status', {
+  status: text('status', {
     length: 255,
   }),
-  airing: boolean('airing'),
-  aired: json('aired'),
-  duration: varchar('duration', {
+  airing: integer('airing'), //boolean
+  aired: text('aired'), //json
+  duration: text('duration', {
     length: 255,
   }),
-  rating: varchar('rating', {
+  rating: text('rating', {
     length: 255,
   }),
-  score: numeric('score'),
+  score: integer('score'),
   scored_by: integer('scored_by'),
   rank: integer('rank'),
   popularity: integer('popularity'),
@@ -49,22 +48,22 @@ export const anime = pgTable('anime', {
   favorites: integer('favorites'),
   synopsis: text('synopsis'),
   background: text('background'),
-  season: varchar('season', {
+  season: text('season', {
     length: 255,
   }),
   year: integer('year'),
-  broadcast: json('broadcast'),
-  producers: json('producers'),
-  licensors: json('licensors'),
-  studios: json('studios'),
-  genres: json('genres'),
-  explicit_genres: json('explicit_genres'),
-  themes: json('themes'),
-  demographics: json('demographics'),
-  relations: json('relations'),
-  theme: json('theme'),
-  external: json('external'),
-  streaming: json('streaming'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
+  broadcast: text('broadcast'), //json
+  producers: text('producers'), //json
+  licensors: text('licensors'), //json
+  studios: text('studios'), //json
+  genres: text('genres'), //json
+  explicit_genres:  text('explicit_genres'), //json
+  themes: text('themes'), //json
+  demographics: text('demographics'), //json
+  relations: text('relations'), //json
+  theme: text('theme'), //json
+  external: text('external'), //json
+  streaming: text('streaming'), //json
+  createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+  updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });

@@ -1,33 +1,26 @@
 import { createId } from '@paralleldrive/cuid2';
-import {
-  bigint,
-  varchar,
-  uniqueIndex,
-  integer,
-  timestamp,
-  pgEnum,
-} from 'drizzle-orm/pg-core';
-import { pgTable } from './table'
+import { uniqueIndex, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable } from './table';
 export * from './anime';
 export * from './manga';
 export * from './character';
 
-export const user = pgTable(
+export const user = sqliteTable(
   'auth_user',
   {
-    id: varchar('id', {
+    id: text('id', {
       length: 15, // change this when using custom user ids
     }).primaryKey(),
-    email: varchar('email', {
+    email: text('email', {
       length: 255,
     }).unique(),
-    username: varchar('username', {
+    username: text('username', {
       length: 30,
     }),
-    role: varchar('role', {
+    role: text('role', {
       length: 255,
     }),
-    avatar_image: varchar('avatar_image', { length: 191 }),
+    avatar_image: text('avatar_image', { length: 191 }),
   },
   (user) => ({
     emailIndex: uniqueIndex('users__email__idx').on(user.email),
@@ -35,76 +28,73 @@ export const user = pgTable(
   }),
 );
 
-export const session = pgTable('user_session', {
-  id: varchar('id', {
+export const session = sqliteTable('user_session', {
+  id: text('id', {
     length: 128,
   }).primaryKey(),
-  userId: varchar('user_id', {
+  userId: text('user_id', {
     length: 64,
   })
     .notNull()
     .references(() => user.id),
-  activeExpires: bigint('active_expires', {
+  activeExpires: integer('active_expires', {
     mode: 'number',
   }).notNull(),
-  idleExpires: bigint('idle_expires', {
+  idleExpires: integer('idle_expires', {
     mode: 'number',
   }).notNull(),
 });
 
-export const key = pgTable('user_key', {
-  id: varchar('id', {
+export const key = sqliteTable('user_key', {
+  id: text('id', {
     length: 255,
   }).primaryKey(),
-  userId: varchar('user_id', {
+  userId: text('user_id', {
     length: 64,
   })
     .notNull()
     .references(() => user.id),
-  hashedPassword: varchar('hashed_password', {
+  hashedPassword: text('hashed_password', {
     length: 255,
   }),
 });
 
-export const trackedEntity = pgTable('tracked_entity', {
-  id: varchar('id', {
+export const trackedEntity = sqliteTable('tracked_entity', {
+  id: text('id', {
     length: 255,
   })
     .primaryKey()
     .$defaultFn(createId),
-  userId: varchar('user_id', {
+  userId: text('user_id', {
     length: 64,
   }).notNull(),
-  userType: pgEnum('varchar', [
-    'signed-in',
-    'guest',
-  ])('user_type').notNull(),
-  entityType: pgEnum('varchar', [
-    'ANIME',
-    'LIGHT-NOVEL',
-    'MANGA',
-  ])('entity_type').notNull(),
-  entityStatus: varchar('entity_status', {
+  userType: text('user_type', {
+    enum: ['signed-in', 'guest'],
+  }).notNull(),
+  entityType: text('user_type', {
+    enum: ['ANIME', 'LIGHT-NOVEL', 'MANGA'],
+  }).notNull(),
+  entityStatus: text('entity_status', {
     length: 255,
   }).notNull(),
   malId: integer('mal_id').notNull(),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
+  createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+  updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });
 
-export const entityActionsTracker = pgTable('entity_actions_tracker', {
-  id: varchar('id', {
+export const entityActionsTracker = sqliteTable('entity_actions_tracker', {
+  id: text('id', {
     length: 255,
   })
     .primaryKey()
     .$defaultFn(createId),
-  trackedEntityId: varchar('tracked_entity_id', {
+  trackedEntityId: text('tracked_entity_id', {
     length: 255,
   }),
-  operation: varchar('operation', {
+  operation:  text('operation', {
     length: 255,
   }).notNull(),
-  actionTime: timestamp('action_time').defaultNow(),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
+  actionTime: text('action_time').$defaultFn(() => new Date().toISOString()),
+  createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+  updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });

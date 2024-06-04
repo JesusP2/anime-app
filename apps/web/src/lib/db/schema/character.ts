@@ -1,30 +1,24 @@
-import { pgTable } from './table';
-import {
-  timestamp,
-  varchar,
-  integer,
-  text,
-  json,
-} from 'drizzle-orm/pg-core';
 import { createId } from '@paralleldrive/cuid2';
+import { sqliteTable } from './table';
+import { integer, text } from 'drizzle-orm/sqlite-core';
 
-export const character = pgTable('character', {
-  id: varchar('id', {
+export const character = sqliteTable('character', {
+  id: text('id', {
     length: 255,
   })
     .primaryKey()
     .$defaultFn(createId),
   mal_id: integer('mal_id').unique(),
   url: text('url').unique(),
-  images: json('images'),
+  images: text('images'), //json
   name: text('name'),
   name_kanji: text('name_kanji'),
-  nicknames: json('nicknames'),
+  nicknames:text('nicknames'), //json
   favorites: integer('favorites'),
   about: text('about'),
-  anime: json('anime'),
-  manga: json('manga'),
-  voices: json('voices'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
+  anime: text('anime'), //json
+  manga: text('manga'), //json
+  voices: text('voices'), //json
+  createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
+  updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });

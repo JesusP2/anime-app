@@ -49,6 +49,7 @@
     "postgres": "^3.3.5",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0",
+    "cmdk": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",

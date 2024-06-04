@@ -1,3 +1,3 @@
-import { pgTableCreator } from 'drizzle-orm/pg-core';
+import { sqliteTableCreator } from 'drizzle-orm/sqlite-core';
 
-export const pgTable = pgTableCreator((name) => `anime_${name}`)
+export const sqliteTable = sqliteTableCreator((name) => `anime_${name}`)
