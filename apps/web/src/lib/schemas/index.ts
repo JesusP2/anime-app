@@ -25,6 +25,6 @@ export const postSchema = z.object({
   entityStatus: z.enum(entityStatus),
   entityType: z.enum(['ANIME', 'MANGA']),
   userType: z.enum(['signed-in', 'guest']),
-  malId: z.coerce.number(),
+  mal_id: z.coerce.number(),
   userId: z.string(),
 });

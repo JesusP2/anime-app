@@ -1,4 +1,4 @@
-import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
+import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import type { DBSchema } from '../db/pool';
 import type { ApiContract } from './contract';
 import { anime, manga } from '../db/schema';
@@ -7,7 +7,7 @@ import type { components } from './jikan.openapi';
 import { HttpError } from '../utils';
 import { character } from '../db/schema/character';
 
-export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
+export class DBApi<T extends LibSQLDatabase<DBSchema>> implements ApiContract {
   constructor(private db: T) {}
 
   findCharacterById: ApiContract['findCharacterById'] = async (id) => {
@@ -22,9 +22,9 @@ export class DBApi<T extends NodePgDatabase<DBSchema>> implements ApiContract {
       };
     } catch (error) {
       const msg =
-        error instanceof Error ?
-          error.message
-        : 'Could not find character by id';
+        error instanceof Error
+          ? error.message
+          : 'Could not find character by id';
       return {
         success: false,
         error: new HttpError(500, msg),

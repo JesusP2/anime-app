@@ -12,3 +12,8 @@
 
 
 - Finish your stats page
+
+
+## TODOS 2.0:
+- Remove cache class and create a function that accepts a cb and its parameters
+- DBApi should probably go too

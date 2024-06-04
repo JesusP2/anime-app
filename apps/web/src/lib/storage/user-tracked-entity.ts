@@ -41,7 +41,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
           eq(trackedEntity.entityStatus, status),
         ),
       )
-      .leftJoin(entitiesTable, eq(trackedEntity.malId, entitiesTable.mal_id));
+      .leftJoin(entitiesTable, eq(trackedEntity.mal_id, entitiesTable.mal_id));
   }
 
   async createOrUpdateUsersEntity<
@@ -49,7 +49,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
       userType: UserType;
       entityType: 'ANIME' | 'MANGA' | 'LIGHT-NOVEL';
       entityStatus: string;
-      malId: number;
+      mal_id: number;
     },
   >({ payload, userId }: { payload: T; userId: string }) {
     const entityOptions = {
@@ -68,7 +68,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
     }
 
     // checks if entity exists otherwise creates it
-    await api[entityOptions.verifyEntityFn](payload.malId);
+    await api[entityOptions.verifyEntityFn](payload.mal_id);
 
     const isUserTrackingEntity = !!(
       await db
@@ -77,7 +77,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
         .where(
           and(
             eq(trackedEntity.userId, userId),
-            eq(trackedEntity.malId, payload.malId),
+            eq(trackedEntity.mal_id, payload.mal_id),
           ),
         )
     )[0];
@@ -93,7 +93,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
           userType: payload.userType,
           entityType: payload.entityType,
           entityStatus: payload.entityStatus,
-          malId: payload.malId,
+          mal_id: payload.mal_id,
         });
       } else {
         await tx
@@ -102,7 +102,7 @@ class UsersTrackedEntities<T extends NodePgDatabase<DBSchema>> {
           .where(
             and(
               eq(trackedEntity.userId, userId),
-              eq(trackedEntity.malId, payload.malId),
+              eq(trackedEntity.mal_id, payload.mal_id),
             ),
           );
       }

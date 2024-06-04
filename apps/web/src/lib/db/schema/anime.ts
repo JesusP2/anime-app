@@ -1,10 +1,3 @@
-import {
-  timestamp,
-  varchar,
-  boolean,
-  json,
-  numeric,
-} from 'drizzle-orm/pg-core';
 import { integer, text } from 'drizzle-orm/sqlite-core';
 import { createId } from '@paralleldrive/cuid2';
 import { sqliteTable } from './table';

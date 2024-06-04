@@ -77,7 +77,7 @@ export const trackedEntity = sqliteTable('tracked_entity', {
   entityStatus: text('entity_status', {
     length: 255,
   }).notNull(),
-  malId: integer('mal_id').notNull(),
+  mal_id: integer('mal_id').notNull(),
   createdAt: text('created_at').$defaultFn(() => new Date().toISOString()),
   updatedAt: text('updated_at').$defaultFn(() => new Date().toISOString()),
 });
