@@ -1,26 +1,12 @@
 {
   "version": "5",
-  "dialect": "pg",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1710024847955,
-      "tag": "0000_demonic_chat",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1710384052486,
-      "tag": "0001_past_callisto",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1710387557373,
-      "tag": "0002_huge_blackheart",
+      "when": 1717467520521,
+      "tag": "0000_short_loa",
       "breakpoints": true
     }
   ]

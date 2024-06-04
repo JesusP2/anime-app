@@ -1,10 +1,10 @@
-import pkg from 'pg';
-import { drizzle } from 'drizzle-orm/node-postgres';
+import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/libsql';
 import * as schema from './schema';
-const { Pool } = pkg;
 
-export const pool = new Pool({
-  connectionString: import.meta.env.DATABASE_URL,
+export const client = createClient({
+  url: import.meta.env?.DATABASE_URL || process.env.DATABASE_URL!,
+  authToken: import.meta.env?.DATABASE_TOKEN || process.env.DATABASE_TOKEN!,
 });
-export const db = drizzle(pool, { schema });
+export const db = drizzle(client, { schema });
 export type DBSchema = typeof schema;

@@ -10,8 +10,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write src/**/*.{astro,ts,tsx}",
-    "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "env-cmd tsx ./migrate.ts",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:migrate": "tsx --env-file=.env ./migrate.ts",
+    "db:push": "drizzle-kit push:sqlite",
     "db:studio": "env-cmd drizzle-kit studio"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@astrojs/tailwind": "^5.0.1",
     "@fontsource-variable/inter": "^5.0.12",
     "@fontsource/bungee": "^5.0.19",
+    "@libsql/client": "^0.6.0",
     "@fontsource/geist-sans": "^5.0.2",
     "@fontsource/twinkle-star": "^5.0.14",
     "@kobalte/core": "^0.11.0",

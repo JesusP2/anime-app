@@ -4,6 +4,7 @@ interface ImportMeta {
   env: {
     readonly ANIME_API: string;
     readonly DATABASE_URL: string;
+    readonly DATABASE_TOKEN: string;
     readonly MODE: string;
     readonly BASE_URL: string;
     readonly PROD: boolean;
@@ -19,6 +20,7 @@ interface ImportMetaEnv {
   env: {
     readonly ANIME_API: string;
     readonly DATABASE_URL: string;
+    readonly DATABASE_TOKEN: string;
     readonly MODE: string;
     readonly BASE_URL: string;
     readonly PROD: boolean;

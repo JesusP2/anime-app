@@ -1,9 +1,7 @@
-import postgres from 'postgres';
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import { drizzle } from 'drizzle-orm/postgres-js';
-
-const migrationsclient = postgres(process.env.DATABASE_URL!, {
-  max: 1,
+import { migrate } from 'drizzle-orm/libsql/migrator';
+import { db, client } from './src/lib/db/pool';
+await migrate(db, { migrationsFolder: './drizzle' }).catch((err) => {
+  console.error(err)
+  client.close();
 });
-const db = drizzle(migrationsclient);
-await migrate(db, { migrationsFolder: './drizzle' });
+client.close();
